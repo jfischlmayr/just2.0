@@ -1,19 +1,33 @@
 ﻿@page "/"
 <head>
     <link href="../css/pages.css" rel="stylesheet" />
+    <link href="../css/button.css" rel="stylesheet" />
+    <link href="../css/home.css" rel="stylesheet" />
 </head>
 <div className='home'>
     <h1>Willkommen!</h1>
     <div className='button-area'>
         <button class="btn">
             <NavLink class="nav-link" href="tasks">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Tasks
+                <span class="oi" aria-hidden="true"></span> Tasks
             </NavLink>
         </button>
 
         <button class="btn">
             <NavLink class="nav-link" href="projects">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Projects
+                <span class="oi" aria-hidden="true"></span> Projects
+            </NavLink>
+        </button>
+
+        <button class="btn">
+            <NavLink class="nav-link" href="calender">
+                <span class="oi" aria-hidden="true"></span> Calender
+            </NavLink>
+        </button>
+
+        <button class="btn">
+            <NavLink class="nav-link" href="settings">
+                <span class="oi" aria-hidden="true"></span> Settings
             </NavLink>
         </button>
 
