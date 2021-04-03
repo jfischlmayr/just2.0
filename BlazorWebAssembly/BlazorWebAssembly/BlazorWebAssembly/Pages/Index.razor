@@ -1,0 +1,36 @@
+﻿@page "/"
+<head>
+    <link href="../css/pages.css" rel="stylesheet" />
+</head>
+<div className='home'>
+    <h1>Willkommen!</h1>
+    <div className='button-area'>
+        <button class="btn">
+            <NavLink class="nav-link" href="tasks">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Tasks
+            </NavLink>
+        </button>
+
+        <button class="btn">
+            <NavLink class="nav-link" href="projects">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Projects
+            </NavLink>
+        </button>
+
+                @*<button @onClick={() => {window.location.href = "todo"}}></button>
+                <Button @onClick={() => {window.location.href = "projects"}}></Button>
+                <Button @onClick={() => {window.location.href = "calendar"}}></Button>
+                <Button @onClick={() => {window.location.href = "settings"}}></Button>*@
+
+    </div>
+    <h1>Anstehende Tasks</h1>
+    <div className='todo-area'>
+        @*<TodoListComponent/>*@
+    </div>
+    <h1>Anstehende Termine</h1>
+</div>
+
+@code 
+{
+
+}
