@@ -1,0 +1,34 @@
+﻿@page "/tasks"
+@using System.Text.Json
+@using backend.Models
+@inject HttpClient Http
+
+<div className='todo'>
+    <h1>TASKS</h1>
+    <div style={{width: 200}}>
+        @GetTodosAsync()
+        <ul>
+            @foreach (var todo in AllTodos)
+            {
+                <li> @todo.Name </li>
+            }
+        </ul>
+        
+
+    </div>
+</div>
+
+@code {
+    private List<Todo> AllTodos { get; set; }
+
+    protected async Task GetTodosAsync()
+    {
+        var response = await Http.GetAsync("http://localhost:80/api/todos");
+        var tasksJson = await response.Content.ReadAsStringAsync();
+
+        AllTodos = JsonSerializer.Deserialize<List<Todo>>(tasksJson, new JsonSerializerOptions
+        {
+            PropertyNameCaseInsensitive = true,
+        });
+    }
+}

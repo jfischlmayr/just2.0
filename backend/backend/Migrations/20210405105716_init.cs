@@ -63,7 +63,7 @@ namespace backend.Migrations
                     Firstname = table.Column<string>(type: "varchar(100) CHARACTER SET utf8mb4", maxLength: 100, nullable: false),
                     Lastname = table.Column<string>(type: "varchar(100) CHARACTER SET utf8mb4", maxLength: 100, nullable: false),
                     Email = table.Column<string>(type: "varchar(100) CHARACTER SET utf8mb4", maxLength: 100, nullable: false),
-                    Phone = table.Column<string>(type: "varchar(50) CHARACTER SET utf8mb4", maxLength: 50, nullable: false)
+                    Phone = table.Column<string>(type: "varchar(50) CHARACTER SET utf8mb4", maxLength: 50, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -132,7 +132,7 @@ namespace backend.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Tasks",
+                name: "Todos",
                 columns: table => new
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
@@ -144,9 +144,9 @@ namespace backend.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Tasks", x => x.ID);
+                    table.PrimaryKey("PK_Todos", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_Tasks_Projects_ProjectID",
+                        name: "FK_Todos_Projects_ProjectID",
                         column: x => x.ProjectID,
                         principalTable: "Projects",
                         principalColumn: "ID",
@@ -159,8 +159,8 @@ namespace backend.Migrations
                 column: "MemberID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Tasks_ProjectID",
-                table: "Tasks",
+                name: "IX_Todos_ProjectID",
+                table: "Todos",
                 column: "ProjectID");
         }
 
@@ -185,7 +185,7 @@ namespace backend.Migrations
                 name: "Roles");
 
             migrationBuilder.DropTable(
-                name: "Tasks");
+                name: "Todos");
 
             migrationBuilder.DropTable(
                 name: "Members");

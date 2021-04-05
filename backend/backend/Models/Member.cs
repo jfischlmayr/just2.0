@@ -17,7 +17,7 @@ namespace backend.Models
         [MaxLength(100)]
         public string Email { get; set; }
         [MaxLength(50)]
-        public string Phone { get; set; }
-        public List<MemberRole> Roles { get; set; }
+        public string? Phone { get; set; }
+        public List<MemberRole>? Roles { get; set; }
     }
 }

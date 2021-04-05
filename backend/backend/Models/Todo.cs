@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace backend.Models
 {
-    public class Task
+    public class Todo
     {
         [Key]
         public int ID { get; set; }

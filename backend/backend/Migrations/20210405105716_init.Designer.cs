@@ -9,7 +9,7 @@ using backend.Models;
 namespace backend.Migrations
 {
     [DbContext(typeof(JustDataContext))]
-    [Migration("20210122110731_init")]
+    [Migration("20210405105716_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -17,7 +17,7 @@ namespace backend.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 64)
-                .HasAnnotation("ProductVersion", "5.0.1");
+                .HasAnnotation("ProductVersion", "5.0.4");
 
             modelBuilder.Entity("backend.Models.Address", b =>
                 {
@@ -114,7 +114,6 @@ namespace backend.Migrations
                         .HasColumnType("varchar(100) CHARACTER SET utf8mb4");
 
                     b.Property<string>("Phone")
-                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("varchar(50) CHARACTER SET utf8mb4");
 
@@ -194,7 +193,7 @@ namespace backend.Migrations
                     b.ToTable("Roles");
                 });
 
-            modelBuilder.Entity("backend.Models.Task", b =>
+            modelBuilder.Entity("backend.Models.Todo", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -218,7 +217,7 @@ namespace backend.Migrations
 
                     b.HasIndex("ProjectID");
 
-                    b.ToTable("Tasks");
+                    b.ToTable("Todos");
                 });
 
             modelBuilder.Entity("backend.Models.MemberRole", b =>
@@ -230,10 +229,10 @@ namespace backend.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("backend.Models.Task", b =>
+            modelBuilder.Entity("backend.Models.Todo", b =>
                 {
                     b.HasOne("backend.Models.Project", null)
-                        .WithMany("Tasks")
+                        .WithMany("Todos")
                         .HasForeignKey("ProjectID");
                 });
 
@@ -244,7 +243,7 @@ namespace backend.Migrations
 
             modelBuilder.Entity("backend.Models.Project", b =>
                 {
-                    b.Navigation("Tasks");
+                    b.Navigation("Todos");
                 });
 #pragma warning restore 612, 618
         }
