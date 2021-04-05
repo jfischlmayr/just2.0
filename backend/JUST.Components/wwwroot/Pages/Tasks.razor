@@ -1,25 +1,25 @@
 ﻿@page "/tasks"
 @using System.Text.Json
-@using backend.Models
+@*@using backend.Models*@
 @inject HttpClient Http
 
 <div className='todo'>
     <h1>TASKS</h1>
     <div style={{width: 200}}>
-        @GetTodosAsync()
+        @*@GetTodosAsync()
         <ul>
             @foreach (var todo in AllTodos)
             {
                 <li> @todo.Name </li>
             }
-        </ul>
+        </ul>*@
         
 
     </div>
 </div>
 
 @code {
-    private List<Todo> AllTodos { get; set; }
+    @*private List<Todo> AllTodos { get; set; }
 
     protected async Task GetTodosAsync()
     {
@@ -30,5 +30,5 @@
         {
             PropertyNameCaseInsensitive = true,
         });
-    }
+    }*@
 }
