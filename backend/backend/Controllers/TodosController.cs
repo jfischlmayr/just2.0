@@ -26,16 +26,18 @@ namespace backend.Controllers
 
         // GET api/Todos
         [HttpGet]
-        public async Task<IQueryable<TodoDto>> GetTodosAsync()
+        public async Task<List<TodoDto>> GetTodosAsync()
         {
-            var todos = from t in _context.Todos
-                        select new TodoDto()
-                        {
-                            ID = t.ID,
-                            Name = t.Name,
-                            Done = t.Done
-                        };
-            return todos;
+            var configuration = new MapperConfiguration(cfg => {
+                cfg.CreateMap<List<Todo>, List<TodoDto>>();
+            });
+
+            IMapper iMapper = configuration.CreateMapper();
+
+
+            var todos = iMapper.Map<List<Todo>, List<TodoDto>>(await _context.Todos.ToListAsync());
+                
+            return await Task.FromResult(todos);
         }
 
         // GET api/Todos/5
@@ -82,23 +84,24 @@ namespace backend.Controllers
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(Todo))]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> Add([FromBody] Todo newTodo)
+        public async Task<IActionResult> Add([FromBody] TodoDto newTodo)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            _context.Todos.Add(newTodo);
+
+            var configuration = new MapperConfiguration(cfg => {
+                cfg.CreateMap<TodoDto, Todo>();
+            });
+
+            IMapper iMapper = configuration.CreateMapper();
+
+            var todo = iMapper.Map<TodoDto, Todo>(newTodo);
+              _context.Todos.Add(todo);
             await _context.SaveChangesAsync();
 
-            var dto = new TodoDto()
-            {
-                ID = newTodo.ID,
-                Name = newTodo.Name,
-                Done = newTodo.Done
-            };
-
-            return CreatedAtAction(nameof(GetTodo), new { id = newTodo.ID }, dto);
+            return CreatedAtAction(nameof(GetTodo), new { id = newTodo.ID }, todo);
         }
 
         [HttpPut("{id}")]

@@ -1,11 +1,20 @@
 ﻿@page "/tasks"
 @using System.Text.Json
+@using JUST.Models
 @inject HttpClient Http
 
 <div className='todo'>
     <h1>TASKS</h1>
-    <div style={{width: 200}}>
-        @*@GetTodosAsync()
+
+        <input @bind="newItemName" placeholder="New Todo" />
+        <button @onclick="@AddItem">Add</button>
+
+        <div>
+            <p>@TodoItem</p>
+        </div>
+
+    @*<div style={{width: 200}}>
+        @GetTodosAsync()
         <ul>
             @foreach (var todo in AllTodos)
             {
@@ -14,20 +23,40 @@
         </ul>*@
         
 
-    </div>
+    @*</div>*@
 </div>
 
 @code {
-    @*private List<TodoDto> AllTodos { get; set; }
+    private List<TodoDto> AllTodos { get; set; }
+    private TodoDto TodoItem { get; set; }
 
-    protected async Task GetTodosAsync()
+    private string newItemName;
+
+    private async Task AddItem()
     {
-        var response = await Http.GetAsync("http://localhost:80/api/todos");
+        var addItem = new TodoDto { Name = newItemName };
+        await Http.PostAsJsonAsync("http://localhost:8080/api/Todos", addItem);
+    }
+
+    protected async Task GetTodoAsync(int id)
+    {
+        var response = await Http.GetAsync("http://localhost:8080/api/Todos/1");
         var tasksJson = await response.Content.ReadAsStringAsync();
 
-        AllTodos = JsonSerializer.Deserialize<List<Todo>>(tasksJson, new JsonSerializerOptions
+        TodoItem = JsonSerializer.Deserialize<TodoDto>(tasksJson, new JsonSerializerOptions
         {
             PropertyNameCaseInsensitive = true,
         });
-    }*@
+    }
+
+    protected async Task GetTodosAsync()
+    {
+        var response = await Http.GetAsync("http://localhost:8080/api/Todos");
+        var tasksJson = await response.Content.ReadAsStringAsync();
+
+        AllTodos = JsonSerializer.Deserialize<List<TodoDto>>(tasksJson, new JsonSerializerOptions
+        {
+            PropertyNameCaseInsensitive = true,
+        });
+    }
 }
