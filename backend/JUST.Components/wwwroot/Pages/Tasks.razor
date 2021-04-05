@@ -1,6 +1,5 @@
 ﻿@page "/tasks"
 @using System.Text.Json
-@*@using backend.Models*@
 @inject HttpClient Http
 
 <div className='todo'>
@@ -19,7 +18,7 @@
 </div>
 
 @code {
-    @*private List<Todo> AllTodos { get; set; }
+    @*private List<TodoDto> AllTodos { get; set; }
 
     protected async Task GetTodosAsync()
     {

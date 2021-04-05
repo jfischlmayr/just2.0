@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "backend", "backend\backend.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JUST.Client", "JUST.Client\JUST.Client.csproj", "{A699BF0F-2A8E-4736-B37A-1F16927674C2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JUST.Components", "JUST.Components\JUST.Components.csproj", "{B8CC3835-864B-4E96-A019-7021D2FEF5BC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JUST.Components", "JUST.Components\JUST.Components.csproj", "{B8CC3835-864B-4E96-A019-7021D2FEF5BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JUST.Models", "JUST.Models\JUST.Models.csproj", "{0BB9BA06-CE3C-48D8-9D7E-64D0F2E990DB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{B8CC3835-864B-4E96-A019-7021D2FEF5BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B8CC3835-864B-4E96-A019-7021D2FEF5BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B8CC3835-864B-4E96-A019-7021D2FEF5BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BB9BA06-CE3C-48D8-9D7E-64D0F2E990DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BB9BA06-CE3C-48D8-9D7E-64D0F2E990DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BB9BA06-CE3C-48D8-9D7E-64D0F2E990DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BB9BA06-CE3C-48D8-9D7E-64D0F2E990DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
