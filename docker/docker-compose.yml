@@ -1,0 +1,33 @@
+version: "3.8"
+
+networks:
+    just-net:
+        driver: bridge
+
+volumes:
+    just-volume:
+    
+services:
+    database:
+        image: mysql/mysql-server
+        ports: 
+            - 33061:3306
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: wearejustpros
+            MYSQL_DATABASE: just
+            MYSQL_USER: root
+            MYSQL_PASSWORD: wearejustpros
+        volumes:
+            - just-volume:/home/volumes
+        networks:
+            - just-net
+
+    backend:
+        build: ../backend
+        ports:
+            - 8080:80
+        environment:
+            ConnectionStrings__DefaultConnection: "Server=database;Port=3306;Database=just;User=root;Password=wearejustpros"
+        networks:
+            - just-net
