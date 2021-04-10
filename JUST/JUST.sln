@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31025.218
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JUST", "JUST\JUST.csproj", "{54197F0A-E298-4286-9EA2-C47290DE9ABD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JUST.DataAccess", "JUST.DataAccess\JUST.DataAccess.csproj", "{12A59F45-0124-4909-9768-22E9ED7E2DFB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JUST.DataAccess", "JUST.DataAccess\JUST.DataAccess.csproj", "{12A59F45-0124-4909-9768-22E9ED7E2DFB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
