@@ -1,5 +1,4 @@
-﻿using backend.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,12 +16,12 @@ namespace JUST.DataAccess
             _context = context;
         }
 
-        public async Task<List<JustTask>> GetTodosAsync()
+        public async Task<List<JustTask>> GetTasks()
         {
             return await _context.Todos.ToListAsync();
         }
 
-        public async void AddTodo(JustTask newTask)
+        public async Task AddTask(JustTask newTask)
         {
             _context.Todos.Add(newTask);
             await _context.SaveChangesAsync();
