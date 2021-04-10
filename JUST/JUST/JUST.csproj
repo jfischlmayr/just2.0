@@ -5,7 +5,23 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Shared\TaskItem.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\JUST.DataAccess\JUST.DataAccess.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Shared\TaskItem.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Shared\TaskItem.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Shared\TaskItem.razor" />
   </ItemGroup>
 
 </Project>

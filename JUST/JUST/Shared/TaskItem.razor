@@ -1,0 +1,17 @@
+﻿<h3>TaskItem</h3>
+
+@foreach (var task in tasks)
+{
+    <div className=@(todo.done ? "todo-row complete" : "todo-row")>
+        @task.Title
+    </div>
+
+    <div class="icons" >
+        <img src="/open-iconic/svg/circle-x.svg" class="icon" @onclick=removeTask(task.id)>
+        <img src="/open-iconic/svg/circle-check.svg" class="icon" @onclick=completeTask(task.id)>
+    </div>
+    
+}
+@code {
+    
+}
