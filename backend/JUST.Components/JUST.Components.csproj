@@ -23,8 +23,4 @@
     </Content>
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\JUST.Models\JUST.Models.csproj" />
-  </ItemGroup>
-
 </Project>
