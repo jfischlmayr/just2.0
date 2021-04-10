@@ -1,5 +1,50 @@
-﻿<h3>Button</h3>
+﻿
+<button class=@($"btn {CheckButtonStyle()} {CheckButtonSize()}") onclick=@OnClick() >
+    @Children
+</button>
 
 @code {
+    [Parameter] public string ButtonStyle { get; set; }
+    [Parameter] public string ButtonSize { get; set; }
+    [Parameter] public Action OnClickProp { get; set; }
+    [Parameter] public string Type { get; set; }
+    [Parameter] public string Children { get; set; }
+
+    public void OnClick()
+    {
+        OnClickProp.Invoke();
+    }
+
+
+
+    List<string> STYLES = new List<string>()
+    {
+        "btn--primary--solid",
+    "btn--warning--solid",
+    "btn--danger--solid",
+    "btn--success--solid",
+    "btn--primary--outline",
+    "btn--warning--outline",
+    "btn--danger--outline",
+    "btn--success--outline",
+    "btn-submit-solid"
+    };
+
+    List<string> SIZES = new List<string>()
+    {
+        "btn--medium",
+    "btn--small"
+     };
+
+    public string CheckButtonStyle()
+    {
+        return STYLES.Contains(ButtonStyle) ? ButtonStyle : STYLES[0];
+    }
+
+    public string CheckButtonSize()
+    {
+        return  SIZES.Contains(ButtonStyle) ? ButtonStyle : SIZES[0];
+    }
+
 
 }
