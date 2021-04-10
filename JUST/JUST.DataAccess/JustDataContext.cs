@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace backend.Models
+namespace JUST.DataAccess
 {
-    public class JustDataContext : DbContext
+    public class JustDataContext : DbContext, IJustDataContext
     {
         public JustDataContext(DbContextOptions<JustDataContext> options)
         : base(options)

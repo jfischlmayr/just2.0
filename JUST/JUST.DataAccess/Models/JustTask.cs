@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace backend.Models
+namespace JUST.DataAccess
 {
     public class JustTask
     {
