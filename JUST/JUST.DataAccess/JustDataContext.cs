@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using JUST.DataAccess.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace JUST.DataAccess
 {
@@ -9,6 +10,7 @@ namespace JUST.DataAccess
         { }
 
         public DbSet<JustTask> Todos { get; set; }
+        public DbSet<Project> Projects { get; set; }
 
     }
 }
