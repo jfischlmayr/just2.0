@@ -2,7 +2,7 @@
 
 namespace backend.Models
 {
-    public class Todo
+    public class JustTask
     {
         [Key]
         public int ID { get; set; }

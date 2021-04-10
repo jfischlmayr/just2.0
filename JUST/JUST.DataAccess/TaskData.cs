@@ -22,9 +22,9 @@ namespace JUST.DataAccess
             return await _context.Todos.ToListAsync();
         }
 
-        public async void AddTodo(JustTask newTodo)
+        public async void AddTodo(JustTask newTask)
         {
-            _context.Todos.Add(newTodo);
+            _context.Todos.Add(newTask);
             await _context.SaveChangesAsync();
         }
     }
