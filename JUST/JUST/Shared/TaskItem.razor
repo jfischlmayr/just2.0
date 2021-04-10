@@ -8,8 +8,8 @@
     </div>
 
     <div class="icons" >
-        <img src="/open-iconic/svg/circle-x.svg" class="icon" @onclick="() => removeTask(task.ID)">
-        <img src="/open-iconic/svg/circle-check.svg" class="icon" @onclick="() => completeTask(task.ID)">
+        <img src="/open-iconic/svg/circle-x.svg" class="icon" @onclick="() => RemoveTask(task.ID)">
+        <img src="/open-iconic/svg/circle-check.svg" class="icon" @onclick="() => CompleteTask(task.ID)">
     </div>
     
 }
@@ -18,18 +18,18 @@
     public List<JustTask> Tasks { get; set; }
 
     [Parameter]
-    public Action removeTaskProp{ get; set; }
+    public Action RemoveTaskProp{ get; set; }
 
     [Parameter]
-    public Action completeTaskProp{ get; set; }
+    public Action CompleteTaskProp{ get; set; }
 
-    public void removeTask(int id)
+    public void RemoveTask(int id)
     {
-        removeTaskProp.Invoke();
+        RemoveTaskProp.Invoke();
     }
 
-    public void completeTask(int id)
+    public void CompleteTask(int id)
     {
-        completeTaskProp.Invoke();
+        CompleteTaskProp.Invoke();
     }
 }
