@@ -2,7 +2,7 @@
 
 namespace JUST.DataAccess
 {
-    public class JustDataContext : DbContext, IJustDataContext
+    public class JustDataContext : DbContext
     {
         public JustDataContext(DbContextOptions<JustDataContext> options)
         : base(options)
