@@ -30,6 +30,7 @@ namespace JUST
             services.AddDbContextPool<JustDataContext>(options => options.UseMySql(mySqlConnectionStr, ServerVersion.AutoDetect(mySqlConnectionStr)));
 
             services.AddTransient<ITasksData, TaskData>();
+            services.AddTransient<IProjectData, ProjectData>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
