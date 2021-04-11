@@ -1,5 +1,58 @@
-﻿<h3>ProjectCard</h3>
+﻿@using JUST.DataAccess;
+@using JUST.DataAccess.Models;
+
+@inject IProjectData _db;
+<h3>ProjectCard</h3>
+
+@*<div className='project-card' key={index}>
+    <div key={project.id}>
+        <div className='project-title'>
+                        {project.title}
+        </div>
+        {"\n"}
+        <div className='project-body'>
+            Projektmitglied 1: null
+        </div>
+
+    </div>
+    
+</div>
+*@
+@if(projects is null)
+{
+    <p><em>Loading...</em></p>
+}
+else{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Project</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var p in projects)
+            {
+                <tr>
+                    <td>@p.Title</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<button type="button"  @onclick="deleteProject"> Submit</button>
+
 
 @code {
+     List<Project> projects;
 
+    protected override async Task OnInitializedAsync()
+    {
+        projects = await _db.GetProjects();
+    }
+
+    private void deleteProject()
+    {
+        
+    }
 }
