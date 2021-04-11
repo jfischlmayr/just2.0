@@ -6,31 +6,31 @@
 <h3>ProjectForm</h3>
 
 <div>
-    <EditForm Model="@project" OnValidSubmit="@InsertProject">
-        @*<DataAnnotationsValidator />
-        <ValidationSummary />*@
+    <EditForm Model="@project" OnSubmit="@InsertProject">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
 
         <InputText id="title" @bind-Value="@project.Title" />
+        <button type="submit"> Submit </button>
     </EditForm>
                 
 
-    <button type="submit"> Submit </button>
+    
 </div>
 
 @code {
-    DisplayProject project = new DisplayProject();
+    private DisplayProject project = new DisplayProject();
 
     private async Task InsertProject()
     {
         Console.WriteLine(project.Title);
-        Project newProject = new Project();
-        newProject.Title = project.Title;
+        Project newProject = new Project() { Title = project.Title };
         await _db.AddProject(newProject);
         project = new DisplayProject();
     }
 
-    private class DisplayProject{
-
+    private class DisplayProject
+    {
         [MaxLength(20)]
         [MinLength(2)]
         public string Title { get; set; }
