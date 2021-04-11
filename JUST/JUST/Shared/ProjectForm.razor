@@ -2,6 +2,7 @@
 @using JUST.Data;
 @using System.ComponentModel.DataAnnotations;
 @inject IProjectData _db;
+@inject NavigationManager NavigationManager;
 
 <h3>ProjectForm</h3>
 
@@ -27,6 +28,7 @@
         Project newProject = new Project() { Title = project.Title };
         await _db.AddProject(newProject);
         project = new DisplayProject();
+        NavigationManager.NavigateTo("projects", true);
     }
 
     private class DisplayProject
