@@ -1,23 +1,10 @@
 ﻿@using JUST.Data;
 @using JUST.Data.Models
 @inject IProjectData _db;
+@inject NavigationManager NavigationManager;
 
 <h3>ProjectCard</h3>
-
-@*<div className='project-card' key={index}>
-    <div key={project.id}>
-        <div className='project-title'>
-                        {project.title}
-        </div>
-        {"\n"}
-        <div className='project-body'>
-            Projektmitglied 1: null
-        </div>
-
-    </div>
-    
-</div>
-*@
+ 
 <div>
     @project.Title
 <button type="button"  @onclick="DeleteProject"> Delete</button>
@@ -32,6 +19,8 @@
 
     private void DeleteProject()
     {
-        
+        _db.DeleteProject(project.ID);
+        NavigationManager.NavigateTo("projects", true);
+
     }
 }
