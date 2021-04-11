@@ -1,5 +1,28 @@
-﻿<h3>TaskListComponent</h3>
+﻿@using JUST.DataAccess
+
+<div class="taskList">
+    <TaskForm @onsubmit="() => AddTask(new JustTask())"/>
+    <TaskItem Tasks="@Tasks" CompleteTaskProp="@CompleteTask" RemoveTaskProp="@RemoveTask" />
+
+
+</div>
+
 
 @code {
+    public List<JustTask> Tasks { get; set; }
 
+    public void AddTask(JustTask task)
+    {
+        
+    }
+
+    public void RemoveTask()
+    {
+        
+    }
+
+    public void CompleteTask()
+    {
+        
+    }
 }
