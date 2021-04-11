@@ -1,4 +1,6 @@
 ﻿@using JUST.Data.Models
+@inject ITasksData _db;
+
 <div class="taskList">
     <TaskForm OnSubmitProp="() => AddTask(new JustTask())"/>
     <TaskItem Tasks="@Tasks" CompleteTaskProp="@CompleteTask" RemoveTaskProp="@RemoveTask" />
@@ -10,12 +12,12 @@
 @code {
     public List<JustTask> Tasks { get; set; } = new();
 
-    public void AddTask(JustTask task)
+    public async Task AddTask(JustTask task)
     {
-        
+        await _db.AddTask(task);
     }
 
-    public void RemoveTask()
+    public async Task RemoveTask()
     {
         
     }
