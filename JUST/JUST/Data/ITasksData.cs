@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace JUST.DataAccess
+namespace JUST.Data.Models
 {
     public interface ITasksData
     {

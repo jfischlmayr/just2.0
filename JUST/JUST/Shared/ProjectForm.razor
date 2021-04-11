@@ -1,5 +1,4 @@
-﻿@using JUST.DataAccess
-@using JUST.DataAccess.Models;
+﻿@using JUST.Data.Models
 @inject IProjectData _db;
 
 <h3>ProjectForm</h3>
@@ -17,7 +16,6 @@
 
 @code {
     private Project project = new Project();
-
 
     private async Task InsertProject()
     {
