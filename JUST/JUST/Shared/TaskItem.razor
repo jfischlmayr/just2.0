@@ -1,5 +1,5 @@
 ﻿@using JUST.DataAccess
-<h3>TaskItem</h3>
+
 
 @foreach (var task in Tasks)
 {
@@ -25,11 +25,11 @@
 
     public void RemoveTask(int id)
     {
-        RemoveTaskProp.Invoke();
+        RemoveTaskProp?.Invoke();
     }
 
     public void CompleteTask(int id)
     {
-        CompleteTaskProp.Invoke();
+        CompleteTaskProp?.Invoke();
     }
 }
