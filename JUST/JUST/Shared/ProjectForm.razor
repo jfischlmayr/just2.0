@@ -1,0 +1,27 @@
+﻿@using JUST.DataAccess
+@using JUST.DataAccess.Models;
+@inject IProjectData _db;
+
+<h3>ProjectForm</h3>
+
+<div>
+    <EditForm Model="@project" OnValidSubmit="@InsertProject">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+    </EditForm>
+                
+    <InputText id="title" @bind-Value="@project.Title" />
+
+    <button type="submit"> Submit</button>
+</div>
+
+@code {
+    private Project project = new Project();
+
+
+    private async Task InsertProject()
+    {
+        await _db.AddProject(project);
+        project = new Project();
+    }
+}
