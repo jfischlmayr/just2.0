@@ -1,11 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using JUST.Data.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JUST.Data.Models
+namespace JUST.Data
 {
     public class TaskData : ITasksData
     {
@@ -18,12 +19,19 @@ namespace JUST.Data.Models
 
         public async Task<List<JustTask>> GetTasks()
         {
-            return await _context.Todos.ToListAsync();
+            return await _context.Tasks.ToListAsync();
         }
 
         public async Task AddTask(JustTask newTask)
         {
-            _context.Todos.Add(newTask);
+            _context.Tasks.Add(newTask);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task Delete(int id)
+        {
+
+            _context.Tasks.Remove(_context.Tasks.Find(id));
             await _context.SaveChangesAsync();
         }
     }

@@ -1,6 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using JUST.Data.Models;
+using Microsoft.EntityFrameworkCore;
 
-namespace JUST.Data.Models
+namespace JUST.Data
 {
     public class JustDataContext : DbContext, IJustDataContext
     {
@@ -8,7 +9,7 @@ namespace JUST.Data.Models
         : base(options)
         { }
 
-        public DbSet<JustTask> Todos { get; set; }
+        public DbSet<JustTask> Tasks { get; set; }
         public DbSet<Project> Projects { get; set; }
         public DbSet<Address> Addresses { get; set; }
     }

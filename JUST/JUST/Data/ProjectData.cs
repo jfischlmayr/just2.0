@@ -1,11 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using JUST.Data.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JUST.Data.Models
+namespace JUST.Data
 {
     public class ProjectData : IProjectData
     {
@@ -40,7 +41,13 @@ namespace JUST.Data.Models
 
         public async Task AddProject(Project newProject)
         {
-            await _context.Projects.AddAsync(newProject);
+            await _context.AddAsync(newProject);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task DeleteProject(int id)
+        {
+            _context.Projects.Remove(_context.Projects.Find(id));
             await _context.SaveChangesAsync();
         }
     }
