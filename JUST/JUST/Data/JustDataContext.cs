@@ -1,6 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using JUST.Data.Models;
+using Microsoft.EntityFrameworkCore;
 
-namespace JUST.Data.Models
+namespace JUST.Data
 {
     public class JustDataContext : DbContext, IJustDataContext
     {
