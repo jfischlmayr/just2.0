@@ -1,25 +1,38 @@
-﻿@using JUST.Data.Models
+﻿@using JUST.Data.Models;
+@using JUST.Data;
+@using System.ComponentModel.DataAnnotations;
 @inject IProjectData _db;
 
 <h3>ProjectForm</h3>
 
 <div>
     <EditForm Model="@project" OnValidSubmit="@InsertProject">
-        <DataAnnotationsValidator />
-        <ValidationSummary />
+        @*<DataAnnotationsValidator />
+        <ValidationSummary />*@
+
+        <InputText id="title" @bind-Value="@project.Title" />
     </EditForm>
                 
-    <InputText id="title" @bind-Value="@project.Title" />
 
-    <button type="submit"> Submit</button>
+    <button type="submit"> Submit </button>
 </div>
 
 @code {
-    private Project project = new Project();
+    DisplayProject project = new DisplayProject();
 
     private async Task InsertProject()
     {
-        await _db.AddProject(project);
-        project = new Project();
+        Console.WriteLine(project.Title);
+        Project newProject = new Project();
+        newProject.Title = project.Title;
+        await _db.AddProject(newProject);
+        project = new DisplayProject();
+    }
+
+    private class DisplayProject{
+
+        [MaxLength(20)]
+        [MinLength(2)]
+        public string Title { get; set; }
     }
 }
