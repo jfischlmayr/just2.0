@@ -9,7 +9,7 @@ namespace JUST.Data
         : base(options)
         { }
 
-        public DbSet<JustTask> Todos { get; set; }
+        public DbSet<JustTask> Tasks { get; set; }
         public DbSet<Project> Projects { get; set; }
         public DbSet<Address> Addresses { get; set; }
     }

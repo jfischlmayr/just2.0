@@ -19,12 +19,19 @@ namespace JUST.Data
 
         public async Task<List<JustTask>> GetTasks()
         {
-            return await _context.Todos.ToListAsync();
+            return await _context.Tasks.ToListAsync();
         }
 
         public async Task AddTask(JustTask newTask)
         {
-            _context.Todos.Add(newTask);
+            _context.Tasks.Add(newTask);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task Delete(int id)
+        {
+
+            _context.Tasks.Remove(_context.Tasks.Find(id));
             await _context.SaveChangesAsync();
         }
     }

@@ -7,6 +7,6 @@ namespace JUST.Data
     {
         DbSet<Address> Addresses { get; set; }
         DbSet<Project> Projects { get; set; }
-        DbSet<JustTask> Todos { get; set; }
+        DbSet<JustTask> Tasks { get; set; }
     }
 }
