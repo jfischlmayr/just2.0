@@ -1,7 +1,8 @@
 ﻿
-<button class=@($"btn {CheckButtonStyle()} {CheckButtonSize()}") onclick=@OnClick() >
+<button class=@($"btn {CheckButtonStyle()} {CheckButtonSize()}") @onclick="() => OnClick()" >
     @Children
 </button>
+
 
 @code {
     [Parameter] public string ButtonStyle { get; set; }
