@@ -1,5 +1,6 @@
 ﻿
 <button class=@($"btn {CheckButtonStyle()} {CheckButtonSize()}") @onclick="() => OnClick()" >
+
     @Children
 </button>
 
@@ -11,9 +12,10 @@
     [Parameter] public string Type { get; set; }
     [Parameter] public string Children { get; set; }
 
-    public void OnClick()
+    public bool OnClick()
     {
         OnClickProp.Invoke();
+        return true;
     }
 
 

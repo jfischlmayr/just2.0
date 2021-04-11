@@ -1,8 +1,7 @@
-﻿using JUST.DataAccess.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace JUST.DataAccess
+namespace JUST.Data.Models
 {
     public interface IProjectData
     {

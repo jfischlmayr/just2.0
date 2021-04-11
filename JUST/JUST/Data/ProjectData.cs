@@ -1,12 +1,11 @@
-﻿using JUST.DataAccess.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JUST.DataAccess
+namespace JUST.Data.Models
 {
     public class ProjectData : IProjectData
     {
@@ -26,6 +25,7 @@ namespace JUST.DataAccess
             address.HouseNumber = "17";
             address.City = "Linz";
             address.ZIPCode = 4020;
+            await _context.AddAsync(address);
 
             fling.Title = "Fling";
 

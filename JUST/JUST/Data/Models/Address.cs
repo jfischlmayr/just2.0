@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JUST.DataAccess.Models
+namespace JUST.Data.Models
 {
     public class Address
     {

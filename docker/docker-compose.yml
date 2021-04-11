@@ -23,11 +23,4 @@ services:
         networks:
             - just-net
 
-    backend:
-        build: ../backend
-        ports:
-            - 8080:80
-        environment:
-            ConnectionStrings__DefaultConnection: "Server=database;Port=3306;Database=just;User=root;Password=wearejustpros"
-        networks:
-            - just-net
+    
