@@ -1,9 +1,23 @@
 ﻿@page "/Projects"
+@using JUST.Data.Models;
+@using JUST.Data;
+@inject IProjectData _db;
 
 <h3>Projects</h3>
+<button @onclick="_db.InitProjects">Init</button>
 <ProjectForm></ProjectForm>
-<ProjectCard></ProjectCard>
+@foreach(var p in projects)
+{
+<ProjectCard project="@p"></ProjectCard>
+    
+}
 
 @code {
+    List<Project> projects = new List<Project>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        projects = await _db.GetProjects();
+    }
 
 }
