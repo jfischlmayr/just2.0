@@ -1,7 +1,6 @@
-﻿@using JUST.DataAccess
-
+﻿@using JUST.Data.Models
 <div class="taskList">
-    <TaskForm @onsubmit="() => AddTask(new JustTask())"/>
+    <TaskForm OnSubmitProp="() => AddTask(new JustTask())"/>
     <TaskItem Tasks="@Tasks" CompleteTaskProp="@CompleteTask" RemoveTaskProp="@RemoveTask" />
 
 
@@ -9,7 +8,7 @@
 
 
 @code {
-    public List<JustTask> Tasks { get; set; }
+    public List<JustTask> Tasks { get; set; } = new();
 
     public void AddTask(JustTask task)
     {

@@ -1,7 +1,6 @@
-﻿@using JUST.DataAccess
-
+﻿
 <div>
-    <form class="todo-form" @onsubmit="() => HandleSubmit()">
+    <form class="todo-form" onsubmit="() => HandleSubmit()">
         <input type="text" placeholder='Add a task'
                        value=@Input
                        name="text"
@@ -14,6 +13,13 @@
 
 
 @code {
+    [Parameter]
+    public Action? OnSubmitProp { get; set; }
+
+    public void OnSubmit()
+    {
+        OnSubmitProp.Invoke();
+    }
 
     public string Input {get; set;} = String.Empty;
 

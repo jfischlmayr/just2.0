@@ -1,5 +1,4 @@
-@using JUST.DataAccess
-
+@using JUST.Data.Models
 
 @foreach (var task in Tasks)
 {
@@ -7,7 +6,7 @@
         @task.Name
     </div>
 
-    <div class="icons" >
+    <div class="icons" >f
         <img src="/open-iconic/svg/circle-x.svg" class="icon" @onclick="() => RemoveTask(task.ID)">
         <img src="/open-iconic/svg/circle-check.svg" class="icon" @onclick="() => CompleteTask(task.ID)">
     </div>
@@ -15,13 +14,13 @@
 }
 @code {
     [Parameter]
-    public List<JustTask> Tasks { get; set; }
+    public List<JustTask>? Tasks { get; set; }
 
     [Parameter]
-    public Action RemoveTaskProp{ get; set; }
+    public Action? RemoveTaskProp{ get; set; }
 
     [Parameter]
-    public Action CompleteTaskProp{ get; set; }
+    public Action? CompleteTaskProp{ get; set; }
 
     public void RemoveTask(int id)
     {
