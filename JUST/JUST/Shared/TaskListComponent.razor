@@ -2,9 +2,14 @@
 @using JUST.Data.Models
 @inject ITasksData _db;
 
+@_db.InitTasks()
+
 <div class="taskList">
     <TaskForm />
-    <TaskItem Tasks="@Tasks" CompleteTaskProp="@CompleteTask" RemoveTaskProp="@RemoveTask" />
+    @foreach(var t in Tasks)
+    {
+        <TaskItem Task="@t" />
+    }
 
 
 </div>
@@ -13,18 +18,8 @@
 @code {
     public List<JustTask> Tasks { get; set; } = new();
 
-    public async Task AddTask(JustTask task)
+    protected override async Task OnInitializedAsync()
     {
-        await _db.AddTask(task);
-    }
-
-    public void RemoveTask()
-    {
-        
-    }
-
-    public void CompleteTask()
-    {
-        
+        Tasks = await _db.GetTasks();
     }
 }

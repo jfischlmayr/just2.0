@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JUST.Migrations
 {
     [DbContext(typeof(JustDataContext))]
-    [Migration("20210411183333_init")]
-    partial class init
+    [Migration("20210412144436_tasks")]
+    partial class tasks
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -72,7 +72,7 @@ namespace JUST.Migrations
 
                     b.HasIndex("ProjectID");
 
-                    b.ToTable("Todos");
+                    b.ToTable("Tasks");
                 });
 
             modelBuilder.Entity("JUST.Data.Models.Project", b =>

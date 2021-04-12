@@ -1,20 +1,21 @@
 @using JUST.Data.Models
 
-@foreach (var task in Tasks)
-{
-    <div className=@(task.Done ? "todo-row complete" : "todo-row")>
-        @task.Name
+<div>
+    @Task.Name
+    <div class="icons">
+        <div class ="icon" @onclick="() => RemoveTask(Task.ID)">
+            <span class="oi oi-circle-x"></span>
+        </div>
+        <div class="icon" @onclick="() => CompleteTask(Task.ID)" >
+            <span class="oi oi-circle-check"></span>
+        </div>
     </div>
-
-    <div class="icons" >f
-        <img src="/open-iconic/svg/circle-x.svg" class="icon" @onclick="() => RemoveTask(task.ID)">
-        <img src="/open-iconic/svg/circle-check.svg" class="icon" @onclick="() => CompleteTask(task.ID)">
-    </div>
+</div>
     
 }
 @code {
     [Parameter]
-    public List<JustTask>? Tasks { get; set; }
+    public JustTask? Task { get; set; }
 
     [Parameter]
     public Action? RemoveTaskProp{ get; set; }

@@ -70,7 +70,7 @@ namespace JUST.Migrations
 
                     b.HasIndex("ProjectID");
 
-                    b.ToTable("Todos");
+                    b.ToTable("Tasks");
                 });
 
             modelBuilder.Entity("JUST.Data.Models.Project", b =>

@@ -6,12 +6,12 @@
 @inject NavigationManager NavigationManager;
 
 <div>
-    <EditForm Model="@task" OnSubmit="@AddTask">
+    <EditForm class="form" Model="@task" OnSubmit="@AddTask">
         <DataAnnotationsValidator />
         <ValidationSummary />
-
-        <InputText id="name" @bind-Value="@task.Name" />
-        <button type="submit"> Submit </button>
+         
+        <InputText class="task-input" id="name" @bind-Value="@task.Name"/>
+        <button class="submit-button" type="submit"> Submit </button>
     </EditForm>
 </div>
 
@@ -29,7 +29,7 @@
 
         await _db.AddTask(newTask);
         task = new DisplayTask();
-        NavigationManager.NavigateTo("projects", true);
+        NavigationManager.NavigateTo("tasks", true);
     }
 
     private class DisplayTask
