@@ -2,12 +2,16 @@
 @using JUST.Data.Models
 @inject IProjectData _db;
 @inject NavigationManager NavigationManager;
-
-<h3>ProjectCard</h3>
  
-<div>
-    @project.Title
-<button type="button"  @onclick="DeleteProject"> Delete</button>
+<div class='project-card'>
+        <div class='project-title'>
+                @project.Title
+        </div>
+        <p />
+        <div class='project-body'>
+                Projectmitglied 1: null
+        </div>
+        <button type="button"  @onclick="DeleteProject"> Delete</button>
 </div>
 
 
@@ -17,9 +21,9 @@
     [Parameter]
     public Project project { get; set; }
 
-    private void DeleteProject()
+    private async Task DeleteProject()
     {
-        _db.DeleteProject(project.ID);
+        await _db.DeleteProject(project.ID);
         NavigationManager.NavigateTo("projects", true);
 
     }

@@ -2,15 +2,20 @@
 @using JUST.Data.Models;
 @using JUST.Data;
 @inject IProjectData _db;
+@inject NavigationManager NavigationManager;
 
 <h3>Projects</h3>
-<button @onclick="_db.InitProjects">Init</button>
+<button @onclick="initProjects">Init</button>
 <ProjectForm></ProjectForm>
-@foreach(var p in projects)
-{
-<ProjectCard project="@p"></ProjectCard>
-    
-}
+
+<div class="project-app">
+
+    <h3>ProjectCard</h3>
+    @foreach(var p in projects)
+    {
+        <ProjectCard project="@p"></ProjectCard>
+    }
+</div>
 
 @code {
     List<Project> projects = new List<Project>();
@@ -18,6 +23,12 @@
     protected override async Task OnInitializedAsync()
     {
         projects = await _db.GetProjects();
+    }
+
+    private async Task initProjects()
+    {
+        await _db.InitProjects();
+        NavigationManager.NavigateTo("projects", true);
     }
 
 }
