@@ -29,7 +29,7 @@
 
         await _db.AddTask(newTask);
         task = new DisplayTask();
-        NavigationManager.NavigateTo("projects", true);
+        NavigationManager.NavigateTo("tasks", true);
     }
 
     private class DisplayTask
