@@ -1,0 +1,203 @@
+@charset "utf-8";
+.NormalesZeichenformat8 {
+    font-family: Bebas Neue;
+    font-weight: bold;
+    font-size: 48px;
+    color: #FFFFF0;
+    color: rgb(255, 255, 240);
+}
+
+.NormalesZeichenformat1 {
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 18px;
+    color: #000000;
+    color: rgb(0, 0, 0);
+}
+
+.NormalesZeichenformat5 {
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 18px;
+    color: #000000;
+    color: rgb(0, 0, 0);
+}
+
+.NormalesZeichenformat6 {
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 18px;
+    color: #000000;
+    color: rgb(0, 0, 0);
+}
+
+.NormalesZeichenformat4 {
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 18px;
+    color: #000000;
+    color: rgb(0, 0, 0);
+}
+
+.NormalesZeichenformat3 {
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 18px;
+    color: #000000;
+    color: rgb(0, 0, 0);
+}
+
+.NormalesZeichenformat2 {
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 18px;
+    color: #000000;
+    color: rgb(0, 0, 0);
+}
+
+.NormalesZeichenformat7 {
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 18px;
+    color: #000000;
+    color: rgb(0, 0, 0);
+}
+
+.NormalesZeichenformat {
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 18px;
+    color: #000000;
+    color: rgb(0, 0, 0);
+}
+
+.Background_1_ {
+    background: #FFFFF0;
+    background: rgba(255, 255, 240, 1);
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    box-shadow: 1.82px 1.82px 3.03px rgba(0, 0, 0, 0.75);
+    filter: progid: DXImageTransform.Microsoft.dropshadow(OffX=1.82, OffY=1.82, Color='#000000');
+}
+
+.Sidebar-bg {
+    background: #FFFFF0;
+    background: rgba(255, 255, 240, 1);
+    box-shadow: 1px 4px 3px rgba(0, 0, 0, 0.5);
+    filter: progid: DXImageTransform.Microsoft.dropshadow(OffX=1, OffY=4, Color='#000000');
+}
+
+.Background {
+    background: #375398;
+    background: rgba(55, 83, 152, 1);
+}
+
+.Background_4_ {
+    background: #FFFFF0;
+    background: rgba(255, 255, 240, 1);
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    box-shadow: 1.82px 1.82px 3.03px rgba(0, 0, 0, 0.75);
+    filter: progid: DXImageTransform.Microsoft.dropshadow(OffX=1.82, OffY=1.82, Color='#000000');
+}
+
+.NormalesZeichenformat15 {
+    font-family: Segoe UI;
+    font-size: 24px;
+    color: #000000;
+    color: rgb(0, 0, 0);
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+.NormalesZeichenformat14 {
+    font-family: Segoe UI;
+    font-size: 24px;
+    color: #000000;
+    color: rgb(0, 0, 0);
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+.NormalesZeichenformat13 {
+    font-family: Segoe UI;
+    font-size: 24px;
+    color: #000000;
+    color: rgb(0, 0, 0);
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+.NormalesZeichenformat12 {
+    font-family: Segoe UI;
+    font-size: 24px;
+    color: #D80010;
+    color: rgb(216, 0, 16);
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+.NormalesZeichenformat11 {
+    font-family: Segoe UI;
+    font-size: 24px;
+    color: #000000;
+    color: rgb(0, 0, 0);
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+.NormalesZeichenformat10 {
+    font-family: Bebas Neue;
+    font-weight: bold;
+    font-size: 48px;
+    color: #FFFFF0;
+    color: rgb(255, 255, 240);
+}
+
+.NormalesZeichenformat9 {
+    font-family: Bebas Neue;
+    font-weight: bold;
+    font-size: 48px;
+    color: #FFFFF0;
+    color: rgb(255, 255, 240);
+}
+
+h1 #main {
+    font-family: Bebas Neue;
+    font-weight: bold;
+    font-size: 48px;
+    color: #FFFFF0;
+    color: rgb(255, 255, 240);
+}
+
+body {
+    background: rgba(55, 83, 152, 1);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5 {
+    line-height: 1.5;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 400%;
+    color: #FFFFF0;
+}
+
+
+/*TODO LIST*/
+
+.card {
+    background: #FFFFF0;
+}
+
+.card {
+    transition: border-color ease-in-out 150ms;
+}
+
+.card:hover {
+    color: #375398;
+}
