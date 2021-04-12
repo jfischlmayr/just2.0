@@ -1,8 +1,9 @@
-﻿@using JUST.Data.Models
+﻿@using JUST.Data
+@using JUST.Data.Models
 @inject ITasksData _db;
 
 <div class="taskList">
-    <TaskForm OnSubmitProp="() => AddTask(new JustTask())"/>
+    <TaskForm />
     <TaskItem Tasks="@Tasks" CompleteTaskProp="@CompleteTask" RemoveTaskProp="@RemoveTask" />
 
 

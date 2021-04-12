@@ -1,35 +1,41 @@
-﻿
-<div>
-    <form class="todo-form" onsubmit="() => HandleSubmit()">
-        <input type="text" placeholder='Add a task'
-                       value=@Input
-                       name="text"
-                       className="todo-input"
-                       @onchange="() => HandleChange()"
-                       />
-    </form>
+﻿@using JUST.Data.Models;
+@using JUST.Data;
+@using System.ComponentModel.DataAnnotations;
 
+@inject ITasksData _db;
+@inject NavigationManager NavigationManager;
+
+<div>
+    <EditForm Model="@task" OnSubmit="@AddTask">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <InputText id="name" @bind-Value="@task.Name" />
+        <button type="submit"> Submit </button>
+    </EditForm>
 </div>
 
 
 @code {
-    [Parameter]
-    public Action? OnSubmitProp { get; set; }
+    private DisplayTask task = new DisplayTask();
 
-    public void OnSubmit()
+    private async Task AddTask()
     {
-        OnSubmitProp?.Invoke();
+        Console.WriteLine(task.Name);
+        JustTask newTask = new JustTask()
+        {
+            Name = task.Name
+        };
+
+        await _db.AddTask(newTask);
+        task = new DisplayTask();
+        NavigationManager.NavigateTo("projects", true);
     }
 
-    public string Input {get; set;} = String.Empty;
-
-    public void HandleSubmit()
+    private class DisplayTask
     {
-        
-    }
-
-    public void HandleChange()
-    {
-        
+        [MaxLength(100)]
+        [MinLength(1)]
+        public string Name { get; set; }
     }
 }
