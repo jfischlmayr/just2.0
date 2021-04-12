@@ -2,11 +2,11 @@
 
 @foreach (var task in Tasks)
 {
-    <div className=@(task.Done ? "todo-row complete" : "todo-row")>
+    <div className=@(task.Done ? "task-row complete" : "task-row")>
         @task.Name
     </div>
 
-    <div class="icons" >f
+    <div class="icons" >
         <img src="/open-iconic/svg/circle-x.svg" class="icon" @onclick="() => RemoveTask(task.ID)">
         <img src="/open-iconic/svg/circle-check.svg" class="icon" @onclick="() => CompleteTask(task.ID)">
     </div>
