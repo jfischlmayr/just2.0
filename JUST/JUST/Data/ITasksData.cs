@@ -8,5 +8,8 @@ namespace JUST.Data
     {
         Task AddTask(JustTask newTask);
         Task<List<JustTask>> GetTasks();
+        Task DeleteTask(int id);
+        Task CompleteTask(int id);
+
     }
 }
