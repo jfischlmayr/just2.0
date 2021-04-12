@@ -1,18 +1,6 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=Lato%display=swap');
+﻿
+@import url('https://fonts.googleapis.com/css2?family=Lato%display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-
-:root {
-    --primary: #375398;
-    --secondary: #788FC8;
-    --teal: #A8DADC;
-    --hover: #d7d7d7;
-    --warning: #FFAE68;
-    --danger: #eb3f27;
-    --success: #75fa83;
-    --white: #FFFFF0;
-    --dark: #1A1A1A;
-    --shadow: #2f2f2f;
-}
 
 
 * {
@@ -33,28 +21,7 @@
     width: 1269px;
 }
 
-.button-area {
-    margin-left: 3em;
-}
 
-
-.home-buttons {
-    font-family: 'Lato', sans-serif;
-    border-radius: 4px;
-    cursor: pointer;
-    filter: drop-shadow(0.13rem 0.13rem 0.1rem var(--shadow));
-    background-color: var(--white);
-    color: var(--dark);
-    border: none;
-    padding: 0.6em;
-    font-size: 1.9em;
-    margin-left: 0.3em;
-    margin-right: 0.3em;
-}
-
-.home-buttons:hover {
-    background-color: var(--hover);
-}
 h1 {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 3rem;
