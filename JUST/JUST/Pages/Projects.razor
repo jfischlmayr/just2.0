@@ -14,7 +14,6 @@
             <ProjectCard project="@p"></ProjectCard>
         }
     </div>
-    <button @onclick="initProjects">Init</button>
 </div>
 
 @code {
@@ -23,12 +22,6 @@
     protected override async Task OnInitializedAsync()
     {
         projects = await _db.GetProjects();
-    }
-
-    private async Task initProjects()
-    {
-        await _db.InitProjects();
-        NavigationManager.NavigateTo("projects", true);
     }
 
 }
