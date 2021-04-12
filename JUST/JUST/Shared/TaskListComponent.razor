@@ -2,7 +2,7 @@
 @using JUST.Data.Models
 @inject ITasksData _db;
 
-@_db.InitTasks()
+
 
 <div class="taskList">
     <TaskForm />
@@ -17,6 +17,7 @@
 
 @code {
     public List<JustTask> Tasks { get; set; } = new();
+
 
     protected override async Task OnInitializedAsync()
     {
