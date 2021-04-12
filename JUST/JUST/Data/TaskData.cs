@@ -28,10 +28,16 @@ namespace JUST.Data
             await _context.SaveChangesAsync();
         }
 
-        public async Task Delete(int id)
+        public async Task DeleteTask(int id)
         {
-
             _context.Tasks.Remove(_context.Tasks.Find(id));
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task CompleteTask(int id)
+        {
+            var task = _context.Tasks.Find(id);
+            task.Done = !task.Done;
             await _context.SaveChangesAsync();
         }
     }

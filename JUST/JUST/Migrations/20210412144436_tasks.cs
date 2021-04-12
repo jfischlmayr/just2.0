@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace JUST.Migrations
 {
-    public partial class init : Migration
+    public partial class tasks : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -37,7 +37,7 @@ namespace JUST.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Todos",
+                name: "Tasks",
                 columns: table => new
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
@@ -49,9 +49,9 @@ namespace JUST.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Todos", x => x.ID);
+                    table.PrimaryKey("PK_Tasks", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_Todos_Projects_ProjectID",
+                        name: "FK_Tasks_Projects_ProjectID",
                         column: x => x.ProjectID,
                         principalTable: "Projects",
                         principalColumn: "ID",
@@ -59,8 +59,8 @@ namespace JUST.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Todos_ProjectID",
-                table: "Todos",
+                name: "IX_Tasks_ProjectID",
+                table: "Tasks",
                 column: "ProjectID");
         }
 
@@ -70,7 +70,7 @@ namespace JUST.Migrations
                 name: "Addresses");
 
             migrationBuilder.DropTable(
-                name: "Todos");
+                name: "Tasks");
 
             migrationBuilder.DropTable(
                 name: "Projects");
