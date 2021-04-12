@@ -24,7 +24,6 @@ namespace JUST
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddSingleton<WeatherForecastService>();
 
             //services.AddTransient<IJustDataContext, JustDataContext>();
 
