@@ -1,4 +1,4 @@
-:root{
+﻿:root {
     --primary: #375398;
     --secondary: #788FC8;
     --teal: #A8DADC;
@@ -6,73 +6,73 @@
     --warning: #FFAE68;
     --danger: #eb3f27;
     --success: #75fa83;
-    --white: #FFFFF0;
+    --white: #FFFFFf;
     --dark: #1A1A1A;
     --shadow: #2f2f2f;
 }
 
-.btn{
+.btn {
     font-family: 'Lato', sans-serif;
     border-radius: 4px;
     cursor: pointer;
     filter: drop-shadow(0.13rem 0.13rem 0.1rem var(--shadow));
+}
 
-}
-.btn:hover{
-    background-color: var(--hover);
-}
+    .btn:hover {
+        background-color: var(--hover);
+    }
 
 /*Button colors and styles*/
-.btn--submit-solid{
+.btn--submit-solid {
     background-color: var(--white);
     color: var(--dark);
     filter: drop-shadow(0.2rem 0.2rem 0.2rem var(--shadow)) !important;
     border: none;
 }
 
-.btn--primary--solid{
+.btn--primary--solid {
     background-color: var(--white);
     color: var(--dark);
     border: none;
 }
 
-.btn--warning--solid{
+.btn--warning--solid {
     background-color: var(--warning);
     color: var(--white);
     border: none;
 }
 
-.btn--danger--solid{
+.btn--danger--solid {
     background-color: var(--danger);
     color: var(--white);
     border: none;
 }
 
-.btn--success--solid{
+.btn--success--solid {
     background-color: var(--success);
     color: var(--white);
     border: none;
 }
 
-.btn--primary--outline{
+.btn--primary--outline {
     background-color: var(--white);
     color: var(--primary);
     border: none;
 }
 
-.btn--warning--outline{
+.btn--warning--outline {
     background-color: var(--warning);
     color: var(--warning);
     border: none;
 }
 
-.btn--danger--outline{
+.btn--danger--outline {
     background-color: var(--danger);
     color: var(--danger);
     border: none;
 }
 
-.btn--success--outline{
+.btn--success--outline {
     background-color: var(--success);
     color: var(--success);
     border: none;
@@ -80,14 +80,14 @@
 
 /*Button sizes*/
 
-.btn--medium{
+.btn--medium {
     padding: 0.6em;
     font-size: 1.9em;
     margin-left: 0.3em;
     margin-right: 0.3em;
 }
 
-.btn--small{
+.btn--small {
     padding: 0.5em;
     font-size: 1em;
 }

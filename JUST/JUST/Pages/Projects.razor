@@ -4,17 +4,17 @@
 @inject IProjectData _db;
 @inject NavigationManager NavigationManager;
 
-<h3>Projects</h3>
-<button @onclick="initProjects">Init</button>
-<ProjectForm></ProjectForm>
+<div class="pages">
+    <h1>Projects</h1>
+    <ProjectForm></ProjectForm>
 
-<div class="project-app">
-
-    <h3>ProjectCard</h3>
-    @foreach(var p in projects)
-    {
-        <ProjectCard project="@p"></ProjectCard>
-    }
+    <div>
+        @foreach(var p in projects)
+        {
+            <ProjectCard project="@p"></ProjectCard>
+        }
+    </div>
+    <button @onclick="initProjects">Init</button>
 </div>
 
 @code {

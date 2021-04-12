@@ -4,15 +4,13 @@
 @inject IProjectData _db;
 @inject NavigationManager NavigationManager;
 
-<h3>ProjectForm</h3>
-
 <div>
-    <EditForm Model="@project" OnSubmit="@InsertProject">
+    <EditForm class="form" Model="@project" OnSubmit="@InsertProject">
         <DataAnnotationsValidator />
         <ValidationSummary />
 
-        <InputText id="title" @bind-Value="@project.Title" />
-        <button type="submit"> Submit </button>
+        <InputText class="task-input" id="title" @bind-Value="@project.Title" />
+        <button class="submit-button" type="submit"> Submit </button>
     </EditForm>
                 
 
