@@ -1,7 +1,22 @@
-﻿@page "/"
+﻿@using JUST.Data
+@using JUST.Data.Models
 
-<h1>Hello, world!</h1>
 
-Welcome to your new app.
+@page "/"
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+
+<div class="page">
+    <h1>Willkommen</h1>
+    <div class="button-area">
+        
+    </div>
+
+    <h1>Anstehende Tasks</h1>
+    <div class="todo-area">
+        <TaskListComponentLandingpage />
+    </div>
+</div>
+
+@code {
+
+}
