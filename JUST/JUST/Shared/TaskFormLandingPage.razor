@@ -1,0 +1,41 @@
+﻿@using JUST.Data.Models;
+@using JUST.Data;
+@using System.ComponentModel.DataAnnotations;
+
+@inject ITasksData _db;
+@inject NavigationManager NavigationManager;
+
+<div>
+    <EditForm class="form" Model="@task" OnSubmit="@AddTask">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+         
+        <InputText class="task-input" id="name" @bind-Value="@task.Name"/>
+        <button class="submit-button" type="submit"> Submit </button>
+    </EditForm>
+</div>
+
+
+@code {
+    private DisplayTask task = new DisplayTask();
+
+    private async Task AddTask()
+    {
+        Console.WriteLine(task.Name);
+        JustTask newTask = new JustTask()
+        {
+            Name = task.Name
+        };
+
+        await _db.AddTask(newTask);
+        task = new DisplayTask();
+        NavigationManager.NavigateTo("/", true);
+    }
+
+    private class DisplayTask
+    {
+        [MaxLength(100)]
+        [MinLength(1)]
+        public string Name { get; set; }
+    }
+}

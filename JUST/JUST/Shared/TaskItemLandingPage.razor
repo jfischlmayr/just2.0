@@ -1,0 +1,53 @@
+﻿@using JUST.Data.Models
+@using JUST.Data;
+@inject NavigationManager NavigationManager;
+@inject ITasksData _db;
+
+@if (Task.Done)
+{
+<div class = "task-row-completed">
+    @Task?.Name
+    <div class="icons">
+        <div class ="icon" @onclick="() => RemoveTask(Task.ID)">
+            <span class="oi oi-circle-x"></span>
+        </div>
+        <div class="icon" @onclick="() => CompleteTask(Task.ID)" >
+            <span class="oi oi-circle-check"></span>
+        </div>
+    </div>
+</div>
+}else{
+<div class = "task-row">
+    @Task?.Name
+    <div class="icons">
+        <div class ="icon" @onclick="() => RemoveTask(Task.ID)">
+            <span class="oi oi-circle-x"></span>
+        </div>
+        <div class="icon" @onclick="() => CompleteTask(Task.ID)" >
+            <span class="oi oi-circle-check"></span>
+        </div>
+    </div>
+</div>
+
+
+
+    
+}
+@code {
+    [Parameter]
+    public JustTask? Task { get; set; }
+
+    string taskClass = "todo-row";
+
+    public async Task RemoveTask(int id)
+    {
+        await _db.DeleteTask(id);
+        NavigationManager.NavigateTo("/", true);
+    }
+
+    public async Task CompleteTask(int id)
+    {
+        await _db.CompleteTask(id);
+        NavigationManager.NavigateTo("/", true);
+    }
+}

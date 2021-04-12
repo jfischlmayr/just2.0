@@ -1,0 +1,26 @@
+﻿@using JUST.Data
+@using JUST.Data.Models
+@inject ITasksData _db;
+
+
+
+<div class="taskList">
+    <TaskFormLandingPage />
+    @foreach(var t in Tasks)
+    {
+        <TaskItemLandingPage Task="@t" />
+    }
+
+
+</div>
+
+
+@code {
+    public List<JustTask> Tasks { get; set; } = new();
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        Tasks = await _db.GetTasks();
+    }
+}
