@@ -1,0 +1,88 @@
+:root{
+    --primary: #375398;
+    --secondary: #788FC8;
+    --teal: #A8DADC;
+    --hover: #d7d7d7;
+    --warning: #FFAE68;
+    --danger: #eb3f27;
+    --success: #75fa83;
+    --white: #FFFFF0;
+    --dark: #1A1A1A;
+    --shadow: #2f2f2f;
+}
+
+.todo-app {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 520px;
+    min-height: 600px;
+    background: #161a2b;
+    text-align: center;
+    margin: 128px auto;
+    border-radius: 10px;
+    padding-bottom: 32px;
+}
+
+.complete {
+    text-decoration: line-through;
+    opacity: 0.4;
+}
+
+
+.todo-input {
+    border: none;
+    margin-top: 4em;
+    padding: 14px 32px 14px 16px;
+    border-radius: 4px;
+    cursor: text;
+    filter: drop-shadow(0.2rem 0.2rem 0.2rem var(--shadow));
+    width: 320px;
+    background: #fffff0;
+    color: black;
+    margin-right: 1em;
+    margin-left: 3em;
+    font-size: 1rem;
+}
+
+.todo-input::placeholder {
+    color: var(--dark);
+    font-size: 1rem;
+}
+
+.todo-input.edit {
+    filter: drop-shadow(0.13rem 0.13rem 0.1rem var(--shadow));
+}
+
+
+
+.todo-container {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+
+.todo-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: black;
+    background: var(--white);
+    margin: 0.9em auto 0.9em 3em;
+    padding: 16px;
+    border-radius: 5px;
+    width: 90%;
+    filter: drop-shadow(0.13rem 0.13rem 0.13rem var(--shadow));
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.delete-icon {
+    margin-right: 5px;
+
+}
