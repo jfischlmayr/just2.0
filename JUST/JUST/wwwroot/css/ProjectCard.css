@@ -1,0 +1,44 @@
+:root{
+    --primary: #375398;
+    --secondary: #788FC8;
+    --teal: #A8DADC;
+    --hover: #d7d7d7;
+    --warning: #FFAE68;
+    --danger: #eb3f27;
+    --success: #75fa83;
+    --white: #FFFFF0;
+    --dark: #1A1A1A;
+    --shadow: #2f2f2f;
+}
+
+.project-card{
+    display: flex;
+    font-family: Roboto;
+    justify-content: space-between;
+    font-size: 1em;
+    color: black;
+    background: var(--white);
+    margin: 0.9em auto 0.9em 3em;
+    padding: 1.3em;
+    border-radius: 10px;
+    height: 8em;
+    width: 90%;
+    filter: drop-shadow(0.13rem 0.13rem 0.13rem var(--shadow));
+}
+
+.project-title{
+    font-size: 1.2em;
+    font-weight: 600;
+    margin-bottom: 0.3em;
+}
+
+.project-body{
+    font-size: 1em;
+    font-weight: 400;
+}
+
+.icons {
+    display: flex;
+    justify-content: flex-end;
+
+}

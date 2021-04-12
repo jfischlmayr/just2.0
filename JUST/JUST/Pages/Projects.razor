@@ -2,15 +2,19 @@
 @using JUST.Data.Models;
 @using JUST.Data;
 @inject IProjectData _db;
+@inject NavigationManager NavigationManager;
 
-<h3>Projects</h3>
-<button @onclick="_db.InitProjects">Init</button>
-<ProjectForm></ProjectForm>
-@foreach(var p in projects)
-{
-<ProjectCard project="@p"></ProjectCard>
-    
-}
+<div class="pages">
+    <h1>Projects</h1>
+    <ProjectForm></ProjectForm>
+
+    <div>
+        @foreach(var p in projects)
+        {
+            <ProjectCard project="@p"></ProjectCard>
+        }
+    </div>
+</div>
 
 @code {
     List<Project> projects = new List<Project>();

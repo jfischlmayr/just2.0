@@ -1,26 +1,19 @@
 ﻿@using JUST.Data;
 @using JUST.Data.Models
 @inject IProjectData _db;
-
-<h3>ProjectCard</h3>
-
-@*<div className='project-card' key={index}>
-    <div key={project.id}>
-        <div className='project-title'>
-                        {project.title}
+@inject NavigationManager NavigationManager;
+ 
+<div class='project-card'>
+        <div class='project-title'>
+                @project.Title
         </div>
-        {"\n"}
-        <div className='project-body'>
-            Projektmitglied 1: null
+        <br />
+        <div class='project-body'>
+                
         </div>
-
-    </div>
-    
-</div>
-*@
-<div>
-    @project.Title
-<button type="button"  @onclick="DeleteProject"> Delete</button>
+        <div class="icon"  @onclick="DeleteProject">
+            <span class="oi oi-circle-x"></span>
+        </div>
 </div>
 
 
@@ -30,8 +23,10 @@
     [Parameter]
     public Project project { get; set; }
 
-    private void DeleteProject()
+    private async Task DeleteProject()
     {
-        
+        await _db.DeleteProject(project.ID);
+        NavigationManager.NavigateTo("projects", true);
+
     }
 }
