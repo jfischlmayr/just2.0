@@ -50,5 +50,11 @@ namespace JUST.Data
             _context.Projects.Remove(_context.Projects.Find(id));
             await _context.SaveChangesAsync();
         }
+
+        public async Task EditProject(Project project)
+        {
+            _context.Projects.Update(project);
+            await _context.SaveChangesAsync();
+        }
     }
 }
