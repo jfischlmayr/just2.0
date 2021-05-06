@@ -5,7 +5,7 @@
 @inject NavigationManager NavigationManager;
 
 <div>
-    <EditForm class="form" Model="@project" OnSubmit="@InsertProject">
+    <EditForm class="form" v Model="@project" OnSubmit="@InsertProject">
         <DataAnnotationsValidator />
         <ValidationSummary />
 
@@ -22,16 +22,19 @@
 
     private async Task InsertProject()
     {
-        Project newProject = new Project() { Title = project.Title };
-        await _db.AddProject(newProject);
-        project = new DisplayProject();
-        NavigationManager.NavigateTo("projects", true);
+        if(project.Title != null)
+        {
+            Project newProject = new Project() { Title = project.Title };
+            await _db.AddProject(newProject);
+            project = new DisplayProject();
+            NavigationManager.NavigateTo("projects", true);
+        }
     }
 
     private class DisplayProject
     {
         [MaxLength(20)]
         [MinLength(2)]
-        public string Title { get; set; }
+        public string? Title { get; set; }
     }
 }

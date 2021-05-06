@@ -1,0 +1,36 @@
+﻿@page "/AddProject"
+@page "/AddProject/{id}"
+
+@using JUST.Data.Models
+
+<div class="pages">
+    
+    @if (!inEditMode)
+    {
+        <h1>Add Project</h1>
+        <ProjectForm></ProjectForm>
+    }
+    else
+    {
+        @id 
+    }
+
+</div>
+
+@code {
+    [Parameter]
+    public string? id { get; set; }
+        
+    Boolean inEditMode = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (id != null)
+        {
+            inEditMode = true;
+            int projectId = Convert.ToInt32(id);
+
+        }
+    }
+
+}
