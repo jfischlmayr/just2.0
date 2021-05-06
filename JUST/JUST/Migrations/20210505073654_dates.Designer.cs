@@ -3,14 +3,16 @@ using System;
 using JUST.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace JUST.Migrations
 {
     [DbContext(typeof(JustDataContext))]
-    partial class JustDataContextModelSnapshot : ModelSnapshot
+    [Migration("20210505073654_dates")]
+    partial class dates
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
