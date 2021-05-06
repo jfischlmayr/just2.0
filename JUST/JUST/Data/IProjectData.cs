@@ -10,5 +10,6 @@ namespace JUST.Data
         Task<List<Project>> GetProjects();
         Task InitProjects();
         Task DeleteProject(int id);
+        Task EditProject(Project task);
     }
 }

@@ -40,5 +40,11 @@ namespace JUST.Data
             task.Done = !task.Done;
             await _context.SaveChangesAsync();
         }
+
+        public async Task EditTask(JustTask task)
+        {
+            _context.Tasks.Update(task);
+            await _context.SaveChangesAsync();
+        }
     }
 }
