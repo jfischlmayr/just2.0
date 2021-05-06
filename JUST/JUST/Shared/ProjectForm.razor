@@ -13,7 +13,11 @@
             <DataAnnotationsValidator />
             <ValidationSummary />
 
+            
             <InputText class="task-input" id="title" @bind-Value="@project.Title" />
+            Start Date:<InputDate class="task-input" @bind-Value="@project.StartDate"></InputDate>
+            <InputDate class="task-input" @bind-Value="@project.EndDate"></InputDate>
+
             <button class="submit-button" type="submit"> Submit </button>
         </EditForm>
     }
@@ -24,6 +28,9 @@
             <ValidationSummary />
 
             <InputText class="task-input" id="title" @bind-Value="@project.Title" />
+            <h3>Start Date:</h3><InputDate class="task-input" @bind-Value="@project.StartDate"></InputDate>
+            <InputDate class="task-input" @bind-Value="@project.EndDate"></InputDate>
+
             <button class="submit-button" type="submit"> Edit </button>
         </EditForm>
     }
@@ -47,6 +54,8 @@
             p = projects.Find(p => p.ID == id);
 
             project.Title = p.Title;
+            project.StartDate = p.StartDate;
+            project.EndDate = p.EndDate;
         }
     }
 
@@ -64,6 +73,8 @@
     private async void EditProject()
     {
         p.Title = project.Title;
+        p.StartDate = project.StartDate;
+        p.EndDate = project.EndDate;
         await _db.EditProject(p);
         NavigationManager.NavigateTo("projects", true);
     }
@@ -75,8 +86,8 @@
         public string? Title { get; set; }
 
         [Required]
-        public DateTime EndDate;
+        public DateTime EndDate = DateTime.Now;
 
-        public DateTime StartDate;
+        public DateTime StartDate = DateTime.Now;
     }
 }
