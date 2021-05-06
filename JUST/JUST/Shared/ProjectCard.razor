@@ -37,7 +37,6 @@
 
     private async Task EditProject()
     {
-
-        NavigationManager.NavigateTo("AddProjects", true);
+        NavigationManager.NavigateTo($"AddProject/{project.ID}", true);
     }
 }
