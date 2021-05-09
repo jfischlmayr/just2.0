@@ -30,7 +30,9 @@
         <div class="todo-segment-todos">
             @foreach(var t in Tasks)
             {
-            }
+                <TaskSidebarItem Task="@t" />
+            }                
+                
         </div>
     </div>
 </div>
