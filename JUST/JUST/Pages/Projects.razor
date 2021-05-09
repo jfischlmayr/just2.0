@@ -1,26 +1,46 @@
 ﻿@page "/Projects"
 @using JUST.Data.Models;
 @using JUST.Data;
+@using JUST.Pages;
 @inject IProjectData _db;
+@inject ITasksData _db_t;
 @inject NavigationManager NavigationManager;
 
 <div class="pages">
     <h1>Projects</h1>
-    <ProjectForm></ProjectForm>
+    <div class="projectcard-segment">
+        <ProjectForm></ProjectForm>
 
-    <div>
-        @foreach(var p in projects)
-        {
-            <ProjectCard project="@p"></ProjectCard>
-        }
+        <div>
+            @foreach(var p in projects)
+            {
+                <ProjectCard project="@p"></ProjectCard>
+                
+            }
+        </div>
+    </div>
+    
+    
+</div>
+<div class="todo-segment">
+    Todos
+    <div class='todo-segment-body'>
+        Ziehe die einzelnen Tasks per Drag-n-Drop auf die Projekte, zu welchem sie zugewiesen werden sollen.
+        <br />Nicht zugewiesene Tasks:
+        <div class="todo-segment-todos">
+            @foreach(var t in Tasks)
+            {
+            }
+        </div>
     </div>
 </div>
 
 @code {
     List<Project> projects = new List<Project>();
-
+    List<JustTask> Tasks { get; set; } = new();
     protected override async Task OnInitializedAsync()
     {
+        Tasks = await _db_t.GetTasks();
         projects = await _db.GetProjects();
     }
 
