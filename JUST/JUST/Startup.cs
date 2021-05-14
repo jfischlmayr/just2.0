@@ -32,6 +32,8 @@ namespace JUST
 
             services.AddTransient<ITasksData, TaskData>();
             services.AddTransient<IProjectData, ProjectData>();
+
+            services.AddSingleton<DragAndDropService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
