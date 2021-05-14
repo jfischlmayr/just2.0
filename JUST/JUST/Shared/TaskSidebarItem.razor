@@ -9,4 +9,22 @@
 @code {
     [Parameter]
     public JustTask? Task { get; set; }
+    UI ui;
+
+
+    protected override void OnInitialized()
+    {
+        ui = new UI
+        {
+            Title = Task.Name,
+            Event = () => 
+        }
+    }
+
+    class UI
+    {
+        public String Title { get; set; }
+        public Action Event { get; set; }
+        public bool Dragged { get; set; }
+    }
 }
