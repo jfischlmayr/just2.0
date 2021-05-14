@@ -106,6 +106,10 @@
     filter: drop-shadow(0.13rem 0.13rem 0.13rem var(--shadow));
 }
 
+.jobs-container{
+
+}
+
 .task-row-completed {
     display: flex;
     justify-content: space-between;
