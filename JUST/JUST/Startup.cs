@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using JUST.Data.Models;
+using Plk.Blazor.DragDrop;
 
 namespace JUST
 {
@@ -33,7 +34,7 @@ namespace JUST
             services.AddTransient<ITasksData, TaskData>();
             services.AddTransient<IProjectData, ProjectData>();
 
-            services.AddSingleton<DragAndDropService>();
+            services.AddBlazorDragDrop();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

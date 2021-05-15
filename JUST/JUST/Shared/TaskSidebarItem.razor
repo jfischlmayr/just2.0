@@ -2,6 +2,7 @@
 @using JUST.Data.Models;
 @inject ITasksData _db;
 
+
 <div class="todo-row-sidebar">
     @Task?.Name
 </div>
@@ -9,22 +10,4 @@
 @code {
     [Parameter]
     public JustTask? Task { get; set; }
-    UI ui;
-
-
-    protected override void OnInitialized()
-    {
-        ui = new UI
-        {
-            Title = Task.Name,
-            Event = () => 
-        }
-    }
-
-    class UI
-    {
-        public String Title { get; set; }
-        public Action Event { get; set; }
-        public bool Dragged { get; set; }
-    }
 }
