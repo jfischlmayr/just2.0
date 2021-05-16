@@ -5,14 +5,24 @@
  
 <div class='project-card'>
         <div class='project-title'>
-                @project.Title
+            @project.Title
+            <p>
+                Start Date: @project.StartDate.Date.ToString("dd.MM.yyyy")
+                <br />
+                End Date: @project.EndDate.Date.ToString("dd.MM.yyyy")
+            </p>
         </div>
         <br />
         <div class='project-body'>
                 
         </div>
-        <div class="icon"  @onclick="DeleteProject">
-            <span class="oi oi-circle-x"></span>
+        <div class="icons">
+            <div class="icon"  @onclick="EditProject">
+                <span class="oi oi-pencil"></span>
+            </div>
+            <div class="icon"  @onclick="DeleteProject">
+                <span class="oi oi-circle-x"></span>
+            </div>
         </div>
 </div>
 
@@ -28,5 +38,10 @@
         await _db.DeleteProject(project.ID);
         NavigationManager.NavigateTo("projects", true);
 
+    }
+
+    private async Task EditProject()
+    {
+        NavigationManager.NavigateTo($"AddProject/{project.ID}", true);
     }
 }
