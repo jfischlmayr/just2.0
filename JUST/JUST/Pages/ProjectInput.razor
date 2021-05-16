@@ -1,0 +1,37 @@
+﻿@using JUST.Data.Models;
+@using JUST.Data;
+@using System.ComponentModel.DataAnnotations;
+@inject IProjectData _db;
+@inject NavigationManager NavigationManager;
+
+<div>
+    <EditForm class="form" Model="@project" OnSubmit="@InsertProject">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <InputText class="task-input" id="title" @bind-Value="@project.Title" />
+        <button class="submit-button" type="submit"> Submit </button>
+    </EditForm>
+                
+
+    
+</div>
+
+@code {
+    private DisplayProject project = new DisplayProject();
+
+    private async Task InsertProject()
+    {
+        Project newProject = new Project() { Title = project.Title };
+        await _db.AddProject(newProject);
+        project = new DisplayProject();
+        NavigationManager.NavigateTo("projects", true);
+    }
+
+    private class DisplayProject
+    {
+        [MaxLength(20)]
+        [MinLength(2)]
+        public string Title { get; set; }
+    }
+}

@@ -6,6 +6,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Syncfusion.Blazor;
+using Microsoft.EntityFrameworkCore;
+using JUST.Data.Models;
+using Plk.Blazor.DragDrop;
 
 namespace JUST
 {
@@ -34,6 +37,8 @@ namespace JUST
             services.AddTransient<IProjectData, ProjectData>();
 
             services.AddSyncfusionBlazor();
+
+            services.AddBlazorDragDrop();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

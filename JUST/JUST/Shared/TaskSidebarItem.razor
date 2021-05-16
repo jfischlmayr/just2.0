@@ -1,0 +1,13 @@
+﻿@using JUST.Data;
+@using JUST.Data.Models;
+@inject ITasksData _db;
+
+
+<div class="todo-row-sidebar">
+    @Task?.Name
+</div>
+
+@code {
+    [Parameter]
+    public JustTask? Task { get; set; }
+}
