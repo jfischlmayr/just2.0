@@ -80,7 +80,7 @@
     {
         if(project.Title != null)
         {
-            Project newProject = new Project() { Title = project.Title };
+            Project newProject = new Project() { Title = project.Title, StartDate = project.StartDate, EndDate = project.EndDate};
             await _db.AddProject(newProject);
             project = new DisplayProject();
             NavigationManager.NavigateTo("projects", true);
