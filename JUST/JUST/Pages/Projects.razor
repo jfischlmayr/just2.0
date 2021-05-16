@@ -4,64 +4,72 @@
 @using JUST.Pages;
 @using JUST.Shared;
 @using Plk.Blazor.DragDrop;
+@using JsConsole
 
 @inject IProjectData _db;
 @inject ITasksData _db_t;
+@inject IJSRuntime js;
 @inject NavigationManager NavigationManager;
 
 
 <div class="pages">
-    <h1>Projects</h1>
-    <div class="projectcard-segment">
-        <ProjectForm></ProjectForm>
+	<h1>Projects</h1>
+	<div class="projectcard-segment">
+		<ProjectForm></ProjectForm>
 
-        <div>
-            @foreach (var p in projects)
-            {
+		<div>
+			@foreach (var p in projects)
+			{
 
-                <ProjectCard project="@p"></ProjectCard>
+	   <ProjectCard project="@p">
 
-            }
-        </div>
-    </div>
+	   </ProjectCard>
+			}
+
+
+  </div>
+ </div>
 
 
 </div>
-<div class="todo-segment">
-    Todos
-    <div class='todo-segment-body'>
-        Ziehe die einzelnen Tasks per Drag-n-Drop auf die Projekte, zu welchem sie zugewiesen werden sollen.
-        <br />Nicht zugewiesene Tasks:
-        <div class="todo-segment-todos">
-            @*@foreach (var t in Tasks)
-            {
-                <TaskSidebarItem Task="@t" />
-            }*@
-            <Dropzone Items="Tasks">
-                <TaskSidebarItem Task="@context" />
-            </Dropzone>
 
-        </div>
-    </div>
+
+<div class="todo-segment">
+ Todos
+ <div class='todo-segment-body'>
+  Ziehe die einzelnen Tasks per Drag-n-Drop auf die Projekte, zu welchem sie zugewiesen werden sollen.
+  <br />Nicht zugewiesene Tasks:
+  <div class="todo-segment-todos">
+
+			@*<Dropzone Items="Tasks">
+				@if (@context.ProjectID <= 0 || @context.ProjectID == null)
+				{
+				<TaskSidebarItem Task="@context" />
+				}
+				</Dropzone>*@
+
+			@foreach (var t in Tasks)
+			{
+				@if (@t.ProjectID <= 0 || @t.ProjectID == null)
+				{
+					<TaskSidebarItem Task=@t/>
+				}
+			}
+
+
+  </div>
+ </div>
 </div>
 
 
 @code {
-    List<Project> projects = new List<Project>();
-    List<JustTask> Tasks { get; set; } = new();
+	List<Project> projects = new List<Project>();
+	List<JustTask> Tasks { get; set; } = new();
 
-    string dropMessage = null;
-
-    void OnDrop(string data)
-    {
-        dropMessage = $"Dropped: {data}";
-        StateHasChanged();
-    }
-
-    protected override async Task OnInitializedAsync()
-    {
-        Tasks = await _db_t.GetTasks();
-        projects = await _db.GetProjects();
-    }
+	protected override async Task OnInitializedAsync()
+	{
+		Tasks = await _db_t.GetTasks();
+		projects = await _db.GetProjects();
+	}
 
 }
