@@ -21,7 +21,7 @@
     margin: 0.9em auto 0.9em 3em;
     padding: 1.3em;
     border-radius: 10px;
-    height: 8em;
+    height: 10em;
     width: 80%;
     filter: drop-shadow(0.13rem 0.13rem 0.13rem var(--shadow));
 }
