@@ -12,12 +12,20 @@
         <EditForm class="form" v Model="@project" OnSubmit="@InsertProject">
             <DataAnnotationsValidator />
             <ValidationSummary />
-
             
+            <span class="subtitle">
+                Project Title:    
+            </span>
             <InputText class="task-input" id="title" @bind-Value="@project.Title" />
-            Start Date:<InputDate class="task-input" @bind-Value="@project.StartDate"></InputDate>
+            <span class="subtitle">
+                Start Date:    
+            </span>
+            <InputDate class="task-input" @bind-Value="@project.StartDate"></InputDate>
+            <span class="subtitle">
+                End Date:    
+            </span>
             <InputDate class="task-input" @bind-Value="@project.EndDate"></InputDate>
-
+                
             <button class="submit-button" type="submit"> Submit </button>
         </EditForm>
     }
@@ -27,8 +35,17 @@
             <DataAnnotationsValidator />
             <ValidationSummary />
 
+            <span class="subtitle">
+                Project Title:    
+            </span>
             <InputText class="task-input" id="title" @bind-Value="@project.Title" />
-            <h3>Start Date:</h3><InputDate class="task-input" @bind-Value="@project.StartDate"></InputDate>
+            <span class="subtitle">
+                Start Date:    
+            </span>
+            <InputDate class="task-input" @bind-Value="@project.StartDate"></InputDate>
+            <span class="subtitle">
+                End Date:    
+            </span>
             <InputDate class="task-input" @bind-Value="@project.EndDate"></InputDate>
 
             <button class="submit-button" type="submit"> Edit </button>
