@@ -5,7 +5,13 @@
  
 <div class='project-card'>
         <div class='project-title'>
-                @project.Title
+            @project.Title
+            <p>
+                Start Date: @project.StartDate.Date.ToString("dd.MM.yyyy")
+            </p>
+            <p>
+                End Date: @project.EndDate.Date.ToString("dd.MM.yyyy")
+            </p>
         </div>
         <br />
         <div class='project-body'>
