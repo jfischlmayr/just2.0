@@ -1,10 +1,12 @@
 using JUST.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.EntityFrameworkCore;
+using JUST.Data.Models;
+using Plk.Blazor.DragDrop;
 using Syncfusion.Blazor;
 
 namespace JUST
@@ -32,6 +34,8 @@ namespace JUST
 
             services.AddTransient<ITasksData, TaskData>();
             services.AddTransient<IProjectData, ProjectData>();
+
+            services.AddBlazorDragDrop();
 
             services.AddSyncfusionBlazor();
         }

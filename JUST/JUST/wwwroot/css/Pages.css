@@ -62,3 +62,31 @@ h1 {
     margin-left: 1em;
     padding-top: 1em;
 }
+
+.projectcard-segment{
+    float: left;
+}
+
+.todo-segment {
+    font-family: 'Bebas Neue';
+    float: right;
+    font-size: 2em;
+    align-items: center;
+    color: black;
+    background: var(--white);
+    padding: 16px;
+    border-radius: 7px;
+    width: 30%;
+    height: 70%;
+}
+
+.todo-segment-body{
+    font-family: Arial;
+    font-size: 0.9rem;
+    color: black;
+}
+
+.todo-segment-todos{
+    margin: 0!important;
+    padding: 0!important;
+}
