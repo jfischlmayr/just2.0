@@ -5,7 +5,12 @@
 
 
 <div class="taskList">
-    <TaskFormLandingPage />
+@if(CountTasksWithoutCompleted() < 1)
+    {
+    <div class="no-open-task">
+        No open Tasks!
+    </div>
+    }
     @foreach(var t in Tasks)
     {
         <TaskItemLandingPage Task="@t" />
@@ -18,6 +23,19 @@
 @code {
     public List<JustTask> Tasks { get; set; } = new();
 
+    public int CountTasksWithoutCompleted()
+    {
+        int count = 0;
+        while(count < Tasks.Count)
+        {
+            if (!Tasks.ElementAt(count).Done)
+            {
+                count++;
+            }
+            
+        }
+        return count;
+    }
 
     protected override async Task OnInitializedAsync()
     {

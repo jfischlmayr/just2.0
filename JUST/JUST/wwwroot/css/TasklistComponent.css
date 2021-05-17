@@ -81,6 +81,17 @@
     position: relative;
 }
 
+.no-open-task {
+    display: flex;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--white);
+    margin-left: 1.5em;
+   
+}
+
 .task-row {
     display: flex;
     justify-content: space-between;
