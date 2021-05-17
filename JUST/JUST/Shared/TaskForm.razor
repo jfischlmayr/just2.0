@@ -125,7 +125,7 @@ else
         t.Name = task.Name;
         t.StartDate = task.StartDate;
         t.EndDate = task.EndDate;
-        t.ProjectID = task.ProjectId;
+        t.ProjectID = Convert.ToInt32(projectID);
 
         await _db.EditTask(t);
         task = new DisplayTask();
