@@ -1,8 +1,10 @@
 ﻿@using JUST.Data.Models;
 @using JUST.Data;
 @using System.ComponentModel.DataAnnotations;
+@using Syncfusion.Blazor.DropDowns;
 
 @inject ITasksData _db;
+@inject IProjectData _db_p;
 @inject NavigationManager NavigationManager;
 
 
@@ -25,7 +27,7 @@
          </div>
             <div class="input-container">
                 <div class="input-field">
-                    <InputText placeholder="Task Name" aclass="task-input" id="name" @bind-Value="@task.Name"/>
+                    <InputText placeholder="Task Name" class="task-input" id="name" @bind-Value="@task.Name"/>
                 </div>
                 <div class="input-field">
                     <InputDate class="task-input" @bind-Value="@task.StartDate"></InputDate>
@@ -41,6 +43,10 @@
             </div>
             
         </EditForm>
+        <SfDropDownList Placeholder="Select a Project" TItem="Project" TValue="string" DataSource="@projects" Width="300px" @bind-Value="@projectTitle" >
+                <DropDownListFieldSettings Text="Title" Value="ID">
+                </DropDownListFieldSettings>
+            </SfDropDownList>
     </div>
 }
 else
@@ -67,6 +73,8 @@ else
 
     private DisplayTask task = new DisplayTask();
     private JustTask t;
+    private List<Project> projects;
+    string projectTitle;
 
     private async Task AddTask()
     {
@@ -85,6 +93,7 @@ else
         t.Name = task.Name;
         t.StartDate = task.StartDate;
         t.EndDate = task.EndDate;
+        t.ProjectID = projects.Find(p => p.Title == projectTitle).ID;
 
         await _db.EditTask(t);
         NavigationManager.NavigateTo("Tasks", true);
@@ -92,6 +101,7 @@ else
 
     protected override async Task OnInitializedAsync()
     {
+        projects = await _db_p.GetProjects();
         if (taskId != null)
         {
             int id = Convert.ToInt32(taskId);
