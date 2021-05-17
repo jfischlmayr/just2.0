@@ -80,6 +80,7 @@ h1 {
 
 .projectcard-segment{
     float: left;
+    width: 50%;
 }
 
 .todo-segment {
