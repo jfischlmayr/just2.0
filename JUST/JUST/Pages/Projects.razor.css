@@ -81,3 +81,29 @@
     font-size: 24px;
     cursor: pointer;
 }
+
+.e-listbox-container {
+    float: right;
+    font-size: 2em;
+    align-items: center;
+    color: black;
+    background: var(--white);
+    padding: 16px;
+    border-radius: 7px;
+    width: 20%;
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.listbox3 {
+    float: right;
+    font-size: 2em;
+    align-items: center;
+    color: black;
+    background: var(--white);
+    padding: 16px;
+    border-radius: 7px;
+    width: 20%;
+    margin-right: 0;
+    margin-left: 0;
+}

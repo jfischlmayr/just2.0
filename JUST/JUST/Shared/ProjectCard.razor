@@ -8,7 +8,7 @@
 <div class='project-card'>
         <div class='project-title'>
             @project.Title
-            <p>
+            <p style="font-weight: 300;">
                 Start Date: @project.StartDate.Date.ToString("dd.MM.yyyy")
                 <br />
                 End Date: @project.EndDate.Date.ToString("dd.MM.yyyy")
@@ -18,14 +18,7 @@
         <div class='project-body'>
                 
         </div>
-        <div class="icons">
-            <div class="icon"  @onclick="EditProject">
-                <span class="oi oi-pencil"></span>
-            </div>
-            <div class="icon"  @onclick="DeleteProject">
-                <span class="oi oi-circle-x"></span>
-            </div>
-        </div>
+        
 
         <div id="listbox1">
             <h6>Tasks</h6>
@@ -33,6 +26,15 @@
                 <ListBoxEvents TValue="string[]" TItem="JustTask" OnDrop="Change" Created="created"></ListBoxEvents>
                 <ListBoxFieldSettings Text="Name" Value="ID"  />
             </SfListBox>
+        </div>
+
+        <div class="icons">
+            <div class="icon"  @onclick="EditProject">
+                <span class="oi oi-pencil"></span>
+            </div>
+            <div class="icon"  @onclick="DeleteProject">
+                <span class="oi oi-circle-x"></span>
+            </div>
         </div>
 </div>
 

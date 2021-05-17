@@ -15,7 +15,7 @@
 
 <div class="pages">
 	<h1>Projects</h1>
-	<div>
+	<div class="projectcard-segment">
 		@foreach (var p in projects)
 		{
 			<ProjectCard project="@p"></ProjectCard>
@@ -23,8 +23,8 @@
 	</div>
 </div>
 
-<div id="listbox2">
-    <h4>All Tasks</h4>
+<div id="listbox2" class="listbox3">
+    <h4 style="font-family:'Bebas Neue'; color: black;">All Tasks</h4>
     <SfListBox TValue="string[]" DataSource="@Tasks" Scope="combined-list" AllowDragAndDrop="true" Height="290px" TItem="JustTask">
 		<ListBoxEvents TValue="string[]" TItem="JustTask" OnDrop="Change" Created="created"></ListBoxEvents>
         <ListBoxFieldSettings Text="Name" Value="ID" />

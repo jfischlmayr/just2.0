@@ -10,6 +10,14 @@
 }else{
 <div class = "task-row">
     @Task?.Name
+    <div class="icons">
+        <div class ="icon" @onclick="() => RemoveTask(Task.ID)">
+            <span class="oi oi-circle-x"></span>
+        </div>
+        <div class="icon" @onclick="() => CompleteTask(Task.ID)" >
+            <span class="oi oi-circle-check"></span>
+        </div>
+    </div>
 </div>
 }
 @code {
