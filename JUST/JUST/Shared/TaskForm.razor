@@ -5,19 +5,45 @@
 @inject ITasksData _db;
 @inject NavigationManager NavigationManager;
 
-<div>
-    <EditForm class="form" Model="@task" OnSubmit="@AddTask">
-        <DataAnnotationsValidator />
-        <ValidationSummary />
+
+@if (taskId == null)
+{
+    <div>
+        <EditForm class="form" Model="@task" OnSubmit="@AddTask">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
          
-        <InputText class="task-input" id="name" @bind-Value="@task.Name"/>
-        <button class="submit-button" type="submit"> Submit </button>
-    </EditForm>
-</div>
+            <InputText class="task-input" id="name" @bind-Value="@task.Name"/>
+            <InputDate class="task-input" @bind-Value="@task.StartDate"></InputDate>
+            <InputDate class="task-input" @bind-Value="@task.EndDate"></InputDate>
+            <button class="submit-button" type="submit"> Submit </button>
+        </EditForm>
+    </div>
+}
+else
+{
+    <div>
+        <EditForm class="form" Model="@task" OnSubmit="@EditTask">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+         
+            <InputText class="task-input" id="name" @bind-Value="@task.Name"/>
+            <InputDate class="task-input" @bind-Value="@task.StartDate"></InputDate>
+            <InputDate class="task-input" @bind-Value="@task.EndDate"></InputDate>
+            <button class="submit-button" type="submit"> Edit </button>
+        </EditForm>
+    </div>
+}
+
+
 
 
 @code {
+    [Parameter]
+    public string? taskId { get; set; }
+
     private DisplayTask task = new DisplayTask();
+    private JustTask t;
 
     private async Task AddTask()
     {
@@ -31,10 +57,40 @@
         NavigationManager.NavigateTo("tasks", true);
     }
 
+    private async Task EditTask()
+    {
+        t.Name = task.Name;
+        t.StartDate = task.StartDate;
+        t.EndDate = task.EndDate;
+
+        await _db.EditTask(t);
+        NavigationManager.NavigateTo("Tasks", true);
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (taskId != null)
+        {
+            int id = Convert.ToInt32(taskId);
+
+            var tasks = await _db.GetTasks();
+            t = tasks.Find(t => t.ID == id);
+
+            task.Name = t.Name;
+            task.StartDate = t.StartDate;
+            task.EndDate = t.EndDate;
+        }
+    }
+
     private class DisplayTask
     {
         [MaxLength(100)]
         [MinLength(1)]
         public string Name { get; set; }
+
+        [Required]
+        public DateTime EndDate = DateTime.Now;
+
+        public DateTime StartDate = DateTime.Now;
     }
 }

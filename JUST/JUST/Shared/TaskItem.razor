@@ -20,6 +20,9 @@
 <div class = "task-row">
     @Task?.Name
     <div class="icons">
+        <div class ="icon" @onclick="() => EditTask(Task.ID)">
+            <span class="oi oi-pencil"></span>
+        </div>
         <div class ="icon" @onclick="() => RemoveTask(Task.ID)">
             <span class="oi oi-circle-x"></span>
         </div>
@@ -49,5 +52,9 @@
     {
         await _db.CompleteTask(id);
         NavigationManager.NavigateTo("tasks", true);
+    }
+
+    public void EditTask(int id){
+        NavigationManager.NavigateTo($"AddTask/{id}");
     }
 }

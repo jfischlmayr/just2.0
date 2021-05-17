@@ -21,14 +21,14 @@
 @code {
     [Parameter]
     public string? id { get; set; }
+        
     bool inEditMode = false;
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
         if (id != null)
         {
             inEditMode = true;
-            int projectId = Convert.ToInt32(id);
         }
     }
 }
