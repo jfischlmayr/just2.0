@@ -13,19 +13,25 @@
             <DataAnnotationsValidator />
             <ValidationSummary />
             
-            <span class="subtitle">
-                Project Title:    
-            </span>
-            <InputText class="task-input" id="title" @bind-Value="@project.Title" />
-            <span class="subtitle">
-                Start Date:    
-            </span>
-            <InputDate class="task-input" @bind-Value="@project.StartDate"></InputDate>
-            <span class="subtitle">
+            <div class="subtitle">
+                Project Title:
+            </div>
+            
+            <div class="input-field">
+                <InputText placeholder="Project Title" class="task-input" id="title" @bind-Value="@project.Title" />
+            </div>
+            <div class="subtitle">
+                Start Date: 
+            </div>
+            <div class="input-field">
+                <InputDate placeholder="Start Date" class="task-input" @bind-Value="@project.StartDate"></InputDate>
+            </div>
+            <div class="subtitle">
                 End Date:    
-            </span>
-            <InputDate class="task-input" @bind-Value="@project.EndDate"></InputDate>
-                
+            </div>
+            <div class="input-field">
+                <InputDate placeholder="End Date" class="task-input" @bind-Value="@project.EndDate"></InputDate>
+            </div>
             <button class="submit-button" type="submit"> Submit </button>
         </EditForm>
     }
