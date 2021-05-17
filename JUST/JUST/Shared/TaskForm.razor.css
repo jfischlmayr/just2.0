@@ -25,3 +25,7 @@
     display: flex;
     padding: 0;
 }
+
+.dropdown{
+    margin-left: 1em;
+}

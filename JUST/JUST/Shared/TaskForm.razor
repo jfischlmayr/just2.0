@@ -43,7 +43,7 @@
             </div>
             
         </EditForm>
-        <SfDropDownList Placeholder="Select a Project" TItem="Project" TValue="string" DataSource="@projects" Width="300px" @bind-Value="@projectTitle" >
+        <SfDropDownList Placeholder="Select a Project" TItem="Project" TValue="string" DataSource="@projects" Width="300px" @bind-Value="@projectID" >
                 <DropDownListFieldSettings Text="Title" Value="ID">
                 </DropDownListFieldSettings>
             </SfDropDownList>
@@ -55,12 +55,39 @@ else
         <EditForm class="form" Model="@task" OnSubmit="@EditTask">
             <DataAnnotationsValidator />
             <ValidationSummary />
-         
-            <InputText class="task-input" id="name" @bind-Value="@task.Name"/>
-            <InputDate class="task-input" @bind-Value="@task.StartDate"></InputDate>
-            <InputDate class="task-input" @bind-Value="@task.EndDate"></InputDate>
-            <button class="submit-button" type="submit"> Edit </button>
+         <div class="title-container">
+             <div class="subtitle" style="margin-left:1.5em;">
+		Task Title:
+	   </div>
+	   <div class="subtitle">
+		Start Date:
+	   </div>
+	   <div class="subtitle">
+		End Date:
+	   </div>
+         </div>
+            <div class="input-container">
+                <div class="input-field">
+                    <InputText placeholder="Task Name" class="task-input" id="name" @bind-Value="@task.Name"/>
+                </div>
+                <div class="input-field">
+                    <InputDate class="task-input" @bind-Value="@task.StartDate"></InputDate>
+                </div>
+                <div class="input-field">
+                    <InputDate class="task-input" @bind-Value="@task.EndDate"></InputDate>
+                </div>
+
+                
+            
+            
+            <button class="submit-button" type="submit" style="height: 2.4em; float: right; margin-top:4.5em; margin-right: 3.5em;"> Edit </button>
+            </div>
+            
         </EditForm>
+        <SfDropDownList Placeholder="Select a Project" TItem="Project" TValue="string" DataSource="@projects" Width="300px" @bind-Value="@projectID" >
+                <DropDownListFieldSettings Text="Title" Value="ID">
+                </DropDownListFieldSettings>
+            </SfDropDownList>
     </div>
 }
 
@@ -74,7 +101,7 @@ else
     private DisplayTask task = new DisplayTask();
     private JustTask t;
     private List<Project> projects;
-    string projectTitle;
+    string projectID;
 
     private async Task AddTask()
     {
@@ -82,7 +109,8 @@ else
         {
             Name = task.Name,
             StartDate = task.StartDate,
-            EndDate = task.EndDate
+            EndDate = task.EndDate,
+            ProjectID = Convert.ToInt32(projectID)
         };
 
         await _db.AddTask(newTask);
@@ -97,7 +125,7 @@ else
         t.Name = task.Name;
         t.StartDate = task.StartDate;
         t.EndDate = task.EndDate;
-        t.ProjectID = projects.Find(p => p.Title == projectTitle).ID;
+        t.ProjectID = task.ProjectId;
 
         await _db.EditTask(t);
         task = new DisplayTask();
@@ -119,11 +147,13 @@ else
             task.Name = t.Name;
             task.StartDate = t.StartDate;
             task.EndDate = t.EndDate;
+            task.ProjectId = t.ProjectID;
         }
     }
 
     private class DisplayTask
     {
+        
         [MaxLength(100)]
         [MinLength(1)]
         public string Name { get; set; }
@@ -132,5 +162,8 @@ else
         public DateTime EndDate = DateTime.Now;
 
         public DateTime StartDate = DateTime.Now;
+
+        public int? ProjectId { get; set; }
+
     }
 }
