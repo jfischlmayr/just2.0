@@ -26,13 +26,12 @@
     public int CountTasksWithoutCompleted()
     {
         int count = 0;
-        while(count < Tasks.Count)
+        foreach(var t in Tasks)
         {
-            if (!Tasks.ElementAt(count).Done)
+            if (!t.Done)
             {
                 count++;
             }
-            
         }
         return count;
     }

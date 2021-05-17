@@ -51,7 +51,22 @@
     margin-right: 0.3em;
 }
 
-    .home-buttons:hover {
+.e-btn {
+    font-family: 'Lato', sans-serif;
+    border-radius: 4px;
+    cursor: pointer;
+    filter: drop-shadow(0.13rem 0.13rem 0.1rem var(--shadow));
+    background-color: black;
+    color: white;
+    border: none;
+    font-size: 6rem;
+    margin-left: 0.3em;
+    width: 7em;
+    height: 7em;
+    margin-right: 0.3em;
+}
+
+    .e-btn:hover {
         background-color: var(--hover);
     }
 

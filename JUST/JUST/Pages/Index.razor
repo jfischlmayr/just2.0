@@ -1,14 +1,23 @@
 ﻿@using JUST.Data
 @using JUST.Data.Models
 
-
+@inject NavigationManager nm;
 @page "/"
 
 
 <div class="page">
     <h1>Willkommen</h1>
     <div class="button-area">
-        
+        <Syncfusion.Blazor.Buttons.SfButton OnClick="@OnClickProject">
+            <span class="oi oi-spreadsheet" style="font-size: 3rem;" aria-hidden="true"></span>
+        </Syncfusion.Blazor.Buttons.SfButton>
+        <Syncfusion.Blazor.Buttons.SfButton OnClick="@OnClickTask">
+            <span class="oi oi-task" style="font-size: 3rem;" aria-hidden="true"></span>
+        </Syncfusion.Blazor.Buttons.SfButton>
+        <Syncfusion.Blazor.Buttons.SfButton OnClick="@OnClickGantt">
+            <span class="oi oi-project" style="font-size: 3rem;" aria-hidden="true"></span>
+        </Syncfusion.Blazor.Buttons.SfButton>
+
     </div>
 
     <h1>Anstehende Tasks</h1>
@@ -18,5 +27,18 @@
 </div>
 
 @code {
+    public void OnClickTask()
+    {
+        nm.NavigateTo("Tasks");
+    }
 
+    public void OnClickProject()
+    {
+        nm.NavigateTo("Projects");
+    }
+
+    public void OnClickGantt()
+    {
+        nm.NavigateTo("Gantt");
+    }
 }
