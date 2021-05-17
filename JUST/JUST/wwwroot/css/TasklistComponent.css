@@ -57,6 +57,7 @@
     border: none;
     cursor: pointer;
     filter: drop-shadow(0.13rem 0.13rem 0.1rem var(--shadow));
+    padding: 0.3em;
 }
 
     .submit-button:hover {
