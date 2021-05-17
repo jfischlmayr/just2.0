@@ -26,8 +26,7 @@
 <div id="listbox2">
     <h4>All Tasks</h4>
     <SfListBox TValue="string[]" DataSource="@Tasks" Scope="combined-list" AllowDragAndDrop="true" Height="290px" TItem="JustTask">
-		<ListBoxEvents TValue="string[]" TItem="JustTask" OnDrop="Change"></ListBoxEvents>
-		<ListBoxEvents TValue="string[]" Created="created" TItem="JustTask"></ListBoxEvents>
+		<ListBoxEvents TValue="string[]" TItem="JustTask" OnDrop="Change" Created="created"></ListBoxEvents>
         <ListBoxFieldSettings Text="Name" Value="ID" />
     </SfListBox>
 </div>
@@ -40,12 +39,17 @@
 
 	protected override async Task OnInitializedAsync()
 	{
-		Tasks = await _db_t.GetTasks();
 		projects = await _db.GetProjects();
+		Tasks = await _db_t.GetTasks();
 	}
 
 	private void Change(DropEventArgs<JustTask> args)
     {
+		
+
+		var task = args.Items.First();
+		task.ProjectID = 2;
+		_db_t.EditTask(task);
 
 		Console.WriteLine(args.ToString());
 		Console.WriteLine(args.Items.ToString());
