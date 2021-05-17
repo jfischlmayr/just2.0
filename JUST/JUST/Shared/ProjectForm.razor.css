@@ -4,14 +4,11 @@
     font-family: 'Bebas Neue', sans-serif;
     font-size: 2rem;
     color: white;
-
-
-    padding-top:0.3em;
+    padding-top: 0.3em;
     margin-bottom: 0;
-
 }
 
-.input-field{
+.input-field {
     flex: auto;
     margin: 0;
     padding: 0;
@@ -27,4 +24,5 @@
 .input-container {
     display: flex;
     padding: 0;
+    float: left;
 }

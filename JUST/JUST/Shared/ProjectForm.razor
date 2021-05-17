@@ -4,9 +4,6 @@
 @inject IProjectData _db;
 @inject NavigationManager NavigationManager;
 
-<div>
-
-
 	@if (projectId == null)
 	{
 	 <EditForm class="form" v Model="@project" OnSubmit="@InsertProject">
@@ -36,7 +33,7 @@
 		<InputDate placeholder="End Date" class="task-input" @bind-Value="@project.EndDate"></InputDate>
 	   </div>
 
-	   <button class="submit-button" type="submit" style="height: 2.4em; float: right; margin-top:4.5em; margin-right: 3.5em;"> Submit </button>
+	   <button class="submit-button" type="submit" style="height: 2.4em; float: right; "> Edit </button>
 		</div>
 	   
 	  
@@ -46,28 +43,43 @@
 	}
 	else
 	{
-	 <EditForm class="form" v Model="@project" OnSubmit="@EditProject">
+		<div>
+
+	 <EditForm class="form" Model="@project" OnSubmit="@EditProject">
 	  <DataAnnotationsValidator />
 	  <ValidationSummary />
+	  <div class="title-container">
+	   <div class="subtitle" style="margin-left:1.5em;">
+		Project Title:
+	   </div>
+	   <div class="subtitle">
+		Start Date:
+	   </div>
+	   <div class="subtitle">
+		End Date:
+	   </div>
+	   </div>
+	  <div class="input-container">
+		  <div class="input-field">
+		<InputText class="task-input" id="title" @bind-Value="@project.Title" />
+	</div>
+	<div class="input-field">
+		<InputDate class="task-input" @bind-Value="@project.StartDate"></InputDate>
+	</div>
+	<div class="input-field">
+		<InputDate class="task-input" @bind-Value="@project.EndDate"></InputDate>
+	</div>
 
-	  <span class="subtitle">
-	   Project Title:
-	  </span>
-	  <InputText class="task-input" id="title" @bind-Value="@project.Title" />
-	  <span class="subtitle">
-	   Start Date:
-	  </span>
-	  <InputDate class="task-input" @bind-Value="@project.StartDate"></InputDate>
-	  <span class="subtitle">
-	   End Date:
-	  </span>
-	  <InputDate class="task-input" @bind-Value="@project.EndDate"></InputDate>
+		  <button class="submit-button" type="submit" style="height: 2.4em; float: right; margin-top:4.5em; "> Edit </button>
 
-	  <button class="submit-button" type="submit"> Edit </button>
+		  </div>
+		  
+	  
 	 </EditForm>
+
+	 </div>
 	}
 
-</div>
 
 @code {
 	[Parameter]
