@@ -12,11 +12,34 @@
         <EditForm class="form" Model="@task" OnSubmit="@AddTask">
             <DataAnnotationsValidator />
             <ValidationSummary />
-         
-            <InputText class="task-input" id="name" @bind-Value="@task.Name"/>
-            <InputDate class="task-input" @bind-Value="@task.StartDate"></InputDate>
-            <InputDate class="task-input" @bind-Value="@task.EndDate"></InputDate>
-            <button class="submit-button" type="submit"> Submit </button>
+         <div class="title-container">
+             <div class="subtitle" style="margin-left:1.5em;">
+		Task Title:
+	   </div>
+	   <div class="subtitle">
+		Start Date:
+	   </div>
+	   <div class="subtitle">
+		End Date:
+	   </div>
+         </div>
+            <div class="input-container">
+                <div class="input-field">
+                    <InputText placeholder="Task Name" aclass="task-input" id="name" @bind-Value="@task.Name"/>
+                </div>
+                <div class="input-field">
+                    <InputDate class="task-input" @bind-Value="@task.StartDate"></InputDate>
+                </div>
+                <div class="input-field">
+                    <InputDate class="task-input" @bind-Value="@task.EndDate"></InputDate>
+                </div>
+
+                
+            
+            
+            <button class="submit-button" type="submit" style="height: 2.4em; float: right; margin-top:4.5em; margin-right: 3.5em;"> Submit </button>
+            </div>
+            
         </EditForm>
     </div>
 }
