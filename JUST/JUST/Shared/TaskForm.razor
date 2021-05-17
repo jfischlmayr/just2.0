@@ -80,11 +80,15 @@ else
     {
         JustTask newTask = new JustTask()
         {
-            Name = task.Name
+            Name = task.Name,
+            StartDate = task.StartDate,
+            EndDate = task.EndDate
         };
 
         await _db.AddTask(newTask);
         task = new DisplayTask();
+        taskId = null;
+
         NavigationManager.NavigateTo("tasks", true);
     }
 
@@ -96,6 +100,9 @@ else
         t.ProjectID = projects.Find(p => p.Title == projectTitle).ID;
 
         await _db.EditTask(t);
+        task = new DisplayTask();
+        taskId = null;
+
         NavigationManager.NavigateTo("Tasks", true);
     }
 
