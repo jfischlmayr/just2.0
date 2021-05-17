@@ -13,5 +13,10 @@ namespace JUST.Data.Models
         public DateTime StartDate { get; set; } = DateTime.Now;
         public DateTime EndDate { get; set; }
         public List<JustTask>? Tasks { get; set; }
+
+        public override string ToString()
+        {
+            return Title;
+        }
     }
 }
