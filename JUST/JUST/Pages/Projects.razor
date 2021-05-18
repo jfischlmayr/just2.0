@@ -41,6 +41,7 @@
 	{
 		projects = await _db.GetProjects();
 		Tasks = await _db_t.GetTasks();
+		Tasks = Tasks.Where(t => t.ProjectID == null).ToList();
 	}
 
 	private void Change(DropEventArgs<JustTask> args)
