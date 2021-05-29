@@ -47,5 +47,6 @@
 	{
 		var projectID = projects.Find(p => p.Title == projectTitle).ID;
 		taskList = allTasks.Where(t => t.ProjectID == projectID).ToList();
+
 	}
 }
