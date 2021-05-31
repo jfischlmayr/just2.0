@@ -8,14 +8,17 @@
 <div class="page">
     <h1>Willkommen</h1>
     <div class="button-area">
-        <Syncfusion.Blazor.Buttons.SfButton OnClick="@OnClickProject">
+        <Syncfusion.Blazor.Buttons.SfButton OnClick="@OnClickProject" title="Projects">
             <span class="oi oi-spreadsheet" style="font-size: 3rem;" aria-hidden="true"></span>
         </Syncfusion.Blazor.Buttons.SfButton>
-        <Syncfusion.Blazor.Buttons.SfButton OnClick="@OnClickTask">
+        <Syncfusion.Blazor.Buttons.SfButton OnClick="@OnClickTask" title="Tasks">
             <span class="oi oi-task" style="font-size: 3rem;" aria-hidden="true"></span>
         </Syncfusion.Blazor.Buttons.SfButton>
-        <Syncfusion.Blazor.Buttons.SfButton OnClick="@OnClickGantt">
+        <Syncfusion.Blazor.Buttons.SfButton OnClick="@OnClickGantt" title="Gantt">
             <span class="oi oi-project" style="font-size: 3rem;" aria-hidden="true"></span>
+        </Syncfusion.Blazor.Buttons.SfButton>
+        <Syncfusion.Blazor.Buttons.SfButton OnClick="@OnClickHelp" title="Help">
+            <span class="oi oi-question-mark" style="font-size: 3rem;" aria-hidden="true"></span>
         </Syncfusion.Blazor.Buttons.SfButton>
 
     </div>
@@ -40,5 +43,10 @@
     public void OnClickGantt()
     {
         nm.NavigateTo("Gantt");
+    }
+
+    public void OnClickHelp()
+    {
+        nm.NavigateTo("Help");
     }
 }
