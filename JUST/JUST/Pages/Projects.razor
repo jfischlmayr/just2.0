@@ -16,20 +16,34 @@
 <div class="pages">
 	<h1>Projects</h1>
 	<div class="projectcard-segment">
-		@foreach (var p in projects)
+		@if (CountProjects() == 0)
 		{
-			<ProjectCard project="@p"></ProjectCard>
+			<br/>
+			<br/>
+			<div class="no-open-task">
+				No open Projects!
+			</div>
+		}
+		else
+		{
+			@foreach (var p in projects)
+			{
+				<ProjectCard project="@p"></ProjectCard>
+			}
 		}
 	</div>
 </div>
 
-<div id="listbox2" class="listbox3">
-    <h4 style="font-family:'Bebas Neue'; color: black;">All Tasks</h4>
-    <SfListBox TValue="string[]" DataSource="@Tasks" Scope="combined-list" AllowDragAndDrop="true" Height="290px" TItem="JustTask">
-		<ListBoxEvents TValue="string[]" TItem="JustTask" OnDrop="Change" Created="created"></ListBoxEvents>
-        <ListBoxFieldSettings Text="Name" Value="ID" />
-    </SfListBox>
-</div>
+@if(CountProjects() != 0)
+{
+	<div id="listbox2" class="listbox3">
+		<h4 style="font-family:'Bebas Neue'; color: black;">All Tasks</h4>
+		<SfListBox TValue="string[]" DataSource="@Tasks" Scope="combined-list" AllowDragAndDrop="true" Height="290px" TItem="JustTask">
+			<ListBoxEvents TValue="string[]" TItem="JustTask" OnDrop="Change" Created="created"></ListBoxEvents>
+			<ListBoxFieldSettings Text="Name" Value="ID" />
+		</SfListBox>
+	</div>
+}
 
 
 @code {
@@ -43,6 +57,16 @@
 		Tasks = await _db_t.GetTasks();
 		Tasks = Tasks.Where(t => t.ProjectID == null).ToList();
 	}
+
+	 public int CountProjects()
+    {
+        int count = 0;
+        foreach(var p in projects)
+        {
+            count ++;
+        }
+        return count;
+    }
 
 	private void Change(DropEventArgs<JustTask> args)
     {
