@@ -1,0 +1,20 @@
+﻿a{
+    color: #ffcd55;
+    font-weight: bold;
+}
+
+a:hover{
+    color: white; 
+}
+
+.help-wrapper{
+    margin-right: 15em;
+}
+
+h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    color: white;
+    margin-left: 1.6em;
+    padding-top: 1em;
+}
