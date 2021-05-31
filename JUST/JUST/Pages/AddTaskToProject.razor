@@ -1,0 +1,10 @@
+﻿@page "/AddTaskToProject/{id}"
+
+<h1>Add Task</h1>
+<TaskForm projectId="@id"></TaskForm>
+
+@code {
+    [Parameter]
+    public string? id { get; set; }
+
+}

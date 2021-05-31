@@ -4,15 +4,17 @@
 @using JUST.Data.Models
 
 <div class="pages">
-    
+
     @if (!inEditMode)
     {
         <h1>Add Project</h1>
+        
         <ProjectForm></ProjectForm>
     }
     else
     {
         <h1>Edit Project</h1>
+        
         <ProjectForm projectId="@id"></ProjectForm>
     }
 
