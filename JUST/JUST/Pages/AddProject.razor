@@ -8,17 +8,13 @@
     @if (!inEditMode)
     {
         <h1>Add Project</h1>
-        <p class="info-text">
-            Fügen Sie hier ein Projekt hinzu. Ein Projekt wird ausgezeichnet von einem <b>Projektnamen</b>, einem <b>Startdatum</b> sowie einem <b>Enddatum</b>.
-        </p>
+        
         <ProjectForm></ProjectForm>
     }
     else
     {
         <h1>Edit Project</h1>
-        <p class="info-text">
-            Hier können Sie ein Projekt editieren. Ein Projekt wird ausgezeichnet von einem <b>Projektnamen</b>, einem <b>Startdatum</b> sowie einem <b>Enddatum</b>.
-        </p>
+        
         <ProjectForm projectId="@id"></ProjectForm>
     }
 
