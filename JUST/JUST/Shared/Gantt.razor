@@ -16,7 +16,7 @@
 
 <button class="submit-button" type="submit" style="background-color: white;" title="Get Gantt Diagram" >Get Gantt</button>
 
-<SfGantt DataSource="@taskList" Toolbar="@(new List<string>() { "ZoomIn", "ZoomOut", "ZoomToFit" })" Height="850px" Width="1500px">
+<SfGantt DataSource="@taskList" Toolbar="@(new List<string>() { "ZoomIn", "ZoomOut", "ZoomToFit" })" Height="850px" Width="1300px">
 	<GanttTaskFields Id="ID" Name="Name" StartDate="StartDate" EndDate="EndDate" Duration="Duration" Progress="Progress" Child="SubTasks">
 	</GanttTaskFields>
 	<GanttColumns>
@@ -27,7 +27,7 @@
 		<GanttColumn Field="Duration" HeaderText="Duration" Width="100"></GanttColumn>
 	</GanttColumns>
 	<GanttTimelineSettings TimelineUnitSize=120 TimelineViewMode="TimelineViewMode.Month"></GanttTimelineSettings>
-	<GanttSplitterSettings Position="42%"> </GanttSplitterSettings>
+	<GanttSplitterSettings Position="50%"> </GanttSplitterSettings>
 </SfGantt>
 
 
