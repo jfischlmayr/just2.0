@@ -39,7 +39,7 @@
                 
             
             
-            <button class="submit-button" type="submit" style="height: 2.4em; float: right; margin-top:4.5em;"> Submit </button>
+            <button class="submit-button" type="submit" style="height: 2.4em; float: right; margin-top:4.5em;" title="submit"> Submit </button>
             </div>
             
         </EditForm>
@@ -80,7 +80,7 @@ else
                 
             
             
-            <button class="submit-button" type="submit" style="height: 2.4em; float: right; margin-top:4.5em; margin-right: 3.5em;"> Edit </button>
+            <button class="submit-button" type="submit" style="height: 2.4em; float: right; margin-top:4.5em; margin-right: 3.5em;" title="submit"> Edit </button>
             </div>
             
         </EditForm>
@@ -125,7 +125,7 @@ else
         t.Name = task.Name;
         t.StartDate = task.StartDate;
         t.EndDate = task.EndDate;
-        t.ProjectID = Convert.ToInt32(projectID);
+        t.ProjectID = task.ProjectId;
 
         await _db.EditTask(t);
         task = new DisplayTask();

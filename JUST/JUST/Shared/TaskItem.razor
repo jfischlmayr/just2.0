@@ -8,10 +8,10 @@
 <div class = "task-row-completed">
     @Task?.Name
     <div class="icons">
-        <div class ="icon" @onclick="() => RemoveTask(Task.ID)">
+        <div class ="icon" @onclick="() => RemoveTask(Task.ID)" title="Delete task">
             <span class="oi oi-circle-x"></span>
         </div>
-        <div class="icon" @onclick="() => CompleteTask(Task.ID)" >
+        <div class="icon" @onclick="() => CompleteTask(Task.ID)" title="Mark task as unfinished" >
             <span class="oi oi-circle-check"></span>
         </div>
     </div>
@@ -20,13 +20,13 @@
 <div class = "task-row">
     @Task?.Name
     <div class="icons">
-        <div class ="icon" @onclick="() => EditTask(Task.ID)">
+        <div class ="icon" @onclick="() => EditTask(Task.ID)" title="edit task">
             <span class="oi oi-pencil"></span>
         </div>
-        <div class ="icon" @onclick="() => RemoveTask(Task.ID)">
+        <div class ="icon" @onclick="() => RemoveTask(Task.ID)" title="Delete task">
             <span class="oi oi-circle-x"></span>
         </div>
-        <div class="icon" @onclick="() => CompleteTask(Task.ID)" >
+        <div class="icon" @onclick="() => CompleteTask(Task.ID)" title="Mark task as completed">
             <span class="oi oi-circle-check"></span>
         </div>
     </div>

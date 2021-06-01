@@ -14,7 +14,7 @@
 	</NoRecordsTemplate>
 </SfDropDownList>
 
-<SfButton @onclick="getGantt">Get Gantt</SfButton>
+<button class="submit-button" type="submit" style="background-color: white;" title="Get Gantt Diagram" >Get Gantt</button>
 
 <SfGantt DataSource="@taskList" Toolbar="@(new List<string>() { "ZoomIn", "ZoomOut", "ZoomToFit" })" Height="850px" Width="1300px">
 	<GanttTaskFields Id="ID" Name="Name" StartDate="StartDate" EndDate="EndDate" Duration="Duration" Progress="Progress" Child="SubTasks">
