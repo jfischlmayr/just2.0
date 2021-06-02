@@ -35,18 +35,18 @@
 	public List<JustTask> allTasks = new List<JustTask>();
 	public List<JustTask> taskList = new List<JustTask>();
 	public List<Project> projects = new List<Project>();
-	public string projectTitle;
+	public string? projectTitle;
 
 	protected override async Task OnInitializedAsync()
 	{
-		projectTitle = "";
+		projectTitle = null;
 		allTasks = await _db_t.GetTasks();
 		projects = await _db.GetProjects();
 	}
 
 	public void getGantt()
 	{
-	    if (projectTitle != "")
+	    if (projectTitle != null)
 	    {
 	        var projectID = projects.Find(p => p.Title == projectTitle).ID;
 	        taskList = allTasks.Where(t => t.ProjectID == projectID).ToList();
