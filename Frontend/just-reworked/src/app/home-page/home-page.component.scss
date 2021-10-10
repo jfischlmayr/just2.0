@@ -3,7 +3,39 @@
 @font-face { font-family: HelveticaNeueBoldBoldItalic; src: url('../../../../fonts/FreeSansBoldOblique.otf'); } 
 @font-face { font-family: HelveticaNeueHollow; src: url('../../../../fonts/nimbus-sans-becker-outdbol.ttf'); } 
 
+
+
 h1.main-title{
     font-size: 3rem;
-    font-family: 'HelveticaNeueHollow';
+    font-family: 'HelveticaNeueBold';
+    color: white;
+    text-align: center;
+    margin-top: 3.3em;
+}
+
+button.fab-next{
+    background-color: white;
+    color: black;
+    margin: 2em;
+    margin-right: 5em;
+}
+
+button.fab-prev{
+    background-color: white;
+    color: black;
+    margin: 2em;
+    margin-left: 5em;
+}
+
+.flexbox-panel {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    align-content: flex-start;
+}
+
+mat-icon.prev{
+    margin-left: 0.32em;
 }
