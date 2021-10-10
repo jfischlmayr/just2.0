@@ -3,28 +3,32 @@
 @font-face { font-family: HelveticaNeueBoldBoldItalic; src: url('../../../../fonts/FreeSansBoldOblique.otf'); } 
 @font-face { font-family: HelveticaNeueHollow; src: url('../../../../fonts/nimbus-sans-becker-outdbol.ttf'); } 
 
-
+*{margin:0px auto;}
 
 h1.main-title{
     font-size: 3rem;
     font-family: 'HelveticaNeueBold';
     color: white;
     text-align: center;
-    margin-top: 3.3em;
+    /*margin-top: 3.3em;*/
 }
 
 button.fab-next{
     background-color: white;
     color: black;
-    margin: 2em;
+    
+    align-self: flex-end;
+    position: fixed;
+    left: 110em;
     margin-right: 5em;
 }
 
 button.fab-prev{
     background-color: white;
     color: black;
-    margin: 2em;
     margin-left: 5em;
+    align-self: flex-end;
+    position: fixed;
 }
 
 .flexbox-panel {
@@ -33,9 +37,10 @@ button.fab-prev{
     flex-wrap: nowrap;
     justify-content: space-between;
     align-items: flex-end;
-    align-content: flex-start;
+    align-content: center;
 }
 
 mat-icon.prev{
     margin-left: 0.32em;
 }
+
