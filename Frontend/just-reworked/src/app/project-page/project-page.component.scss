@@ -55,14 +55,7 @@ button.fab-prev{
     
 }
 
-.flexbox-panel {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    align-items: flex-end;
-    align-content: center;
-}
+
 
 mat-icon.prev{
     font-size: 3.3em !important;
@@ -77,3 +70,30 @@ mat-icon.next{
     margin-right: 0.32em;
 }
 
+.flexbox-panel {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    align-content: center;
+}
+
+.flexbox-panel-content{
+    display: flex;
+     flex-direction: row;
+     flex-wrap: wrap;
+     justify-content: center;
+     align-items: center;
+     align-content: center;
+}
+
+.content{
+    margin-top: 10em;
+}
+
+.project-card{
+    margin: 1rem 0.5rem 1rem 0.5rem !important;
+    width: 25rem;
+    height: 8rem;
+}
