@@ -1,7 +1,7 @@
-@font-face { font-family: HelveticaNeueBold; src: url('../../../../fonts/FreeSansBold.otf'); } 
-@font-face { font-family: HelveticaNeue; src: url('../../../../fonts/FreeSans.otf'); } 
-@font-face { font-family: HelveticaNeueBoldBoldItalic; src: url('../../../../fonts/FreeSansBoldOblique.otf'); } 
-@font-face { font-family: HelveticaNeueHollow; src: url('../../../../fonts/nimbus-sans-becker-outdbol.ttf'); } 
+@font-face { font-family: HelveticaNeueBold; src: url('../../../../fonts/FreeSansBold.otf'); }
+@font-face { font-family: HelveticaNeue; src: url('../../../../fonts/FreeSans.otf'); }
+@font-face { font-family: HelveticaNeueBoldBoldItalic; src: url('../../../../fonts/FreeSansBoldOblique.otf'); }
+@font-face { font-family: HelveticaNeueHollow; src: url('../../../../fonts/nimbus-sans-becker-outdbol.ttf'); }
 
 *{margin:0px auto;}
 
@@ -9,14 +9,18 @@ h1.main-title{
     font-size: 3rem;
     font-family: 'HelveticaNeueBold';
     color: white;
-    text-align: center;
-    /*margin-top: 3.3em;*/
+    margin-top: 3.3em;
+    display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+
 }
 
 button.fab-next{
     background-color: white;
     color: black;
-    
+
     align-self: flex-end;
     position: fixed;
     left: 110em;
