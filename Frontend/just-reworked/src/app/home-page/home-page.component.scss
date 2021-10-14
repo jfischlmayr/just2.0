@@ -39,9 +39,7 @@ button.fab-next:hover{
 }
 
 button.fab-prev:hover{
-    background-color: rgb(26, 26, 26);
-    color: white !important;
-    @include mat.elevation(8);
+    background-color: rgba(26, 26, 26, 0.4);
 }
 
 button.fab-prev{
