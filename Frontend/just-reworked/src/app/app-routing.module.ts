@@ -8,7 +8,7 @@ import { ProjectPageComponent } from './project-page/project-page.component';
 
 
 const routes: Routes = [
-  {path: 'home', component: HomePageComponent},
+  {path: '', component: HomePageComponent},
   {path: 'gantt', component: GanttPageComponent},
   {path: 'tasks', component: TaskPageComponent},
   {path: 'projects', component: ProjectPageComponent}

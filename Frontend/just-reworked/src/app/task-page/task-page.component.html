@@ -4,11 +4,13 @@
     </h1>
     <div class="flexbox-panel">
 
-        <button mat-fab color="warn" class="fab-prev" aria-label="Previous" [routerLink]="'/projects'" >
+        <button mat-fab color="warn" class="fab-prev" aria-label="Previous" [routerLink]="'/projects'" 
+                matTooltip="Vorheriger Schritt" [matTooltipShowDelay]="showDelay.value">
             <mat-icon class="prev">arrow_back_ios</mat-icon>
         </button>
 
-        <button mat-fab color="warn" class="fab-next" aria-label="Next" [routerLink]="'/gantt'">
+        <button mat-fab color="warn" class="fab-next " aria-label="Next" [routerLink]="'/gantt'"
+                matTooltip="Nächster Schritt" [matTooltipShowDelay]="showDelay.value">
             <mat-icon class="next">arrow_forward_ios</mat-icon>
         </button>
     </div>

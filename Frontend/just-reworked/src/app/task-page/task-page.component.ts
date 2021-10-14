@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-task-page',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./task-page.component.scss']
 })
 export class TaskPageComponent implements OnInit {
-
+  showDelay = new FormControl(500);
   constructor() { }
 
   ngOnInit(): void {
