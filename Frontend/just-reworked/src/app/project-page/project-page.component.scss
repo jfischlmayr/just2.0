@@ -58,6 +58,19 @@ button.fab-prev{
     align-content: center;
 }
 
+.flexbox-panel-content{
+  display: flex;
+     flex-direction: column;
+     flex-wrap: nowrap;
+     justify-content: center;
+     align-items: center;
+     align-content: center;
+}
+
+.content{
+  margin-top: 10em;
+}
+
 mat-icon.prev{
     font-size: 2.5em !important;
     margin-bottom: 5em;
@@ -70,6 +83,10 @@ mat-icon.next{
     margin-bottom: 5em;
     margin-top: 0;
     margin-right: 0.2em;
+}
+
+.mat-input-wrapper {
+  background: gray;
 }
 
 @media (min-width: 37em){
