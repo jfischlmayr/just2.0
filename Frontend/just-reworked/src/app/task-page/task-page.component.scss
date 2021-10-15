@@ -73,32 +73,32 @@ mat-icon.next{
 }
 
 @media (min-width: 37em){
-    h1.main-title{
-        font-size:4rem;
-    }
+  h1.main-title{
+      font-size:3.5rem;
+  }
 
-    button.fab-next{
-        height: 6.2em;
-        width: 6.2em;
-        right: 10em;
-        bottom: 10em;
-    }
-    button.fab-prev{
-        height: 6.2em;
-        width: 6.2em;
-        left: 10em;
-        bottom: 10em;
-    }
-    mat-icon.next{
-        font-size: 3.3em !important;
-    margin-bottom: 0.45em;
-    margin-right: 0.32em;
-    }
-    mat-icon.prev{
-        font-size: 3.3em !important;
-    margin-bottom: 0.45em;
-    margin-left: 0em;
-    }
+  button.fab-next{
+      height: 5.7em;
+      width: 5.7em;
+      right: 6em;
+      bottom: 8em;
+  }
+  button.fab-prev{
+      height: 5.7em;
+      width: 5.7em;
+      left: 6em;
+      bottom: 8em;
+  }
+  mat-icon.next{
+      font-size: 3.3em !important;
+  margin-bottom: 0.45em;
+  margin-right: 0.32em;
+  }
+  mat-icon.prev{
+      font-size: 3.3em !important;
+  margin-bottom: 0.45em;
+  margin-left: 0em;
+  }
 }
 
 @media (min-width: 50em){

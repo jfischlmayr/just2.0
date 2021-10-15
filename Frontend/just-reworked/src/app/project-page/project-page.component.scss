@@ -17,7 +17,7 @@ h1.main-title{
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    
+
 }
 
 button.fab-next{
@@ -29,7 +29,7 @@ button.fab-next{
     bottom: 7em;
     @include mat.elevation(4);
     color: black;
-    
+
 }
 
 button.fab-next:hover, button.fab-prev:hover{
@@ -46,7 +46,7 @@ button.fab-prev{
     left: 4em;
     bottom: 7em;
     color: black;
-    
+
 }
 
 .flexbox-panel {
@@ -62,8 +62,8 @@ mat-icon.prev{
     font-size: 2.5em !important;
     margin-bottom: 5em;
     margin-left: 0.14em;
-    
-    
+
+
 }
 mat-icon.next{
     font-size: 2.5em !important;
@@ -73,32 +73,32 @@ mat-icon.next{
 }
 
 @media (min-width: 37em){
-    h1.main-title{
-        font-size:4rem;
-    }
+  h1.main-title{
+      font-size:3.5rem;
+  }
 
-    button.fab-next{
-        height: 6.2em;
-        width: 6.2em;
-        right: 10em;
-        bottom: 10em;
-    }
-    button.fab-prev{
-        height: 6.2em;
-        width: 6.2em;
-        left: 10em;
-        bottom: 10em;
-    }
-    mat-icon.next{
-        font-size: 3.3em !important;
-    margin-bottom: 0.45em;
-    margin-right: 0.32em;
-    }
-    mat-icon.prev{
-        font-size: 3.3em !important;
-    margin-bottom: 0.45em;
-    margin-left: 0em;
-    }
+  button.fab-next{
+      height: 5.7em;
+      width: 5.7em;
+      right: 6em;
+      bottom: 8em;
+  }
+  button.fab-prev{
+      height: 5.7em;
+      width: 5.7em;
+      left: 6em;
+      bottom: 8em;
+  }
+  mat-icon.next{
+      font-size: 3.3em !important;
+  margin-bottom: 0.45em;
+  margin-right: 0.32em;
+  }
+  mat-icon.prev{
+      font-size: 3.3em !important;
+  margin-bottom: 0.45em;
+  margin-left: 0em;
+  }
 }
 
 @media (min-width: 50em){
