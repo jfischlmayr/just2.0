@@ -2,6 +2,46 @@
     <h1 class="main-title">
         GANTT 
     </h1>
+
+
+
+    <div class="content flexbox-panel-content">
+            <mat-card style="width: 80em; height: 35em;">
+                <mat-card-content>
+                    <mat-form-field appearance="outline" class="select-field">
+                        <mat-label>Select Project</mat-label>
+                        <mat-select>
+                          <mat-option *ngFor="let project of projects" [value]="project.value">
+                            {{project.viewValue}}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                      <mat-divider></mat-divider>
+                      <!---->
+                      <mat-list style="width: 15.5em; margin-left: 0em;">
+                        <mat-list-item>Task 1 
+                            <mat-card style="left: 10em; bottom: 0.2em; width: 4em; height: 0.3em; background-color: orange;;">
+                            </mat-card>
+                        </mat-list-item>
+                        <mat-divider></mat-divider>
+                        <mat-list-item>Task 2
+                            <mat-card style="left: 16em; bottom: 0em; width: 6em; height: 0.3em; background-color: orange;;">
+                            </mat-card>
+                        </mat-list-item>
+                        <mat-divider></mat-divider>
+                        <mat-list-item>Task 3
+                            <mat-card style="left: 19em; width: 2em; height: 0.3em; background-color: orange;;">
+                            </mat-card>
+                        </mat-list-item>
+                        <mat-divider></mat-divider>
+                      </mat-list>
+                      
+
+
+
+                </mat-card-content>
+            </mat-card>
+    </div>
     <div class="flexbox-panel">
 
         <button mat-fab color="warn" class="fab-prev" aria-label="Previous" [routerLink]="'/tasks'"
