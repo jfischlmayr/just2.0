@@ -1,9 +1,13 @@
 @use '~@angular/material' as mat;
 
+
+
 @font-face { font-family: HelveticaNeueBold; src: url('../../../../fonts/FreeSansBold.otf'); }
 @font-face { font-family: HelveticaNeue; src: url('../../../../fonts/FreeSans.otf'); }
 @font-face { font-family: HelveticaNeueBoldItalic; src: url('../../../../fonts/FreeSansBoldOblique.otf'); }
 @font-face { font-family: HelveticaNeueHollow; src: url('../../../../fonts/nimbus-sans-becker-outdbol.ttf'); }
+
+
 
 *{margin:0px auto;}
 
@@ -30,6 +34,10 @@ button.fab-next{
     @include mat.elevation(4);
     color: black;
 
+}
+
+.project-list{
+    width: 45%;
 }
 
 button.fab-next:hover, button.fab-prev:hover{
@@ -59,7 +67,7 @@ button.fab-prev{
 }
 
 .flexbox-panel-content{
-  display: flex;
+    display: flex;
      flex-direction: column;
      flex-wrap: nowrap;
      justify-content: center;
@@ -70,7 +78,12 @@ button.fab-prev{
 .content{
   margin-top: 10em;
   color: white !important;
+  width: 40%;
+  height: 35em;
+  background-color: white;
 }
+
+
 
 mat-icon.prev{
     font-size: 2.5em !important;

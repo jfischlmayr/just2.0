@@ -13,7 +13,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import {MatCard, MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInput, MatInputModule} from '@angular/material/input';
+import {MatInputModule} from '@angular/material/input';
 
 @NgModule({
   declarations: [

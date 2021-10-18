@@ -1,31 +1,31 @@
-
+<div class="my-special-section">
     <h1 class="main-title">
         PROJECTS
     </h1>
-
+    
     <div class="content flexbox-panel-content">
-<form>
-  <mat-form-field class="mat-form-field">
-    <mat-label>Outline form field</mat-label>
-    <input matInput class="mat-input-element" placeholder="Placeholder">
-
-  </mat-form-field>
-</form>
-
-
-
-
+        
+        
+            <mat-form-field appearance="outline" style="top: -14em;">
+                <mat-label>Input</mat-label>
+                <input matInput>
+              </mat-form-field>
+              
+        
+        
     </div>
-
+    
     <div class="flexbox-panel">
-
+    
         <button mat-fab color="warn" class="fab-prev" aria-label="Previous"
                 [routerLink]="'/'"
                 matTooltip="Vorheriger Schritt" [matTooltipShowDelay]="showDelay.value">
             <mat-icon class="prev">arrow_back_ios</mat-icon>
         </button>
-
+    
         <button mat-fab color="warn" class="fab-next" aria-label="Next" [routerLink]="'/tasks'" matTooltip="Nächster Schritt" [matTooltipShowDelay]="showDelay.value">
             <mat-icon class="next">arrow_forward_ios</mat-icon>
         </button>
     </div>
+</div>
+
