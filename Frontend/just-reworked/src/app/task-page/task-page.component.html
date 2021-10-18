@@ -4,9 +4,61 @@
     </h1>
 
     <div class="content flexbox-panel-content">
-        <div style="background-color: white; width: 30%; height: 40em;">
-            asdkföakdjfökajdöflk
-        </div>
+        <mat-card style="width: 65em; height: 35em;">
+            <mat-card-content>
+                <mat-form-field appearance="outline" class="input-field">
+                    <mat-label>Projektname</mat-label>
+                    <input matInput>
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="date-field">
+                    <mat-label>Zeitspanne auswählen</mat-label>
+                    <input matInput>
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="select-field">
+                    <mat-label>Select Project</mat-label>
+                    <mat-select>
+                      <mat-option *ngFor="let project of projects" [value]="project.value">
+                        {{project.viewValue}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+                <button mat-raised-button color="basic" style="background-color: black; color: white; margin-left: 2em;" >Hinzufügen</button>
+
+
+                <mat-card class="task-card">
+                    <mat-card-content class="flexbox-panel-card">
+                        <div>Projektsachen machen 1.0</div>
+                        <div>27.4.2021 - 29.5.2021</div>
+                        <mat-icon>delete</mat-icon>
+                    </mat-card-content>
+              </mat-card>
+              <mat-card class="task-card">
+                <mat-card-content class="flexbox-panel-card">
+                    <div>Projektsachen machen 2.0</div>
+                    <div>27.4.2021 - 29.5.2021</div>
+                    <mat-icon>delete</mat-icon>
+                </mat-card-content>
+            </mat-card>
+            <mat-card class="task-card">
+                <mat-card-content class="flexbox-panel-card">
+                    <div>Projektsachen machen 3.0</div>
+                    <div>27.4.2021 - 29.5.2021</div>
+                    <mat-icon>delete</mat-icon>
+                </mat-card-content>
+            </mat-card>
+            <mat-card class="task-card">
+                <mat-card-content class="flexbox-panel-card">
+                    <div>Projektsachen machen 4.0</div>
+                    <div>27.4.2021 - 29.5.2021</div>
+                    <mat-icon>delete</mat-icon>
+                </mat-card-content>
+        </mat-card>
+            </mat-card-content>
+        </mat-card>
+
+
+        
     </div>
 
     <div class="flexbox-panel">

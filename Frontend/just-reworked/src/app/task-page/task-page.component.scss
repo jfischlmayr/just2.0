@@ -69,8 +69,29 @@ button.fab-prev{
   
   .content{
     margin-top: 10em;
-    color: white !important;
   }
+
+  .input-field{
+    width: 18em !important;
+    margin-right: 1em;
+}
+.date-field{
+    width: 18em !important;
+    margin-right: 1em;
+}
+
+.task-card{
+    margin-top: 1em;
+}
+
+.flexbox-panel-card{
+    display: flex;
+     flex-direction: row;
+     flex-wrap: nowrap;
+     justify-content: space-between;
+     align-items: center;
+     align-content: center;
+}
 
 mat-icon.prev{
     font-size: 2.5em !important;
