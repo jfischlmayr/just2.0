@@ -78,12 +78,24 @@ button.fab-prev{
 .content{
   margin-top: 10em;
   color: white !important;
-  width: 40%;
   height: 35em;
-  background-color: white;
+  overflow-y: scroll;
 }
 
+.project-card{
+    margin-top: 1em;
+  color: black !important;
+  background-color: rgb(230, 228, 221);
+}
 
+.input-field{
+    width: 23em !important;
+    margin-right: 1em;
+}
+.date-field{
+    width: 23em !important;
+    margin-right: 1em;
+}
 
 mat-icon.prev{
     font-size: 2.5em !important;
