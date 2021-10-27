@@ -1,24 +1,43 @@
-<mat-progress-bar mode="determinate" value="0" color="warn" style="width: 35%; top: 3em;"></mat-progress-bar>
 
     <h1 class="main-title">
         JUST 2.0
     </h1>
 
-    <p>
-      JUST 2.0 ist ein Projekt von:
-      Fischlmayr Jan, Huemer Patrick und Samuel Kowatschek
-      <br>
-      Das Ziel von JUST 2.0 ist die einfache Erklärung und Erstellung von Gantt Diagrammen. Dieses Projekt ist vor allem für den Einsatz im Ausbildungsreich gedacht, unsere Zielgruppe HAK-Schüler sind.
-      <br>Das Projekt ist Open Source und ist unter der GNU Lizenz lizensiert.
-      <br>Das Projekt läuft auf der Leocloud der HTBLA Leonding
-      <br>Die Website ist sowohl für Mobilgeräte als auch Desktop PC's designed.
+    <div class="content flexbox-panel-content">
+        <p class="intro-text">
+            JUST 2.0 ist ein Projekt von Fischlmayr Jan, Huemer Patrick und Kowatschek Samuel, welches im Systemplanungsunterricht der HTBLA Leonding entwickelt wurde.  
+            <br>
+            Das Ziel von JUST 2.0 ist die einfache Erklärung und Erstellung von Gantt Diagrammen. 
+            Dieses Projekt ist vor allem für den Einsatz im Ausbildungsreich, speziell für HAK-Schüler, gedacht.
+            <br>Das Projekt ist Open Source und unter der <a href="https://www.gnu.org/licenses/licenses.de.html">GNU Lizenz</a> lizensiert.
+            <br>Die Website ist sowohl für Mobilgeräte als auch Desktop PC's geeignet.
+          </p>
 
-      3 Möglichkeiten:
-      neues Gantt
-      bestehendes gantt editieren
-      tutorial
-    </p>
-
+          <table>
+              <tr>
+                  <td>
+                    <button class="intro-button" mat-raised-button [routerLink]="'/projects'">
+                        Neues Gantt erstellen
+                    </button>
+                  </td>
+                  <td>
+                    <button class="intro-button" mat-raised-button  [routerLink]="'/oldGantt'">
+                        Altes Gantt editieren
+                    </button>
+                  </td>
+                  
+              </tr>
+          </table>
+          <button class="tutorial-button" color="warn" mat-raised-button>
+            Tutorial ansehen
+        </button>
+            
+            
+            
+          
+    </div>
+    
+<!--
     <div class="flexbox-panel">
 
         <button mat-fab disabled color="warn" class="fab-prev" aria-label="Previous"
@@ -30,6 +49,6 @@
                 matTooltip="Nächster Schritt" [matTooltipShowDelay]="showDelay.value">
             <mat-icon class="next">arrow_forward_ios</mat-icon>
         </button>
-    </div>
+    </div>-->
 
 
