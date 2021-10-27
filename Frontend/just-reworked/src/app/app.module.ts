@@ -19,6 +19,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { OldGanttComponent } from './old-gantt/old-gantt.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     GanttPageComponent,
     HomePageComponent,
     ProjectPageComponent,
-    TaskPageComponent
+    TaskPageComponent,
+    OldGanttComponent
   ],
   imports: [
     BrowserModule,
