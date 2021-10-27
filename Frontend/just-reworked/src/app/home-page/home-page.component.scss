@@ -20,6 +20,36 @@ h1.main-title{
 
 }
 
+a{
+    color: #ffb6a2; 
+    text-decoration: none;
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+.flexbox-panel-content{
+    display: flex;
+     flex-direction: column;
+     flex-wrap: nowrap;
+     justify-content: center;
+     align-items: center;
+     align-content: center;
+}
+
+.content{
+    margin-top: 10em;
+  }
+
+p.intro-text{
+    color: white;
+    font-family: HelveticaNeue;
+    font-size: 1.3rem;
+    text-align: center;
+    line-height: 1.5rem;
+}
+
 button.fab-next{
     background-color: white;
     position: fixed;
@@ -131,6 +161,53 @@ mat-icon.next{
         font-size: 3.3em !important;
     margin-bottom: 0.45em;
     margin-left: 0em;
+    }
+
+    p.intro-text{
+        color: white;
+        font-family: HelveticaNeue;
+        font-size: 1.3rem;
+        margin: 0 auto;
+        line-height: 1.8rem;
+        width: 40em;
+        text-align: center !important;
+        
+    }
+
+    .button-area{
+        margin: 0 auto;
+        margin-top: 3em;
+    }
+
+    button.intro-button, button.tutorial-button{
+        width: 15em;
+        height: 5em;
+        margin-left: 0.25em;
+        margin-right: 0.25em;
+        margin-top: 2.5em;
+        color: black;
+        transition: background-color 400ms, color 400ms;
+        
+    }
+
+    button.tutorial-button{
+        color: black;
+        background-color:#ff8665;
+        width: 30.7em;
+        margin-top: 0.5em;
+    }
+
+    button.intro-button:hover{
+        background-color: rgb(26, 26, 26);
+        color: white !important;
+        @include mat.elevation(8);
+
+    }
+
+    button.tutorial-button:hover{
+        background-color:rgb(26, 26, 26);
+        color: white !important;
+        @include mat.elevation(8);
     }
 }
 
