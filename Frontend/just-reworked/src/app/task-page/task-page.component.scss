@@ -107,6 +107,12 @@ mat-icon.next{
     margin-right: 0.2em;
 }
 
+.wrapping-card{
+    width: 90%; 
+    height: 35em;
+    overflow-y: scroll;
+}
+
 @media (min-width: 37em){
   h1.main-title{
       font-size:3.5rem;
@@ -162,6 +168,10 @@ mat-icon.next{
         font-size: 3.3em !important;
     margin-bottom: 0.45em;
     margin-left: 0em;
+    }
+
+    .wrapping-card{
+        width: 60%; 
     }
 }
 
