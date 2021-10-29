@@ -13,24 +13,39 @@
             <br>Die Website ist sowohl für Mobilgeräte als auch Desktop PC's geeignet.
           </p>
 
-          <table>
-              <tr>
-                  <td>
-                    <button class="intro-button" mat-raised-button [routerLink]="'/projects'">
-                        Neues Gantt erstellen
-                    </button>
-                  </td>
-                  <td>
-                    <button class="intro-button" mat-raised-button  [routerLink]="'/oldGantt'">
-                        Altes Gantt editieren
-                    </button>
-                  </td>
-                  
-              </tr>
-          </table>
-          <button class="tutorial-button" color="warn" mat-raised-button>
-            Tutorial ansehen
-        </button>
+          
+            <table>
+                <tr>
+                    <td>
+                      <button class="intro-button buttons-big-screen" mat-raised-button [routerLink]="'/projects'">
+                          Neues Gantt erstellen
+                      </button>
+                    </td>
+                    <td>
+                      <button class="intro-button buttons-big-screen" mat-raised-button  [routerLink]="'/oldGantt'">
+                          Altes Gantt editieren
+                      </button>
+                    </td>
+                    
+                </tr>
+            </table>
+            <button class="tutorial-button buttons-big-screen" color="warn" mat-raised-button>
+                Tutorial ansehen
+            </button>
+          
+          
+            <button class="intro-button buttons-small-screen" mat-raised-button [routerLink]="'/projects'">
+                Neues Gantt erstellen
+            </button>
+            <button class="intro-button buttons-small-screen" mat-raised-button  [routerLink]="'/oldGantt'">
+                Altes Gantt editieren
+            </button>
+            <button class="tutorial-button buttons-small-screen" color="warn" mat-raised-button>
+                Tutorial ansehen
+            </button>
+        
+          
+          
             
             
             

@@ -69,9 +69,8 @@
 
     <div class="flexbox-panel">
 
-        <button mat-fab color="warn" class="fab-prev" aria-label="Previous"
-                [routerLink]="'/'"
-                matTooltip="Vorheriger Schritt" [matTooltipShowDelay]="showDelay.value">
+        <button mat-fab disabled color="warn" class="fab-prev" aria-label="Previous"
+                matTooltip="Sie sind bereits am Anfang" [matTooltipShowDelay]="showDelay.value">
             <mat-icon class="prev">arrow_back_ios</mat-icon>
         </button>
 

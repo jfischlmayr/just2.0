@@ -45,9 +45,11 @@ a:hover{
 p.intro-text{
     color: white;
     font-family: HelveticaNeue;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     text-align: center;
-    line-height: 1.5rem;
+    line-height: 1.6rem;
+    margin-left: 2em;
+    margin-right: 2em;
 }
 
 button.fab-next{
@@ -106,6 +108,45 @@ mat-icon.next{
     margin-right: 0.2em;
 }
 
+.button-area{
+    margin: 0 auto;
+    margin-top: 3em;
+}
+
+button.intro-button, button.tutorial-button{
+    width: 25em;
+    height: 5em;
+    margin-top: 0.5em;
+    color: black;
+    transition: background-color 400ms, color 400ms;
+    
+}
+
+button.tutorial-button{
+    background-color:#ff8665;
+}
+
+button.intro-button:hover{
+    background-color: rgb(26, 26, 26);
+    color: white !important;
+    @include mat.elevation(8);
+
+}
+
+button.tutorial-button:hover{
+    background-color:rgb(26, 26, 26);
+    color: white !important;
+    @include mat.elevation(8);
+}
+
+.buttons-big-screen{
+    display: none;
+}
+
+.buttons-small-screen{
+    display: inline-block;
+}
+
 @media (min-width: 37em){
     h1.main-title{
         font-size:3.5rem;
@@ -132,6 +173,14 @@ mat-icon.next{
         font-size: 3.3em !important;
     margin-bottom: 0.45em;
     margin-left: 0em;
+    }
+
+    .buttons-big-screen{
+        display: inline-block;
+    }
+    
+    .buttons-small-screen{
+        display: none;
     }
 }
 
@@ -208,6 +257,14 @@ mat-icon.next{
         background-color:rgb(26, 26, 26);
         color: white !important;
         @include mat.elevation(8);
+    }
+
+    .buttons-big-screen{
+        display: inline-block;
+    }
+    
+    .buttons-small-screen{
+        display: none;
     }
 }
 
