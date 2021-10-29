@@ -87,6 +87,7 @@ button.fab-prev{
     margin-top: 1em;
   color: black !important;
   background-color: rgb(230, 228, 221);
+  width: 90%;
 }
 
 .input-field{
@@ -96,6 +97,16 @@ button.fab-prev{
 .date-field{
     width: 23em !important;
     margin-right: 1em;
+    margin-top: -2em;
+    margin-bottom: -1em;
+}
+
+.wrapping-card{
+    width: 90%; 
+    height: 35em;
+    /*height: auto;*/
+    background-color: white;
+    overflow-y: scroll;
 }
 
 mat-icon.prev{
@@ -112,6 +123,14 @@ mat-icon.next{
     margin-right: 0.2em;
 }
 
+.edit-icon{
+    right: 8%;
+    position: absolute;
+}
+.delete-icon{
+    right: 2%;
+    position: absolute;
+}
 
 
 
@@ -170,6 +189,34 @@ mat-icon.next{
         font-size: 3.3em !important;
     margin-bottom: 0.45em;
     margin-left: 0em;
+    }
+
+    .wrapping-card{
+        width: 60%; 
+        height: 35em; 
+    }
+
+    .project-card{
+      margin-top: 1em;
+      color: black !important;
+      background-color: rgb(230, 228, 221);
+      width: 95%;
+    }
+    
+    .input-field{
+        width: 23em !important;
+        margin-right: 1em;
+    }
+    .date-field{
+        width: 23em !important;
+        margin-right: 1em;
+    }
+
+    .edit-icon{
+        right: 5%;
+    }
+    .delete-icon{
+        right: 2%;
     }
 }
 
