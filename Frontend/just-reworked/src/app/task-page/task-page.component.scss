@@ -71,14 +71,14 @@ button.fab-next:active, button.fab-prev:active{
        align-items: center;
        align-content: center;
   }
-  
+
   .content{
     margin-top: 10em;
   }
 
 .input-field{
     width: 100% !important;
-    
+
 }
 .date-field{
     width: 100% !important;
@@ -95,8 +95,8 @@ button.fab-next:active, button.fab-prev:active{
 }
 
 .add-button{
-    background-color: black; 
-    color: white; 
+    background-color: black;
+    color: white;
     width: 100%;
     margin-top: -1em;
 }
@@ -125,7 +125,7 @@ mat-icon.next{
 }
 
 .wrapping-card{
-    width: 90%; 
+    width: 90%;
     height: 35em;
     overflow-y: scroll;
 }
@@ -188,7 +188,7 @@ mat-icon.next{
     }
 
     .wrapping-card{
-        width: 60%; 
+        width: 60%;
     }
 
     .input-field{
@@ -199,9 +199,23 @@ mat-icon.next{
         width: 18em !important;
         margin-right: 1em;
     }
-    
+
+    .select-field{
+      width: 18em !important;
+        margin-right: 1em;
+    }
+
     .task-card{
+      background-color: rgba(240, 246, 255, 0.774);
+
         margin-top: 1em;
     }
+
+    .add-button{
+      background-color: black;
+      color: white;
+      width: auto;
+      margin-top: -1em;
+  }
 }
 
