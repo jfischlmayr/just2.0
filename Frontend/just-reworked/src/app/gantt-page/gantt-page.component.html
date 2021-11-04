@@ -15,28 +15,31 @@
                           </mat-option>
                         </mat-select>
                       </mat-form-field>
-                      <button mat-raised-button color="primary" style="color: white; left: 1em; bottom: 0.25em;" >Gantt zeigen</button>
-                      <button mat-raised-button color="accent" style="color: white; background-color: green; left: 45em; bottom: 0.25em;" ><mat-icon>file_download</mat-icon>CSV downloaden</button>
+                      <button mat-raised-button color="primary" class="submit-button" >Gantt zeigen</button>
+                      <button mat-raised-button color="accent" class="download-button" ><mat-icon>file_download</mat-icon>CSV downloaden</button>
 
                       <mat-divider></mat-divider>
+                      <div class="gantt-task-wrapper">
+                        <mat-list style="width: 15.5em; margin-left: 0em; ">
+                          <mat-list-item>Task 1
+                              <mat-card style="left: 10em; bottom: 0.2em; width: 4em; height: 0.3em; background-color: orange;">
+                              </mat-card>
+                          </mat-list-item>
+                          <mat-divider></mat-divider>
+                          <mat-list-item>Task 2
+                              <mat-card style="left: 16em; bottom: 0em; width: 6em; height: 0.3em; background-color: orange;">
+                              </mat-card>
+                          </mat-list-item>
+                          <mat-divider></mat-divider>
+                          <mat-list-item>Task 3
+                              <mat-card style="left: 19em; width: 2em; height: 0.3em; background-color: orange;;">
+                              </mat-card>
+                          </mat-list-item>
+                          <mat-divider></mat-divider>
+                        </mat-list>
+                      </div>
                       <!---->
-                      <mat-list style="width: 15.5em; margin-left: 0em;">
-                        <mat-list-item>Task 1
-                            <mat-card style="left: 10em; bottom: 0.2em; width: 4em; height: 0.3em; background-color: orange;;">
-                            </mat-card>
-                        </mat-list-item>
-                        <mat-divider></mat-divider>
-                        <mat-list-item>Task 2
-                            <mat-card style="left: 16em; bottom: 0em; width: 6em; height: 0.3em; background-color: orange;;">
-                            </mat-card>
-                        </mat-list-item>
-                        <mat-divider></mat-divider>
-                        <mat-list-item>Task 3
-                            <mat-card style="left: 19em; width: 2em; height: 0.3em; background-color: orange;;">
-                            </mat-card>
-                        </mat-list-item>
-                        <mat-divider></mat-divider>
-                      </mat-list>
+
 
 
 
