@@ -177,9 +177,10 @@ mat-icon.next{
     }
 
     .download-button{
-      left: 45em;
-    bottom: 0.25em;
-    width: auto;
+      position: absolute;
+      right: 2%;
+      
+      width: auto;
     }
 
     .submit-button{
