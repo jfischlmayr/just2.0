@@ -1,0 +1,61 @@
+    <h1 class="main-title">
+        GANTT
+    </h1>
+
+
+
+    <div class="content flexbox-panel-content">
+            <mat-card class="card-wrapper">
+                <mat-card-content>
+                    <mat-form-field appearance="outline" class="select-field">
+                        <mat-label>Select Project</mat-label>
+                        <mat-select>
+                          <mat-option *ngFor="let project of projects" [value]="project.value">
+                            {{project.viewValue}}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                      <button mat-raised-button color="primary" class="submit-button" >Gantt zeigen</button>
+                      <button mat-raised-button color="accent" class="download-button" ><mat-icon>file_download</mat-icon>CSV downloaden</button>
+
+                      <mat-divider></mat-divider>
+                      <div class="gantt-task-wrapper">
+                        <mat-list style="width: 15.5em; margin-left: 0em; ">
+                          <mat-list-item>Task 1
+                              <mat-card style="left: 10em; bottom: 0.2em; width: 4em; height: 0.3em; background-color: orange;">
+                              </mat-card>
+                          </mat-list-item>
+                          <mat-divider></mat-divider>
+                          <mat-list-item>Task 2
+                              <mat-card style="left: 16em; bottom: 0em; width: 6em; height: 0.3em; background-color: orange;">
+                              </mat-card>
+                          </mat-list-item>
+                          <mat-divider></mat-divider>
+                          <mat-list-item>Task 3
+                              <mat-card style="left: 19em; width: 2em; height: 0.3em; background-color: orange;;">
+                              </mat-card>
+                          </mat-list-item>
+                          <mat-divider></mat-divider>
+                        </mat-list>
+                      </div>
+                      <!---->
+
+
+
+
+
+                </mat-card-content>
+            </mat-card>
+    </div>
+    <div class="flexbox-panel">
+
+        <button mat-fab color="warn" class="fab-prev" aria-label="Previous" [routerLink]="'/tasks'"
+                matTooltip="Vorheriger Schritt" [matTooltipShowDelay]="showDelay.value" >
+            <mat-icon class="prev">arrow_back_ios</mat-icon>
+        </button>
+
+        <button mat-fab disabled color="warn" class="fab-next" aria-label="Next"
+                matTooltip="Sie sind am letzten Schritt" [matTooltipShowDelay]="showDelay.value">
+            <mat-icon class="next">arrow_forward_ios</mat-icon>
+        </button>
+    </div>
