@@ -22,6 +22,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { OldGanttComponent } from './old-gantt/old-gantt.component';
 import { TutorialComponent } from './tutorial/tutorial.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
