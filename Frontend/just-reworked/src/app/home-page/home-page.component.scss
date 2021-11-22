@@ -1,0 +1,270 @@
+@use '~@angular/material' as mat;
+
+@font-face { font-family: HelveticaNeueBold; src: url('../../../../fonts/FreeSansBold.otf'); }
+@font-face { font-family: HelveticaNeue; src: url('../../../../fonts/FreeSans.otf'); }
+@font-face { font-family: HelveticaNeueBoldItalic; src: url('../../../../fonts/FreeSansBoldOblique.otf'); }
+@font-face { font-family: HelveticaNeueHollow; src: url('../../../../fonts/nimbus-sans-becker-outdbol.ttf'); }
+
+*{margin:0px auto;}
+
+h1.main-title{
+    font-size: 2.8rem;
+    font-family: 'HelveticaNeueBold';
+    color: white;
+    position: relative;
+    top: 1.4em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+
+}
+
+a{
+    color: #ffb6a2; 
+    text-decoration: none;
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+.flexbox-panel-content{
+    display: flex;
+     flex-direction: column;
+     flex-wrap: nowrap;
+     justify-content: center;
+     align-items: center;
+     align-content: center;
+}
+
+.content{
+    margin-top: 10em;
+  }
+
+p.intro-text{
+    color: white;
+    font-family: HelveticaNeue;
+    font-size: 1.2rem;
+    text-align: center;
+    line-height: 1.6rem;
+    margin-left: 2em;
+    margin-right: 2em;
+}
+
+button.fab-next{
+    background-color: white;
+    position: fixed;
+    height: 4.5em;
+    width: 4.5em;
+    right: 4em;
+    bottom: 7em;
+    @include mat.elevation(4);
+    color: black;
+
+}
+
+button.fab-next:hover{
+    background-color: rgb(26, 26, 26);
+    color: white !important;
+    @include mat.elevation(8);
+}
+
+button.fab-prev:hover{
+    background-color: rgba(26, 26, 26, 0.4);
+}
+
+button.fab-prev{
+    background-color: white;
+    position: fixed;
+    height: 4.5em;
+    width: 4.5em;
+    left: 4em;
+    bottom: 7em;
+    color: black;
+
+}
+
+.flexbox-panel {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    align-content: center;
+}
+
+mat-icon.prev{
+    font-size: 2.5em !important;
+    margin-bottom: 5em;
+    margin-left: 0.14em;
+
+
+}
+mat-icon.next{
+    font-size: 2.5em !important;
+    margin-bottom: 5em;
+    margin-top: 0;
+    margin-right: 0.2em;
+}
+
+.button-area{
+    margin: 0 auto;
+    margin-top: 3em;
+}
+
+button.intro-button, button.tutorial-button{
+    width: 25em;
+    height: 5em;
+    margin-top: 0.5em;
+    color: black;
+    transition: background-color 400ms, color 400ms;
+    
+}
+
+button.tutorial-button{
+    background-color:#ff8665;
+}
+
+button.intro-button:hover{
+    background-color: rgb(26, 26, 26);
+    color: white !important;
+    @include mat.elevation(8);
+
+}
+
+button.tutorial-button:hover{
+    background-color:rgb(26, 26, 26);
+    color: white !important;
+    @include mat.elevation(8);
+}
+
+.buttons-big-screen{
+    display: none;
+}
+
+.buttons-small-screen{
+    display: inline-block;
+}
+
+@media (min-width: 37em){
+    h1.main-title{
+        font-size:3.5rem;
+    }
+
+    button.fab-next{
+        height: 5.7em;
+        width: 5.7em;
+        right: 6em;
+        bottom: 8em;
+    }
+    button.fab-prev{
+        height: 5.7em;
+        width: 5.7em;
+        left: 6em;
+        bottom: 8em;
+    }
+    mat-icon.next{
+        font-size: 3.3em !important;
+    margin-bottom: 0.45em;
+    margin-right: 0.32em;
+    }
+    mat-icon.prev{
+        font-size: 3.3em !important;
+    margin-bottom: 0.45em;
+    margin-left: 0em;
+    }
+
+    .buttons-big-screen{
+        display: inline-block;
+    }
+    
+    .buttons-small-screen{
+        display: none;
+    }
+}
+
+@media (min-width: 50em){
+    h1.main-title{
+        font-size:4rem;
+    }
+
+    button.fab-next{
+        height: 6.2em;
+        width: 6.2em;
+        right: 10em;
+        bottom: 10em;
+    }
+    button.fab-prev{
+        height: 6.2em;
+        width: 6.2em;
+        left: 10em;
+        bottom: 10em;
+    }
+    mat-icon.next{
+        font-size: 3.3em !important;
+    margin-bottom: 0.45em;
+    margin-right: 0.32em;
+    }
+    mat-icon.prev{
+        font-size: 3.3em !important;
+    margin-bottom: 0.45em;
+    margin-left: 0em;
+    }
+
+    p.intro-text{
+        color: white;
+        font-family: HelveticaNeue;
+        font-size: 1.3rem;
+        margin: 0 auto;
+        line-height: 1.8rem;
+        width: 40em;
+        text-align: center !important;
+        
+    }
+
+    .button-area{
+        margin: 0 auto;
+        margin-top: 3em;
+    }
+
+    button.intro-button, button.tutorial-button{
+        width: 15em;
+        height: 5em;
+        margin-left: 0.25em;
+        margin-right: 0.25em;
+        margin-top: 2.5em;
+        color: black;
+        transition: background-color 400ms, color 400ms;
+        
+    }
+
+    button.tutorial-button{
+        color: black;
+        background-color:#ff8665;
+        width: 30.7em;
+        margin-top: 0.5em;
+    }
+
+    button.intro-button:hover{
+        background-color: rgb(26, 26, 26);
+        color: white !important;
+        @include mat.elevation(8);
+
+    }
+
+    button.tutorial-button:hover{
+        background-color:rgb(26, 26, 26);
+        color: white !important;
+        @include mat.elevation(8);
+    }
+
+    .buttons-big-screen{
+        display: inline-block;
+    }
+    
+    .buttons-small-screen{
+        display: none;
+    }
+}
+

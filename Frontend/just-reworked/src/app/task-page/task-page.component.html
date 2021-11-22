@@ -1,0 +1,74 @@
+    <h1 class="main-title">
+        TASKS
+    </h1>
+
+    <div class="content flexbox-panel-content">
+        <mat-card class="wrapping-card">
+            <mat-card-content>
+                <mat-form-field appearance="outline" class="input-field">
+                    <mat-label>Projektname</mat-label>
+                    <input matInput>
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="date-field">
+                    <mat-label>Zeitspanne auswählen</mat-label>
+                    <input matInput>
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="select-field">
+                    <mat-label>Select Project</mat-label>
+                    <mat-select>
+                      <mat-option *ngFor="let project of projects" [value]="project.value">
+                        {{project.viewValue}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+                <button mat-raised-button color="basic" class="add-button" >Hinzufügen</button>
+
+
+                <mat-card class="task-card">
+                    <mat-card-content class="flexbox-panel-card">
+                        <div>Projektsachen machen 1.0</div>
+                        <div>27.4.2021 - 29.5.2021</div>
+                        <mat-icon>delete</mat-icon>
+                    </mat-card-content>
+              </mat-card>
+              <mat-card class="task-card">
+                <mat-card-content class="flexbox-panel-card">
+                    <div>Projektsachen machen 2.0</div>
+                    <div>27.4.2021 - 29.5.2021</div>
+                    <mat-icon>delete</mat-icon>
+                </mat-card-content>
+            </mat-card>
+            <mat-card class="task-card">
+                <mat-card-content class="flexbox-panel-card">
+                    <div>Projektsachen machen 3.0</div>
+                    <div>27.4.2021 - 29.5.2021</div>
+                    <mat-icon>delete</mat-icon>
+                </mat-card-content>
+            </mat-card>
+            <mat-card class="task-card">
+                <mat-card-content class="flexbox-panel-card">
+                    <div>Projektsachen machen 4.0</div>
+                    <div>27.4.2021 - 29.5.2021</div>
+                    <mat-icon>delete</mat-icon>
+                </mat-card-content>
+        </mat-card>
+            </mat-card-content>
+        </mat-card>
+
+
+
+    </div>
+
+    <div class="flexbox-panel">
+
+        <button mat-fab color="warn" class="fab-prev" aria-label="Previous" [routerLink]="'/projects'"
+                matTooltip="Vorheriger Schritt" [matTooltipShowDelay]="showDelay.value">
+            <mat-icon class="prev">arrow_back_ios</mat-icon>
+        </button>
+
+        <button mat-fab color="warn" class="fab-next " aria-label="Next" [routerLink]="'/gantt'"
+                matTooltip="Nächster Schritt" [matTooltipShowDelay]="showDelay.value">
+            <mat-icon class="next">arrow_forward_ios</mat-icon>
+        </button>
+    </div>

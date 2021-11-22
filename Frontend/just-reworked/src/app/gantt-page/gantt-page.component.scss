@@ -1,0 +1,202 @@
+@use '~@angular/material' as mat;
+
+@font-face { font-family: HelveticaNeueBold; src: url('../../../../fonts/FreeSansBold.otf'); }
+@font-face { font-family: HelveticaNeue; src: url('../../../../fonts/FreeSans.otf'); }
+@font-face { font-family: HelveticaNeueBoldItalic; src: url('../../../../fonts/FreeSansBoldOblique.otf'); }
+@font-face { font-family: HelveticaNeueHollow; src: url('../../../../fonts/nimbus-sans-becker-outdbol.ttf'); }
+
+*{margin:0px auto;}
+
+h1.main-title{
+    font-size: 2.8rem;
+    font-family: 'HelveticaNeueBold';
+    color: white;
+    position: relative;
+    top: 1.4em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+
+}
+
+button.fab-next{
+    background-color: white;
+    position: fixed;
+    height: 4.5em;
+    width: 4.5em;
+    right: 4em;
+    bottom: 7em;
+    @include mat.elevation(4);
+    color: black;
+
+}
+
+button.fab-prev:hover{
+    background-color: rgb(26, 26, 26);
+    color: white !important;
+    @include mat.elevation(8);
+}
+
+button.fab-next:hover{
+  background-color: rgba(26, 26, 26, 0.4);
+}
+
+button.fab-prev{
+    background-color: white;
+    position: fixed;
+    height: 4.5em;
+    width: 4.5em;
+    left: 4em;
+    bottom: 7em;
+    color: black;
+
+}
+
+.flexbox-panel {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    align-content: center;
+}
+
+.flexbox-panel-content{
+    display: flex;
+       flex-direction: column;
+       flex-wrap: nowrap;
+       justify-content: center;
+       align-items: center;
+       align-content: center;
+  }
+  .content{
+    margin-top: 10em;
+  }
+mat-icon.prev{
+    font-size: 2.5em !important;
+    margin-bottom: 5em;
+    margin-left: 0.14em;
+
+
+}
+mat-icon.next{
+    font-size: 2.5em !important;
+    margin-bottom: 5em;
+    margin-top: 0;
+    margin-right: 0.2em;
+}
+
+.card-wrapper{
+  width: 90%;
+  height: 35em;
+}
+
+.download-button{
+  color: white;
+  background-color: green;
+  width: 100%;
+  margin-top: 0.7em;
+}
+
+.submit-button{
+  color: white;
+  background-color: black;
+  width: 100%;
+
+}
+
+.select-field{
+  width: 100%;
+}
+
+.gantt-task-wrapper{
+  height: 100%; overflow-y: scroll; overflow-x: scroll;
+}
+
+@media (min-width: 37em){
+  h1.main-title{
+      font-size:3.5rem;
+  }
+
+  button.fab-next{
+      height: 5.7em;
+      width: 5.7em;
+      right: 6em;
+      bottom: 8em;
+  }
+  button.fab-prev{
+      height: 5.7em;
+      width: 5.7em;
+      left: 6em;
+      bottom: 8em;
+  }
+  mat-icon.next{
+      font-size: 3.3em !important;
+  margin-bottom: 0.45em;
+  margin-right: 0.32em;
+  }
+  mat-icon.prev{
+      font-size: 3.3em !important;
+  margin-bottom: 0.45em;
+  margin-left: 0em;
+  }
+}
+
+@media (min-width: 50em){
+    h1.main-title{
+        font-size:4rem;
+    }
+
+    button.fab-next{
+        height: 6.2em;
+        width: 6.2em;
+        right: 10em;
+        bottom: 10em;
+    }
+    button.fab-prev{
+        height: 6.2em;
+        width: 6.2em;
+        left: 10em;
+        bottom: 10em;
+    }
+    mat-icon.next{
+        font-size: 3.3em !important;
+    margin-bottom: 0.45em;
+    margin-right: 0.32em;
+    }
+    mat-icon.prev{
+        font-size: 3.3em !important;
+    margin-bottom: 0.45em;
+    margin-left: 0em;
+    }
+
+    .card-wrapper{
+      width: 60%;
+      height: 35em;
+    }
+
+    .download-button{
+      position: absolute;
+      right: 2%;
+      
+      width: auto;
+    }
+
+    .submit-button{
+      left: 1em;
+      bottom: 0.25em;
+      width: auto;
+    }
+
+    .select-field{
+      width: auto;
+    }
+
+    .gantt-task-wrapper{
+      height: 100%;
+      overflow-y: scroll;
+      overflow-x: scroll;
+    }
+}
+
