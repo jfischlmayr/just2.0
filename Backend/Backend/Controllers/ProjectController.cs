@@ -49,7 +49,11 @@ namespace Backend.Controllers
         public async Task<IActionResult> PostProject([FromBody] Project project)
         {
             if (project == null) return BadRequest("Project was empty");
-            return CreatedAtAction("PostProject", project);
+
+            context.Projects.Add(project);
+            await context.SaveChangesAsync();
+
+            return Created(string.Empty, project);
         }
     }
 }
