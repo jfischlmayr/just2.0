@@ -10,6 +10,8 @@ export class ProjectPageComponent implements OnInit {
 
   showDelay = new FormControl(500);
 
+  public projectName : string = 'hurensohn'
+
   constructor() { }
 
   ngOnInit(): void {

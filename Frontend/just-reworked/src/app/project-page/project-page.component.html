@@ -8,7 +8,7 @@
             <mat-card-content>
                 <mat-form-field appearance="outline" class="input-field">
                     <mat-label>Projektname</mat-label>
-                    <input matInput>
+                    <input matInput name="projectNameInput" type="text" [(ngModel)]="projectName">
                 </mat-form-field>
                 <mat-form-field appearance="outline" class="date-field">
                     <mat-label>Zeitspanne auswählen</mat-label>

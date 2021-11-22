@@ -21,6 +21,7 @@ import {MatListModule} from '@angular/material/list';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { OldGanttComponent } from './old-gantt/old-gantt.component';
 import { TutorialComponent } from './tutorial/tutorial.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { TutorialComponent } from './tutorial/tutorial.component';
     MatSelectModule,
     MatDividerModule,
     MatListModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent, HomePageComponent]
