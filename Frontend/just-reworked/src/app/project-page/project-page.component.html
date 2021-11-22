@@ -6,16 +6,16 @@
     <div class="content flexbox-panel-content">
         <mat-card class="wrapping-card" >
             <mat-card-content>
-                <mat-form-field appearance="outline" class="input-field" >
-                  <mat-label>Projektname</mat-label>
-                  <input matInput>
-              </mat-form-field>
+                <mat-form-field appearance="outline" class="input-field">
+                    <mat-label>Projektname</mat-label>
+                    <input matInput name="projectNameInput" type="text" [(ngModel)]="projectName">
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="date-field">
+                    <mat-label>Zeitspanne auswählen</mat-label>
+                    <input matInput>
+                </mat-form-field>
 
-
-              <mat-form-field appearance="outline" class="date-field">
-                  <mat-label>THIS SHOULD BE A TIME PICKER</mat-label>
-                  <input matInput type="date">
-              </mat-form-field>
+                <button mat-raised-button color="basic" class="add-button" (click)="onSubmit()">Hinzufügen</button>
 
               <!--<mat-form-field appearance="fill" class="example-form-field">
                 <mat-label>Enter a date range</mat-label>
@@ -32,22 +32,16 @@
                 </mat-date-range-picker>
               </mat-form-field>-->
 
+              <mat-card class="project-card">
+                    <mat-card-title>Softwareprojekt XYZ
+                          <mat-icon class="edit-icon">edit</mat-icon>
+                          <mat-icon class="delete-icon">delete</mat-icon>
+                    </mat-card-title>
+                    <mat-card-content>
+                        21.6.2021 bis 28.9.2021
 
-
-                <button mat-raised-button color="basic" class="add-button" (click)="onSubmit()">Hinzufügen</button>
-
-
-
-                <mat-card class="project-card">
-                      <mat-card-title>Softwareprojekt XYZ
-                            <mat-icon class="edit-icon">edit</mat-icon>
-                            <mat-icon class="delete-icon">delete</mat-icon>
-                      </mat-card-title>
-                      <mat-card-content>
-                          21.6.2021 bis 28.9.2021
-
-                      </mat-card-content>
-                </mat-card>
+                    </mat-card-content>
+              </mat-card>
 
 
                 <!--

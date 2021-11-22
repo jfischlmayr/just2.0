@@ -3,8 +3,8 @@ import { FormControl } from '@angular/forms';
 
 
 
-  
-  
+
+
 
 @Component({
   selector: 'app-project-page',
@@ -17,10 +17,9 @@ export class ProjectPageComponent implements OnInit {
 
   showDelay = new FormControl(500);
 
-  constructor() {
+  public projectName : string = 'hurensohn'
 
-
-   }
+  constructor() { }
 
   ngOnInit(): void {
   }
