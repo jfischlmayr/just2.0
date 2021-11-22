@@ -3,8 +3,8 @@ import { FormControl } from '@angular/forms';
 
 
 
-  projectName: string;
-  date : string;
+  
+  
 
 @Component({
   selector: 'app-project-page',
@@ -15,12 +15,10 @@ export class ProjectPageComponent implements OnInit {
 
 
 
-
   showDelay = new FormControl(500);
 
   constructor() {
-    projectName ="";
-    this.date="";
+
 
    }
 
@@ -29,8 +27,7 @@ export class ProjectPageComponent implements OnInit {
 
 
   onSubmit(){
-    console.log.(projectName);
-    console.log(this.date);
+
   }
 
 }
