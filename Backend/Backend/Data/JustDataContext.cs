@@ -1,4 +1,5 @@
-﻿using JUST.Data.Models;
+﻿using Backend.Data;
+using JUST.Data.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace JUST.Data
@@ -10,6 +11,7 @@ namespace JUST.Data
         { }
 
         public DbSet<JustTask> Tasks { get; set; }
+        public DbSet<Project> Projects { get; set; }
     }
 }
 
