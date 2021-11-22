@@ -31,8 +31,8 @@ a:hover{
 
 .flexbox-panel-content{
     display: flex;
-     flex-direction: column;
-     flex-wrap: nowrap;
+     flex-direction: row;
+     flex-wrap: wrap;
      justify-content: center;
      align-items: center;
      align-content: center;
