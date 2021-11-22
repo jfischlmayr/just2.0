@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Linq;
 using Backend.Data;
 using System.Collections.Generic;
+using System;
 
 namespace Backend.Controllers
 {
@@ -54,6 +55,34 @@ namespace Backend.Controllers
             await context.SaveChangesAsync();
 
             return Created(string.Empty, project);
+        }
+
+        [HttpGet("init")]
+        public async Task<IActionResult> InitProjects()
+        {
+            var resultList = new List<Project>();
+            var project1 = new Project
+            {
+                Title = "LeoGantt",
+                StartDate = DateTime.Now,
+                EndDate = DateTime.Now + TimeSpan.FromDays(7)
+            };
+
+            context.Projects.Add(project1);
+            resultList.Add(project1);
+
+            var project2 = new Project
+            {
+                Title = "LFVT",
+                StartDate = DateTime.Now,
+                EndDate = DateTime.Now + TimeSpan.FromDays(7)
+            };
+
+            context.Projects.Add(project2);
+            resultList.Add(project2);
+            await context.SaveChangesAsync();
+
+            return Created(string.Empty, resultList);
         }
     }
 }
