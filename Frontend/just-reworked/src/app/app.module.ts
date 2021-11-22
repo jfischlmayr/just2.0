@@ -23,6 +23,7 @@ import { OldGanttComponent } from './old-gantt/old-gantt.component';
 import { TutorialComponent } from './tutorial/tutorial.component';
 import { FormsModule } from '@angular/forms';
 
+
 @NgModule({
   declarations: [
     AppComponent,
