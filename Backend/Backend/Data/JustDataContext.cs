@@ -10,8 +10,8 @@ namespace JUST.Data
         : base(options)
         { }
 
-        public DbSet<JustTask> Tasks { get; set; }
-        public DbSet<Project> Projects { get; set; }
+        public DbSet<JustTask> Tasks => Set<JustTask>();
+        public DbSet<Project> Projects => Set<Project>();
     }
 }
 
