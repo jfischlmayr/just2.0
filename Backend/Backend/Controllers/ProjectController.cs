@@ -93,5 +93,15 @@ namespace Backend.Controllers
 
             return Ok(project);
         }
+
+        [HttpPut]
+        public async Task<IActionResult> EditProject([FromBody] Project project)
+        {
+            var result = await context.Projects.FirstOrDefaultAsync(p => p.Id == project.Id);
+            context.Entry(result).CurrentValues.SetValues(project);
+            await context.SaveChangesAsync();
+
+            return Ok(await context.Projects.FirstOrDefaultAsync(p => p.Id == project.Id));
+        }
     }
 }
