@@ -98,7 +98,14 @@ namespace Backend.Controllers
         public async Task<IActionResult> EditProject([FromBody] Project project)
         {
             var result = await context.Projects.FirstOrDefaultAsync(p => p.Id == project.Id);
-            context.Entry(result).CurrentValues.SetValues(project);
+            if (result == null)
+            {
+                return BadRequest();
+            }
+            result.Title = project.Title;
+            result.StartDate = project.StartDate;
+            result.EndDate = project.EndDate;
+
             await context.SaveChangesAsync();
 
             return Ok(await context.Projects.FirstOrDefaultAsync(p => p.Id == project.Id));
