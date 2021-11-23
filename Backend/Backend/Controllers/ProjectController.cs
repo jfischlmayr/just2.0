@@ -84,5 +84,14 @@ namespace Backend.Controllers
 
             return Created(string.Empty, resultList);
         }
+        [HttpDelete]
+        public async Task<IActionResult> DeleteProjectById([FromQuery] int id)
+        {
+            var project = await context.Projects.FirstOrDefaultAsync(x => x.Id == id);
+            context.Projects.Remove(project);
+            await context.SaveChangesAsync();
+
+            return Ok(project);
+        }
     }
 }
