@@ -4,6 +4,13 @@ import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
+interface GetProject {
+  id: number
+  title: string
+  startDate: Date
+  endDate: Date
+}
+
 interface Project {
   title: string
   startDate: Date
@@ -22,12 +29,16 @@ export class ProjectPageComponent implements OnInit {
   startDate: Date = new Date()
   endDate: Date = new Date()
 
-  projects!: Observable<Project[]>
+  projects!: Observable<GetProject[]>
 
   constructor(private httpClient : HttpClient, private router: Router) { }
 
   ngOnInit(): void {
-    this.projects = this.httpClient.get<Project[]>('https://localhost:5001/api/project')
+    this.refresh()
+  }
+
+  refresh() {
+    this.projects = this.httpClient.get<GetProject[]>('https://localhost:5001/api/project')
   }
 
   onSubmit(){
@@ -37,14 +48,15 @@ export class ProjectPageComponent implements OnInit {
       endDate: this.endDate
     }
 
-    this.httpClient.post('https://localhost:5001/api/project', project).subscribe(() => this.router.navigate(['projects']))
+    this.httpClient.post('https://localhost:5001/api/project', project).subscribe(() => this.refresh())
   }
 
-  editProject(p: Project){
+  editProject(id: number){
 
   }
 
-  deleteProject(p: Project){
-    this.httpClient.delete('https://localhost:5001/api/project')
+  deleteProject(id: number){
+    console.log(id)
+    this.httpClient.delete(`https://localhost:5001/api/project?id=${id}`).subscribe(() => this.refresh())
   }
 }

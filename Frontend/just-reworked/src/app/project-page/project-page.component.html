@@ -10,8 +10,13 @@
                 <input matInput name="projectNameInput" type="text" [(ngModel)]="title">
             </mat-form-field>
             <mat-form-field appearance="outline" class="date-field">
-                <mat-label>Zeitspanne auswählen</mat-label>
-                <input matInput>
+              <mat-label>Enter a date range</mat-label>
+              <mat-date-range-input [rangePicker]="picker">
+                <input matStartDate placeholder="Start date" [(ngModel)]="startDate">
+                <input matEndDate placeholder="End date" [(ngModel)]="endDate">
+              </mat-date-range-input>
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-date-range-picker #picker></mat-date-range-picker>
             </mat-form-field>
 
             <button mat-raised-button color="basic" class="add-button" (click)="onSubmit()">Hinzufügen</button>
@@ -33,12 +38,11 @@
 
           <mat-card class="project-card" *ngFor="let p of projects | async">
                 <mat-card-title>{{ p.title }}
-                      <button (click)="editProject(p)"><mat-icon class="edit-icon" >edit</mat-icon></button>
-                      <mat-icon class="delete-icon">delete</mat-icon>
+                  <button mat-icon-button class="edit-icon" (click)="editProject(p.id)"><mat-icon>edit</mat-icon></button>
+                      <button mat-icon-button  class="delete-icon" (click)="deleteProject(p.id)"><mat-icon>delete</mat-icon></button>
                 </mat-card-title>
                 <mat-card-content>
                     {{ p.startDate }} bis {{ p.endDate }}
-
                 </mat-card-content>
           </mat-card>
 

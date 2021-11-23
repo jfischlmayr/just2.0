@@ -24,6 +24,7 @@ import { TutorialComponent } from './tutorial/tutorial.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { RouterModule } from '@angular/router';
     MatProgressBarModule,
     FormsModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent, HomePageComponent]
