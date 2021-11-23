@@ -1,10 +1,145 @@
+<div class="wrapper">
 
-    <h1 class="main-title">
-        JUST 2.0
-    </h1>
 
-    <div class="content flexbox-panel-content">
-        <p class="intro-text">
+    <div class="landing">
+        <h1 class="main-title">
+            LEOGANTT
+        </h1>
+        <p class="landing-text">
+            Die <span class="special-text">simpelste </span>Methode, <span class="special-text">Gantt-Diagramme</span> zu verstehen.
+        </p>
+        <span class="material-icons arrow-icon" onClick="location.href='#begin'">
+            arrow_forward_ios
+        </span>
+    </div>
+    
+
+
+
+    <div class="content flexbox-panel-content" style="overflow-y: hidden;">
+
+       
+            <div class="big-field big-img" id="begin">
+                <img src="/assets/media/5d65929e2e22af1d686657d5.jpg" height="720em" >
+            </div>
+            <div class="small-field">
+                <mat-card class="card" style="margin-left: -8em">
+                    <div style="margin-left: 4em; margin-right: 1em;" class="card-content">
+                        
+                        <mat-card-title class="card-title">
+                            Unser Team
+                        </mat-card-title>
+                        <mat-card-content class="card-content">
+                            Unser Team besteht aus 3 Mitarbeitern: 
+                            Backend- Developer & Teamleiter: Fischlmayr Jan
+                            Frontend-Developer: Kowatschek Samuel, Huemer Patrick
+                            Wir sind engagierte Schüler der HTL Leonding, die dieses Projekt im Unterrichtsgegenstand „System und Projektplanung“ der fünften Schulstufe betreiben
+                        </mat-card-content>
+                    </div>
+                    
+                </mat-card>
+            </div>
+        
+        
+        <div class="big-field" >
+            <mat-card class="card" style="margin-right: -8em">
+                <div style="margin-right: 10em; margin-left: 1em;">
+                    <mat-card-title class="card-title">
+                        Technologien
+                    </mat-card-title>
+                    <mat-card-content class="card-content">
+                        Im Frontend haben wir uns für Angular entschieden, aufgrund des gut ausgebauten 
+                        Basiswissens, welches wir aus dem Unterricht mitgenommen haben. Fürs Backend des 
+                        Projekts haben wir .NET 6 gewählt und anschließend in Docker deployed.
+                    </mat-card-content>
+                </div>
+                
+                
+            </mat-card>
+        </div>
+        <div class="small-field small-img">
+            <img src="/assets/media/IMG_0418.JPG" >
+        </div>
+
+        <div class="big-field big-img">
+            <img class="mat-elevation-z3 img" src="/assets/media/5d65929e2e22af1d686657d5.jpg" height="720em" >
+        </div>
+        <div class="small-field">
+            <mat-card class="card" style="margin-left: -8em">
+                <div style="margin-left: 4em; margin-right: 1em;" class="card-content">
+                    <mat-card-title class="card-title">
+                        Zielgruppe
+                    </mat-card-title>
+                    <mat-card-content class="card-content">
+                        Unsere Website ist für diejenigen geeignet, die ein Gantt-Diagramm auf einfache Art und Weiße lernen und verstehen wollen. Von Schülern/Lehrern im Bereich Projektmanagement bis hin zum Startup-Unternehmer, bei uns findet jeder Mensch, der das Gantt-Diagramm in seiner Basis verstehen möchte Anklang.
+                    </mat-card-content>
+                </div>
+                
+            </mat-card>
+        </div>
+        <div class="big-field" >
+            <mat-card class="card" style="margin-right: -8em">
+                <div style="margin-right: 10em; margin-left: 1em;">
+                    <mat-card-title class="card-title">
+                        Leg los!
+                    </mat-card-title>
+                    <mat-card-content class="card-content">
+                        Starte hier ganz einfach. Erstelle entweder ein neues Gantt-Diagramm, 
+                        bei welchem du dein eigenes Projekt mit eigenen Tasks erstellst, oder sieh 
+                        dir früher erstellte Diagramme an, um ein Gefühl für die Materie zu bekommen.
+                        Falls du Gantt-Diagramme noch einmal erklärt brauchst, kannst du dir auch unser Tutorialvideo ansehen.
+                
+                        <div class="flexbox-panel-buttons">
+
+                        
+                        <table>
+                            <tr>
+                                <td>
+                                  <button class="intro-button buttons-big-screen" mat-raised-button [routerLink]="'/projects'">
+                                      Neues Gantt erstellen
+                                  </button>
+                                </td>
+                                <td>
+                                  <button class="intro-button buttons-big-screen" mat-raised-button  [routerLink]="'/oldGantt'">
+                                      Altes Gantt editieren
+                                  </button>
+                                </td>
+            
+                            </tr>
+                        </table>
+                    
+                        <button class="tutorial-button buttons-big-screen" color="warn" mat-raised-button [routerLink]="'/tutorial'">
+                            Tutorial ansehen
+                        </button>
+                    </div>
+            
+            
+            
+                        <!--<button class="intro-button buttons-small-screen" mat-raised-button [routerLink]="'/projects'">
+                          Neues Gantt erstellen
+                      </button>
+                      <button class="intro-button buttons-small-screen" mat-raised-button [routerLink]="'/oldGantt'">
+                          Altes Gantt editieren
+                      </button>
+            
+            
+                      <button class="tutorial-button buttons-small-screen" mat-raised-button [routerLink]="'/tutorial'">
+                          Tutorial ansehen
+                      </button>-->
+                    </mat-card-content>
+                </div>
+                
+                
+            </mat-card>
+        </div>
+        <div class="small-field small-img">
+            <img src="/assets/media/IMG_0418.JPG" class="mat-elevation-z3 img">
+        </div>
+
+
+
+
+        <!--<p class="intro-text">
             JUST 2.0 ist ein Projekt von Fischlmayr Jan, Huemer Patrick und Kowatschek Samuel, welches im Systemplanungsunterricht der HTBLA Leonding entwickelt wurde.
             <br>
             Das Ziel von JUST 2.0 ist die einfache Erklärung und Erstellung von Gantt Diagrammen.
@@ -51,7 +186,7 @@
           <button class="tutorial-button buttons-small-screen" mat-raised-button [routerLink]="'/tutorial'">
               Tutorial ansehen
           </button>
-
+        -->
     </div>
 
 <!--
@@ -69,3 +204,4 @@
     </div>-->
 
 
+</div>
