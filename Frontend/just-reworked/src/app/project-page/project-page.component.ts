@@ -27,8 +27,8 @@ export class ProjectPageComponent implements OnInit {
   showDelay = new FormControl(500);
 
   title : string = ''
-  startDate: Date = new Date()
-  endDate: Date = new Date()
+  startDate!: Date
+  endDate!: Date
 
   editing: boolean = false
   projectToEdit?: GetProject
