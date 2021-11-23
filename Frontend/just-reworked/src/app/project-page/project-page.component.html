@@ -19,7 +19,7 @@
               <mat-date-range-picker #picker></mat-date-range-picker>
             </mat-form-field>
 
-            <button mat-raised-button color="basic" class="add-button" (click)="onSubmit()">Hinzufügen</button>
+            <button mat-raised-button color="basic" class="add-button" (click)="onSubmit()">{{ editing ? 'Speichern' : 'Hinzufügen' }}</button>
 
           <!--<mat-form-field appearance="fill" class="example-form-field">
             <mat-label>Enter a date range</mat-label>
@@ -38,7 +38,7 @@
 
           <mat-card class="project-card" *ngFor="let p of projects | async">
                 <mat-card-title>{{ p.title }}
-                  <button mat-icon-button class="edit-icon" (click)="editProject(p.id)"><mat-icon>edit</mat-icon></button>
+                  <button mat-icon-button class="edit-icon" (click)="editProject(p)"><mat-icon>edit</mat-icon></button>
                       <button mat-icon-button  class="delete-icon" (click)="deleteProject(p.id)"><mat-icon>delete</mat-icon></button>
                 </mat-card-title>
                 <mat-card-content>
