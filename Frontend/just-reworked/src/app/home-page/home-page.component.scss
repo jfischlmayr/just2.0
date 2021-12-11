@@ -121,23 +121,13 @@ button.intro-button, button.tutorial-button{
     width: 25em;
     height: 5em;
     margin-top: 0.5em;
-    background-color: rgb(26, 26, 26);
-    color: white;
+    background-color: #e1ddf3;
+    color: black;
     transition: background-color 400ms, color 400ms;
     
 }
 
-button.tutorial-button{
-    background-color:#ff8665;
-}
-
-button.intro-button:hover{
-    background-color: white !important;
-    
-
-}
-
-button.tutorial-button:hover{
+button.intro-button:hover, button.tutorial-button:hover{
     background-color:rgb(26, 26, 26);
     color: white !important;
     @include mat.elevation(8);
@@ -257,29 +247,13 @@ button.tutorial-button:hover{
         margin-left: 0.25em;
         margin-right: 0.25em;
         margin-top: 2.5em;
-        color: white;
         transition: background-color 400ms, color 400ms;
         
     }
 
     button.tutorial-button{
-        color: black;
-        background-color:#ff8665;
         width: 30.7em;
         margin-top: 0.5em;
-    }
-
-    button.intro-button:hover{
-        background-color: white;
-        color: black;
-        @include mat.elevation(8);
-
-    }
-
-    button.tutorial-button:hover{
-        background-color:rgb(26, 26, 26);
-        color: white !important;
-        @include mat.elevation(8);
     }
 
     .buttons-big-screen{
@@ -349,6 +323,7 @@ button.tutorial-button:hover{
         justify-content: center;
         align-items: center;
         align-content: center;
+        margin-top: 5vh;
     }
 
     .arrow-icon{
@@ -358,8 +333,7 @@ button.tutorial-button:hover{
         height: auto;
         transform: rotate(90deg) translate(0px);
         position: relative;
-        margin-left: 50vw;
-        margin-top: 35vh;
+        margin-top: 12.5vh;
         transition: transform 500ms;
         
     }
