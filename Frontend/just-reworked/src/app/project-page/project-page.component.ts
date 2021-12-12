@@ -30,6 +30,7 @@ export class ProjectPageComponent implements OnInit {
   title : string = ''
   startDate!: Date
   endDate!: Date
+  description: string =''
 
   editing: boolean = false
   projectToEdit?: GetProject
