@@ -1,0 +1,62 @@
+<h1 class="main-title">
+  PROJEKTE
+</h1>
+
+<div class="content flexbox-panel-content">
+  <mat-card class="wrapping-card">
+    <mat-card-content>
+
+      <mat-form-field appearance="outline" class="input-field">
+        <mat-label>Projektname</mat-label>
+        <input matInput name="projectNameInput" type="text" [(ngModel)]="title">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="date-field">
+        <mat-label>Zeitspanne einfügen</mat-label>
+        <mat-date-range-input [rangePicker]="picker">
+          <input matStartDate placeholder="Startdatum" [(ngModel)]="startDate">
+          <input matEndDate placeholder="Enddatum" [(ngModel)]="endDate">
+        </mat-date-range-input>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="description-field">
+        <mat-label>Description</mat-label>
+        <input matInput name="projectDescriptionInput" type="text" [(ngModel)]="description">
+      </mat-form-field>
+
+      <button mat-raised-button color="basic" class="add-button" (click)="onSubmit()">
+        {{ editing ? 'Speichern' : 'Hinzufügen' }}
+      </button>
+
+
+      <mat-card class="project-card" *ngFor="let p of projects | async">
+        <mat-card-title>{{ p.title }}
+          <button mat-icon-button class="edit-icon" (click)="editProject(p)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button class="delete-icon" (click)="deleteProject(p.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-card-title>
+        <mat-card-content>
+          {{ p.startDate.toString().substring(0, 10) }} bis {{ p.endDate.toString().substring(0, 10) }}
+        </mat-card-content>
+      </mat-card>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<div class="flexbox-panel">
+
+  <button mat-fab disabled color="warn" class="fab-prev" aria-label="Previous" matTooltip="Sie sind bereits am Anfang"
+    [matTooltipShowDelay]="showDelay.value">
+    <mat-icon class="prev">arrow_back_ios</mat-icon>
+  </button>
+
+  <button mat-fab color="warn" class="fab-next" aria-label="Next" [routerLink]="'/tasks'" matTooltip="Nächster Schritt"
+    [matTooltipShowDelay]="showDelay.value">
+    <mat-icon class="next">arrow_forward_ios</mat-icon>
+  </button>
+</div>

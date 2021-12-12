@@ -1,0 +1,54 @@
+<h1 class="main-title">
+    TASKS
+</h1>
+
+<div class="content flexbox-panel-content">
+    <mat-card class="wrapping-card">
+        <mat-card-content>
+            <mat-form-field appearance="outline" class="input-field">
+                <mat-label>Projektname</mat-label>
+                <input matInput>
+            </mat-form-field>
+
+
+
+            <mat-form-field appearance="outline" class="date-field">
+                <mat-label>Zeitspanne einfügen</mat-label>
+                <mat-date-range-input [rangePicker]="picker">
+                    <input matStartDate placeholder="Startdatum" [(ngModel)]="startDate">
+                    <input matEndDate placeholder="Enddatum" [(ngModel)]="endDate">
+                </mat-date-range-input>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-date-range-picker #picker></mat-date-range-picker>
+            </mat-form-field>
+
+
+            <mat-form-field appearance="outline" class="select-field">
+                <mat-label>Select Project</mat-label>
+                <mat-select>
+                    <mat-option *ngFor="let p of projects | async" [value]="p.id">
+                        {{p.title}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <button mat-raised-button color="basic" class="add-button" (click)="onSubmit()">Hinzufügen</button>
+        </mat-card-content>
+    </mat-card>
+
+
+
+</div>
+
+<div class="flexbox-panel">
+
+    <button mat-fab color="warn" class="fab-prev" aria-label="Previous" [routerLink]="'/projects'"
+        matTooltip="Vorheriger Schritt" [matTooltipShowDelay]="showDelay.value">
+        <mat-icon class="prev">arrow_back_ios</mat-icon>
+    </button>
+
+    <button mat-fab color="warn" class="fab-next " aria-label="Next" [routerLink]="'/gantt'"
+        matTooltip="Nächster Schritt" [matTooltipShowDelay]="showDelay.value">
+        <mat-icon class="next">arrow_forward_ios</mat-icon>
+    </button>
+</div>
