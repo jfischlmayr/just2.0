@@ -128,7 +128,7 @@ button.intro-button, button.tutorial-button{
 }
 
 button.intro-button:hover, button.tutorial-button:hover{
-    background-color:rgb(26, 26, 26);
+    background-color: #4b446e;
     color: white !important;
     @include mat.elevation(8);
 }
