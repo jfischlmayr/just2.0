@@ -40,7 +40,7 @@ interface Task {
 })
 export class TaskPageComponent implements OnInit {
   showDelay = new FormControl(500);
-  projects!: Observable<GetProject[]>
+  projects!: Observable<GetProject[]>;
   tasks!: Observable<GetTask[]>
   title: string = ''
   startDate!: Date
@@ -49,6 +49,7 @@ export class TaskPageComponent implements OnInit {
   constructor(private httpClient: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
+    this.projects = this.httpClient.get<GetProject[]>('https://localhost:5001/api/project');
     this.refresh();
   }
 
@@ -68,6 +69,7 @@ export class TaskPageComponent implements OnInit {
   }
 
   refresh() {
+    
     this.tasks = this.httpClient.get<GetTask[]>('https://localhost:5001/api/task')
   }
 

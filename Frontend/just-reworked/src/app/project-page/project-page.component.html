@@ -31,8 +31,6 @@
       </button>
 
 
-
-
       <mat-card class="project-card" *ngFor="let p of projects | async">
         <mat-card-title>{{ p.title }}
           <button mat-icon-button class="edit-icon" (click)="editProject(p)">

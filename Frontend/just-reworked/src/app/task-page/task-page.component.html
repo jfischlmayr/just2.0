@@ -26,8 +26,8 @@
             <mat-form-field appearance="outline" class="select-field">
                 <mat-label>Select Project</mat-label>
                 <mat-select>
-                    <mat-option *ngFor="let project in projects" [value]="project.id">
-                        {{project.title}}
+                    <mat-option *ngFor="let p of projects | async" [value]="p.id">
+                        {{p.title}}
                     </mat-option>
                 </mat-select>
             </mat-form-field>
