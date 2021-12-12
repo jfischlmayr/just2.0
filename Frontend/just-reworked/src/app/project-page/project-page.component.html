@@ -5,10 +5,12 @@
 <div class="content flexbox-panel-content">
   <mat-card class="wrapping-card" >
     <mat-card-content>
+
       <mat-form-field appearance="outline" class="input-field">
         <mat-label>Projektname</mat-label>
         <input matInput name="projectNameInput" type="text" [(ngModel)]="title">
       </mat-form-field>
+      
       <mat-form-field appearance="outline" class="date-field">
         <mat-label>Zeitspanne einfügen</mat-label>
         <mat-date-range-input [rangePicker]="picker">
