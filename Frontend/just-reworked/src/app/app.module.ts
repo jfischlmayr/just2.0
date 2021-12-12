@@ -24,7 +24,7 @@ import { TutorialComponent } from './tutorial/tutorial.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-import { MatNativeDateModule } from '@angular/material/core';
+import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -56,7 +56,10 @@ import { MatNativeDateModule } from '@angular/material/core';
     RouterModule,
     MatNativeDateModule
   ],
-  providers: [],
+  providers: [ {
+    provide: MAT_DATE_LOCALE, useValue: 'de-DE'
+  }
+  ],
   bootstrap: [AppComponent, HomePageComponent]
 })
 export class AppModule { }
