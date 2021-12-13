@@ -23,14 +23,14 @@ interface GetTask {
   title: string
   startDate: Date
   endDate: Date
-  //project: Project
+  projectId: number
 }
 
 interface Task {
   title: string
   startDate: Date
   endDate: Date
-  //project: Project
+  projectId: number
 }
 
 @Component({
@@ -46,6 +46,8 @@ export class TaskPageComponent implements OnInit {
   startDate!: Date
   endDate!: Date
 
+  selectedProjectId!: number
+
   constructor(private httpClient: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
@@ -57,19 +59,21 @@ export class TaskPageComponent implements OnInit {
     const task: Task = {
       title: this.title,
       startDate: this.startDate,
-      endDate: this.endDate
+      endDate: this.endDate,
+      projectId: this.selectedProjectId
     }
 
-
+console.log('test')
     this.httpClient.post('https://localhost:5001/api/task', task).subscribe(() => this.refresh())
 
     this.title = ''
     this.startDate = new Date()
     this.endDate = new Date()
+    this.refresh
   }
 
   refresh() {
-    
+
     this.tasks = this.httpClient.get<GetTask[]>('https://localhost:5001/api/task')
   }
 

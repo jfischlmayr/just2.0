@@ -6,7 +6,7 @@
     <mat-card class="wrapping-card">
         <mat-card-content>
             <mat-form-field appearance="outline" class="input-field">
-                <mat-label>Projektname</mat-label>
+                <mat-label>Taskname</mat-label>
                 <input matInput>
             </mat-form-field>
 
@@ -25,7 +25,7 @@
 
             <mat-form-field appearance="outline" class="select-field">
                 <mat-label>Select Project</mat-label>
-                <mat-select>
+                <mat-select [(value)]="selectedProjectId" required>
                     <mat-option *ngFor="let p of projects | async" [value]="p.id">
                         {{p.title}}
                     </mat-option>

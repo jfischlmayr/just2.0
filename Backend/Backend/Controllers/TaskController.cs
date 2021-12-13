@@ -30,6 +30,10 @@ namespace Backend.Controllers
             if (task == null) return BadRequest("Task was empty");
 
             context.Tasks.Add(task);
+
+            var project = await context.Projects.FirstOrDefaultAsync(p => p.Id == task.ProjectId);
+            project.Tasks.Add(task);
+
             await context.SaveChangesAsync();
 
             return Created(string.Empty, task);
