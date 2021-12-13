@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Backend.Data;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace JUST.Data.Models
@@ -12,5 +12,6 @@ namespace JUST.Data.Models
         public DateTime StartDate { get; set; } = DateTime.Now;
         public DateTime EndDate { get; set; }
         public TimeSpan? Duration { get { return EndDate - StartDate; } }
+        public Project Project { get; set; }
     }
 }
