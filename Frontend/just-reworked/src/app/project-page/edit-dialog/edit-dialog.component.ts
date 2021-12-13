@@ -23,7 +23,9 @@ export class EditDialogComponent implements OnInit {
   constructor(@Inject(MAT_DIALOG_DATA) public data: GetProject, private dialogRef : MatDialogRef<EditDialogComponent>) { }
 
   ngOnInit(): void {
-
+    this.title = this.data.title
+    this.startDate = this.data.startDate
+    this.endDate = this.data.endDate
   }
 
   submitDialog() : void{
