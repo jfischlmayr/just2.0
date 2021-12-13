@@ -97,10 +97,9 @@ export class ProjectPageComponent implements OnInit {
       panelClass: 'custom-dialog-container'
     })
     .afterClosed().subscribe( result => {
-      var idx = this.projects?.findIndex(p => p.id == result.id) || -1;
-      var tempProj : GetProject = result
+      this.projectToEdit = result
 
-      if(idx != -1) this.projects![idx] = tempProj;
+      this.httpClient.put('https://localhost:5001/api/project', this.projectToEdit).subscribe(() => this.refresh())
     })
   }
 }

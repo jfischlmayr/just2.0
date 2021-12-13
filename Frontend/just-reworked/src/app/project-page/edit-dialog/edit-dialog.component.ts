@@ -7,6 +7,7 @@ interface GetProject {
   title: string
   startDate: Date
   endDate: Date
+  description: string
 }
 
 @Component({
@@ -26,10 +27,11 @@ export class EditDialogComponent implements OnInit {
     this.title = this.data.title
     this.startDate = this.data.startDate
     this.endDate = this.data.endDate
+    this.description = this.data.description
   }
 
   submitDialog() : void{
-    const editedProject: GetProject = {id: this.data.id , title : this.title, startDate : this.startDate, endDate : this.endDate}
+    const editedProject: GetProject = {id: this.data.id , title : this.title, startDate : this.startDate, endDate : this.endDate, description: this.description}
     this.dialogRef.close(editedProject)
   }
 
