@@ -4,22 +4,7 @@ import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
-
-
-interface GetProject {
-  id: number
-  title: string
-  startDate: Date
-  endDate: Date
-  description: string
-}
-
-interface Project {
-  title: string
-  startDate: Date
-  endDate: Date
-  description: string
-}
+import { GetProject, Project } from '../model'
 
 @Component({
   selector: 'app-project-page',

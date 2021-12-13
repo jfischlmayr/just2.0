@@ -4,35 +4,7 @@ import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-
-
-interface GetProject {
-  id: number
-  title: string
-  startDate: Date
-  endDate: Date
-}
-
-interface Project {
-  title: string
-  startDate: Date
-  endDate: Date
-}
-
-interface GetTask {
-  id: number
-  title: string
-  startDate: Date
-  endDate: Date
-  projectId: number
-}
-
-interface Task {
-  title: string
-  startDate: Date
-  endDate: Date
-  projectId: number
-}
+import { Task, GetTask, GetProject } from '../model'
 
 @Component({
   selector: 'app-task-page',
