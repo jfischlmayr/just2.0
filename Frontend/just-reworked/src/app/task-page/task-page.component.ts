@@ -41,7 +41,7 @@ interface Task {
 export class TaskPageComponent implements OnInit {
   showDelay = new FormControl(500);
   projects!: Observable<GetProject[]>;
-  tasks!: Observable<GetTask[]>
+  tasks?: GetTask[]
   title: string = ''
   startDate!: Date
   endDate!: Date
@@ -69,12 +69,28 @@ console.log('test')
     this.title = ''
     this.startDate = new Date()
     this.endDate = new Date()
-    this.refresh
+    this.refresh()
   }
 
   refresh() {
-
-    this.tasks = this.httpClient.get<GetTask[]>('https://localhost:5001/api/task')
+    this.httpClient.get<GetTask[]>('https://localhost:5001/api/task').subscribe(result => {
+      this.tasks = result
+    })
   }
 
+  /*editTask(t : GetTask) : void{
+    const dialogRef = this.dialog.open(EditDialogComponent,{
+      data:p,
+      panelClass: 'custom-dialog-container'
+    })
+    .afterClosed().subscribe( result => {
+      this.projectToEdit = result
+
+      this.httpClient.put('https://localhost:5001/api/project', this.projectToEdit).subscribe(() => this.refresh())
+    })
+  }
+
+  deleteTask(id: number){
+    this.httpClient.delete(`https://localhost:5001/api/task?id=${id}`).subscribe(() => this.refresh())
+  }*/
 }

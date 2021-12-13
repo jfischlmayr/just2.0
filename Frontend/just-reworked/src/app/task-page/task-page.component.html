@@ -3,41 +3,51 @@
 </h1>
 
 <div class="content flexbox-panel-content">
-    <mat-card class="wrapping-card">
-        <mat-card-content>
-            <mat-form-field appearance="outline" class="input-field">
-                <mat-label>Taskname</mat-label>
-                <input matInput>
-            </mat-form-field>
+  <mat-card class="wrapping-card">
+    <mat-card-content>
+        <mat-form-field appearance="outline" class="input-field">
+            <mat-label>Taskname</mat-label>
+            <input matInput name="taskNameInput" type="text" [(ngModel)]="title">
+        </mat-form-field>
 
 
 
-            <mat-form-field appearance="outline" class="date-field">
-                <mat-label>Zeitspanne einfügen</mat-label>
-                <mat-date-range-input [rangePicker]="picker">
-                    <input matStartDate placeholder="Startdatum" [(ngModel)]="startDate">
-                    <input matEndDate placeholder="Enddatum" [(ngModel)]="endDate">
-                </mat-date-range-input>
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-date-range-picker #picker></mat-date-range-picker>
-            </mat-form-field>
+        <mat-form-field appearance="outline" class="date-field">
+            <mat-label>Zeitspanne einfügen</mat-label>
+            <mat-date-range-input [rangePicker]="picker">
+                <input matStartDate placeholder="Startdatum" [(ngModel)]="startDate">
+                <input matEndDate placeholder="Enddatum" [(ngModel)]="endDate">
+            </mat-date-range-input>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+        </mat-form-field>
 
 
-            <mat-form-field appearance="outline" class="select-field">
-                <mat-label>Select Project</mat-label>
-                <mat-select [(value)]="selectedProjectId" required>
-                    <mat-option *ngFor="let p of projects | async" [value]="p.id">
-                        {{p.title}}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
+        <mat-form-field appearance="outline" class="select-field">
+            <mat-label>Select Project</mat-label>
+            <mat-select [(value)]="selectedProjectId" required>
+                <mat-option *ngFor="let p of projects | async" [value]="p.id">
+                    {{p.title}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
 
-            <button mat-raised-button color="basic" class="add-button" (click)="onSubmit()">Hinzufügen</button>
+        <button mat-raised-button color="basic" class="add-button" (click)="onSubmit()">Hinzufügen</button>
+
+        <mat-card class="task-card" *ngFor="let t of tasks">
+          <mat-card-content class="flexbox-panel-card">
+            <div>{{ t.title }}</div>
+            <div>{{ t.startDate.toString().substring(0, 10) }} bis {{ t.endDate.toString().substring(0, 10) }}</div>
+            <!--<button mat-icon-button class="edit-icon" (click)="editTask(p)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button class="delete-icon" (click)="deleteTask(p.id)">
+              <mat-icon>delete</mat-icon>
+            </button>-->
         </mat-card-content>
-    </mat-card>
-
-
-
+        </mat-card>
+    </mat-card-content>
+  </mat-card>
 </div>
 
 <div class="flexbox-panel">
