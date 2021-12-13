@@ -22,5 +22,6 @@ services:
             - just-volume:/home/volumes
         networks:
             - just-net
+        container_name: leogantt-database
 
     
