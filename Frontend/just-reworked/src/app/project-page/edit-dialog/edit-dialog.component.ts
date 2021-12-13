@@ -29,7 +29,8 @@ export class EditDialogComponent implements OnInit {
   }
 
   submitDialog() : void{
-    this.dialogRef.close()
+    const editedProject: GetProject = {id: this.data.id , title : this.title, startDate : this.startDate, endDate : this.endDate}
+    this.dialogRef.close(editedProject)
   }
 
   cancelDialog() : void{

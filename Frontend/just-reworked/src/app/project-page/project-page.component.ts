@@ -37,7 +37,7 @@ export class ProjectPageComponent implements OnInit {
   editing: boolean = false
   projectToEdit?: GetProject
 
-  projects!: Observable<GetProject[]>
+  projects?: GetProject[]
 
   constructor(private httpClient : HttpClient, private router: Router, public dialog: MatDialog) { }
 
@@ -46,7 +46,9 @@ export class ProjectPageComponent implements OnInit {
   }
 
   refresh() {
-    this.projects = this.httpClient.get<GetProject[]>('https://localhost:5001/api/project')
+    this.httpClient.get<GetProject[]>('https://localhost:5001/api/project').subscribe(result => {
+      this.projects = result
+    })
   }
 
   onSubmit(){
@@ -85,10 +87,16 @@ export class ProjectPageComponent implements OnInit {
     this.httpClient.delete(`https://localhost:5001/api/project?id=${id}`).subscribe(() => this.refresh())
   }
 
-  editProject(p : GetProject){
+  editProject(p : GetProject) : void{
     const dialogRef = this.dialog.open(EditDialogComponent,{
       data:p,
       panelClass: 'custom-dialog-container'
-    });
+    })
+    .afterClosed().subscribe( result => {
+      var idx = this.projects?.findIndex(p => p.id == result.id) || -1;
+      var tempProj : GetProject = result
+
+      if(idx != -1) this.projects![idx] = tempProj;
+    })
   }
 }
