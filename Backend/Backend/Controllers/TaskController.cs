@@ -55,5 +55,22 @@ namespace Backend.Controllers
 
             return NoContent();
         }
+
+        [HttpPut]
+        public async Task<IActionResult> EditTask([FromBody] JustTask task)
+        {
+            var result = await context.Tasks.FirstOrDefaultAsync(p => p.Id == task.Id);
+            if (result == null)
+                return BadRequest();
+
+            result.Title = task.Title;
+            result.StartDate = task.StartDate;
+            result.EndDate = task.EndDate;
+            result.ProjectId = task.ProjectId;
+
+            await context.SaveChangesAsync();
+
+            return Ok(await context.Tasks.FirstOrDefaultAsync(p => p.Id == task.Id));
+        }
     }
 }

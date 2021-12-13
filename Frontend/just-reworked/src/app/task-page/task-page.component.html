@@ -38,9 +38,9 @@
           <mat-card-content class="flexbox-panel-card">
             <div>{{ t.title }}</div>
             <div>{{ t.startDate.toString().substring(0, 10) }} bis {{ t.endDate.toString().substring(0, 10) }}</div>
-            <!--<button mat-icon-button class="edit-icon" (click)="editTask(p)">
+            <button mat-icon-button class="edit-icon" (click)="editTask(t)">
               <mat-icon>edit</mat-icon>
-            </button>-->
+            </button>
             <button mat-icon-button class="delete-icon" (click)="deleteTask(t.id)">
               <mat-icon>delete</mat-icon>
             </button>
