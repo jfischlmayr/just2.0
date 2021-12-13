@@ -105,6 +105,7 @@ namespace Backend.Controllers
             result.Title = project.Title;
             result.StartDate = project.StartDate;
             result.EndDate = project.EndDate;
+            result.Description = project.Description;
 
             await context.SaveChangesAsync();
 
