@@ -65,13 +65,11 @@ export class TaskPageComponent implements OnInit {
       projectId: this.selectedProjectId
     }
 
-console.log('test')
-    this.httpClient.post('https://localhost:5001/api/task', task).subscribe(() => this.refresh())
-
     this.title = ''
     this.startDate = new Date()
     this.endDate = new Date()
-    this.refresh()
+
+    this.httpClient.post('https://localhost:5001/api/task', task).subscribe(() => this.refresh())
   }
 
   refresh() {
