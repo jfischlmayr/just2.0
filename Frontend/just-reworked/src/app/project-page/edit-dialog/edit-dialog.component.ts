@@ -1,4 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MatDatepickerContent } from '@angular/material/datepicker';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+
+interface GetProject {
+  id: number
+  title: string
+  startDate: Date
+  endDate: Date
+}
 
 @Component({
   selector: 'app-edit-dialog',
@@ -7,9 +16,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditDialogComponent implements OnInit {
 
-  constructor() { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: GetProject, private dialogRef : MatDialogRef<EditDialogComponent>) { }
 
   ngOnInit(): void {
+
+  }
+
+  submitDialog() : void{
+    this.dialogRef.close()
+  }
+
+  cancelDialog() : void{
+    this.dialogRef.close()
   }
 
 }

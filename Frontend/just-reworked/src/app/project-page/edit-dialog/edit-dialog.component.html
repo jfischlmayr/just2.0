@@ -1,1 +1,12 @@
-<p>edit-dialog works!</p>
+<div>
+  <mat-dialog-content>
+    <form>
+
+    </form>
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button mat-raised-button color="primary" class="submit-button" (click)="submitDialog()" >Speichern</button>
+    <button mat-raised-button [style.color]="'red'" class="submit-button" (click)="cancelDialog()" >Abbrechen</button>
+  </mat-dialog-actions>
+</div>
