@@ -15,6 +15,10 @@ interface GetProject {
   styleUrls: ['./edit-dialog.component.scss']
 })
 export class EditDialogComponent implements OnInit {
+  title : string = ''
+  startDate!: Date
+  endDate!: Date
+  description: string =''
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: GetProject, private dialogRef : MatDialogRef<EditDialogComponent>) { }
 

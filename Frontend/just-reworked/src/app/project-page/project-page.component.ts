@@ -87,7 +87,9 @@ export class ProjectPageComponent implements OnInit {
 
   editProject(p : GetProject){
     const dialogRef = this.dialog.open(EditDialogComponent,{
-      data:p
+      data:p,
+      height: '40%',
+      width: '35%'
     });
   }
 }
