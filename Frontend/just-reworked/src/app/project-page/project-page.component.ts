@@ -13,12 +13,14 @@ interface GetProject {
   title: string
   startDate: Date
   endDate: Date
+  description: string
 }
 
 interface Project {
   title: string
   startDate: Date
   endDate: Date
+  description: string
 }
 
 @Component({
@@ -53,7 +55,8 @@ export class ProjectPageComponent implements OnInit {
     const project: Project = {
       title: this.title,
       startDate: this.startDate,
-      endDate: this.endDate
+      endDate: this.endDate,
+      description: this.description
     }
 
     if(this.editing) {
@@ -71,6 +74,7 @@ export class ProjectPageComponent implements OnInit {
     this.title = ''
     this.startDate = new Date()
     this.endDate = new Date()
+    this.description = ''
   }
 
   // editProject(p : GetProject){

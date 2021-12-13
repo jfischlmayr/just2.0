@@ -22,7 +22,7 @@
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="description-field">
-        <mat-label>Description</mat-label>
+        <mat-label>Beschreibung</mat-label>
         <input matInput name="projectDescriptionInput" type="text" [(ngModel)]="description">
       </mat-form-field>
 
@@ -41,6 +41,7 @@
           </button>
         </mat-card-title>
         <mat-card-content>
+          {{ p.description }} <br>
           {{ p.startDate.toString().substring(0, 10) }} bis {{ p.endDate.toString().substring(0, 10) }}
         </mat-card-content>
       </mat-card>
