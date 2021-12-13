@@ -40,10 +40,10 @@
             <div>{{ t.startDate.toString().substring(0, 10) }} bis {{ t.endDate.toString().substring(0, 10) }}</div>
             <!--<button mat-icon-button class="edit-icon" (click)="editTask(p)">
               <mat-icon>edit</mat-icon>
-            </button>
-            <button mat-icon-button class="delete-icon" (click)="deleteTask(p.id)">
-              <mat-icon>delete</mat-icon>
             </button>-->
+            <button mat-icon-button class="delete-icon" (click)="deleteTask(t.id)">
+              <mat-icon>delete</mat-icon>
+            </button>
         </mat-card-content>
         </mat-card>
     </mat-card-content>

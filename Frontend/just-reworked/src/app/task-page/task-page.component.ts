@@ -88,9 +88,9 @@ console.log('test')
 
       this.httpClient.put('https://localhost:5001/api/project', this.projectToEdit).subscribe(() => this.refresh())
     })
-  }
+  }*/
 
   deleteTask(id: number){
     this.httpClient.delete(`https://localhost:5001/api/task?id=${id}`).subscribe(() => this.refresh())
-  }*/
+  }
 }

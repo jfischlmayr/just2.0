@@ -38,5 +38,22 @@ namespace Backend.Controllers
 
             return Created(string.Empty, task);
         }
+
+        [HttpDelete]
+        public async Task<IActionResult> DeleteTask([FromQuery] int id)
+        {
+            var task = await context.Tasks.FirstOrDefaultAsync(t => t.Id == id);
+            if (task == null) return BadRequest("Task doesn't exist!");
+
+            var project = await context.Projects.FirstOrDefaultAsync(p => p.Id == task.ProjectId);
+            if (project == null) return BadRequest("Project doesn't exist!");
+
+            project.Tasks.Remove(task);
+            context.Tasks.Remove(task);
+
+            await context.SaveChangesAsync();
+
+            return NoContent();
+        }
     }
 }
