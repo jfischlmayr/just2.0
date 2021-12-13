@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -37,7 +38,7 @@ export class ProjectPageComponent implements OnInit {
 
   projects!: Observable<GetProject[]>
 
-  constructor(private httpClient : HttpClient, private router: Router) { }
+  constructor(private httpClient : HttpClient, private router: Router, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.refresh()
