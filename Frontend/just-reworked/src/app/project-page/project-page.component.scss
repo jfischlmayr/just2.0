@@ -220,12 +220,17 @@ mat-icon.next{
     }
 
     .input-field{
-        width: 23em !important;
+        width: 42.5% !important;
         margin-right: 1em;
     }
     .date-field{
-        width: 23em !important;
+        width: 30% !important;
         margin-right: 1em;
+    }
+    .description-field{
+        width: 85% !important;
+        margin-right: 1em;
+        margin-top: -1em;
     }
 
     .edit-icon{

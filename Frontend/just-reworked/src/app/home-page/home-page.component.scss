@@ -6,7 +6,11 @@
 @font-face { font-family: HelveticaNeueHollow; src: url('../../../../fonts/nimbus-sans-becker-outdbol.ttf'); }
 
 *{margin:0px auto;}
-
+.wrapper{
+    scroll-behavior: smooth;
+    background: rgb(24,37,62);
+    background: linear-gradient(0deg, rgb(42, 66, 109) 0%, rgba(52,77,135,1) 20%, rgba(110,144,228,1) 80%, rgb(145, 172, 240) 100% ); 
+}
 h1.main-title{
     font-size: 2.8rem;
     font-family: 'HelveticaNeueBold';
@@ -31,8 +35,8 @@ a:hover{
 
 .flexbox-panel-content{
     display: flex;
-     flex-direction: column;
-     flex-wrap: nowrap;
+     flex-direction: row;
+     flex-wrap: wrap;
      justify-content: center;
      align-items: center;
      align-content: center;
@@ -117,24 +121,14 @@ button.intro-button, button.tutorial-button{
     width: 25em;
     height: 5em;
     margin-top: 0.5em;
+    background-color: #e1ddf3;
     color: black;
     transition: background-color 400ms, color 400ms;
     
 }
 
-button.tutorial-button{
-    background-color:#ff8665;
-}
-
-button.intro-button:hover{
-    background-color: rgb(26, 26, 26);
-    color: white !important;
-    @include mat.elevation(8);
-
-}
-
-button.tutorial-button:hover{
-    background-color:rgb(26, 26, 26);
+button.intro-button:hover, button.tutorial-button:hover{
+    background-color: #4b446e;
     color: white !important;
     @include mat.elevation(8);
 }
@@ -185,6 +179,25 @@ button.tutorial-button:hover{
 }
 
 @media (min-width: 50em){
+    .landing{
+        height: 100vh;
+    }
+
+    p.landing-text, p.special-text{
+        color: white;
+        font-size: 2.9rem;
+        text-align: center;
+        margin-top: 8em;
+        font-family: 'HelveticaNeueBold';
+    }
+
+    .special-text{
+        color: #4b446e;
+    }
+
+
+
+
     h1.main-title{
         font-size:4rem;
     }
@@ -234,29 +247,13 @@ button.tutorial-button:hover{
         margin-left: 0.25em;
         margin-right: 0.25em;
         margin-top: 2.5em;
-        color: black;
         transition: background-color 400ms, color 400ms;
         
     }
 
     button.tutorial-button{
-        color: black;
-        background-color:#ff8665;
         width: 30.7em;
         margin-top: 0.5em;
-    }
-
-    button.intro-button:hover{
-        background-color: rgb(26, 26, 26);
-        color: white !important;
-        @include mat.elevation(8);
-
-    }
-
-    button.tutorial-button:hover{
-        background-color:rgb(26, 26, 26);
-        color: white !important;
-        @include mat.elevation(8);
     }
 
     .buttons-big-screen{
@@ -266,5 +263,90 @@ button.tutorial-button:hover{
     .buttons-small-screen{
         display: none;
     }
+
+    .big-field{
+        width: 60%; 
+        height: 45rem;
+        overflow: hidden;
+        border-radius: 20px;
+
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+
+    .small-field{
+        width: 40%; 
+        height: 45rem;
+        overflow: hidden;
+        border-radius: 20px;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        
+    }
+
+
+
+    .card{
+        margin-left: 3em;
+        margin-right: 3em;
+        margin-top: 0;
+        margin-bottom: 0;
+        height: 30rem;
+        top: 12.5%;
+        
+        @include mat.elevation(5);
+    }
+
+    
+
+    mat-card-title{
+        font-size: 2.5rem;
+        line-height: 3rem;
+        margin-bottom: 1em;
+    }
+    .card-content{
+        font-size: 1.7rem;
+        line-height: 2.4rem;
+    }
+
+    .big-img{
+        @include mat.elevation(8);
+    }
+    .small-img{
+        @include mat.elevation(8);
+    }
+
+    .flexbox-panel-buttons{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        margin-top: 5vh;
+    }
+
+    .arrow-icon{
+        color: #4b446e;
+        z-index: 110;
+        font-size: 5rem;
+        height: auto;
+        transform: rotate(90deg) translate(0px);
+        position: relative;
+        margin-top: 12.5vh;
+        transition: transform 500ms;
+        
+    }
+
+    .arrow-icon:hover{
+        transform: rotate(90deg) translate(20px);
+        cursor: pointer;
+    }
+
+    #first{
+        display:inline-block;
+    }
+
+    
 }
 

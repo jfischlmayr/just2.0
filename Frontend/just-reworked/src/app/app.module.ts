@@ -24,6 +24,9 @@ import { TutorialComponent } from './tutorial/tutorial.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
+import {MatDialogModule} from '@angular/material/dialog';
+import { EditDialogComponent } from './project-page/edit-dialog/edit-dialog.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,11 @@ import { RouterModule } from '@angular/router';
     ProjectPageComponent,
     TaskPageComponent,
     OldGanttComponent,
-    TutorialComponent
+    TutorialComponent,
+    EditDialogComponent
+  ],
+  entryComponents:[
+    EditDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -52,9 +59,14 @@ import { RouterModule } from '@angular/router';
     MatProgressBarModule,
     FormsModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    MatNativeDateModule,
+    MatDialogModule
   ],
-  providers: [],
+  providers: [ {
+    provide: MAT_DATE_LOCALE, useValue: 'de-DE'
+  }
+  ],
   bootstrap: [AppComponent, HomePageComponent]
 })
 export class AppModule { }

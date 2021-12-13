@@ -84,5 +84,32 @@ namespace Backend.Controllers
 
             return Created(string.Empty, resultList);
         }
+        [HttpDelete]
+        public async Task<IActionResult> DeleteProjectById([FromQuery] int id)
+        {
+            var project = await context.Projects.FirstOrDefaultAsync(x => x.Id == id);
+            context.Projects.Remove(project);
+            await context.SaveChangesAsync();
+
+            return Ok(project);
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> EditProject([FromBody] Project project)
+        {
+            var result = await context.Projects.FirstOrDefaultAsync(p => p.Id == project.Id);
+            if (result == null)
+            {
+                return BadRequest();
+            }
+            result.Title = project.Title;
+            result.StartDate = project.StartDate;
+            result.EndDate = project.EndDate;
+            result.Description = project.Description;
+
+            await context.SaveChangesAsync();
+
+            return Ok(await context.Projects.FirstOrDefaultAsync(p => p.Id == project.Id));
+        }
     }
 }

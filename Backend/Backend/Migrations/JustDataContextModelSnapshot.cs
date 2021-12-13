@@ -25,6 +25,9 @@ namespace Backend.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<string>("Description")
+                        .HasColumnType("longtext");
+
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime(6)");
 
@@ -44,12 +47,6 @@ namespace Backend.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    b.Property<bool>("Done")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<TimeSpan?>("Duration")
-                        .HasColumnType("time(6)");
 
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime(6)");

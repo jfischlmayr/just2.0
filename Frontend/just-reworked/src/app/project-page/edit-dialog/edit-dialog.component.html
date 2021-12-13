@@ -1,0 +1,28 @@
+<div>
+<mat-dialog-content>
+    <mat-form-field appearance="outline" class="input-field">
+      <mat-label>Projektname</mat-label>
+      <input matInput name="projectNameInput" type="text" [(ngModel)]="title">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="edit-date-field">
+      <mat-label>Zeitspanne einfügen</mat-label>
+      <mat-date-range-input [rangePicker]="picker">
+        <input matStartDate placeholder="Startdatum" [(ngModel)]="startDate">
+        <input matEndDate placeholder="Enddatum" [(ngModel)]="endDate">
+      </mat-date-range-input>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-date-range-picker #picker></mat-date-range-picker>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="outline" class="edit-description-field" [style.width.em]="35">
+      <mat-label>Description</mat-label>
+      <textarea matInput name="projectDescriptionInput" type="text" [(ngModel)]="description" rows="2"></textarea>
+    </mat-form-field>
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button mat-raised-button color="primary" class="submit-button" (click)="submitDialog()" >Speichern</button>
+    <button mat-raised-button [style.color]="'red'" class="submit-button" (click)="cancelDialog()" >Abbrechen</button>
+  </mat-dialog-actions>
+</div>
