@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Task, GetTask, GetProject } from '../model'
+import { EditTaskDialogComponent } from './edit-task-dialog/edit-task-dialog.component';
 
 @Component({
   selector: 'app-task-page',
@@ -51,15 +52,15 @@ export class TaskPageComponent implements OnInit {
   }
 
   editTask(t : GetTask) : void{
-    /*const dialogRef = this.dialog.open(EditDialogComponent,{
+    const dialogRef = this.dialog.open(EditTaskDialogComponent,{
       data:t,
       panelClass: 'custom-dialog-container'
     })
     .afterClosed().subscribe( result => {
       this.taskToEdit = result
 
-      this.httpClient.put('https://localhost:5001/api/project', this.taskToEdit).subscribe(() => this.refresh())
-    })*/
+      this.httpClient.put('https://localhost:5001/api/task', this.taskToEdit).subscribe(() => this.refresh())
+    })
   }
 
   deleteTask(id: number){

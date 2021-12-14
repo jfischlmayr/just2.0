@@ -1,20 +1,20 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDatepickerContent } from '@angular/material/datepicker';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { GetProject } from '../../model'
 
 @Component({
-  selector: 'app-edit-dialog',
-  templateUrl: './edit-dialog.component.html',
-  styleUrls: ['./edit-dialog.component.scss']
+  selector: 'app-edit-task-dialog',
+  templateUrl: './edit-task-dialog.component.html',
+  styleUrls: ['./edit-task-dialog.component.scss']
 })
-export class EditDialogComponent implements OnInit {
+export class EditTaskDialogComponent implements OnInit {
+
   title : string = ''
   startDate!: Date
   endDate!: Date
   description: string =''
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: GetProject, private dialogRef : MatDialogRef<EditDialogComponent>) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: GetProject, private dialogRef : MatDialogRef<EditTaskDialogComponent>) { }
 
   ngOnInit(): void {
     this.title = this.data.title
