@@ -14,7 +14,7 @@ import { EditTaskDialogComponent } from './edit-task-dialog/edit-task-dialog.com
 })
 export class TaskPageComponent implements OnInit {
   showDelay = new FormControl(500);
-  projects!: Observable<GetProject[]>;
+  projects?: GetProject[];
   tasks?: GetTask[]
   title: string = ''
   startDate!: Date
@@ -26,7 +26,9 @@ export class TaskPageComponent implements OnInit {
   constructor(private httpClient: HttpClient, private router: Router, public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.projects = this.httpClient.get<GetProject[]>('https://localhost:5001/api/project');
+    this.httpClient.get<GetProject[]>('https://localhost:5001/api/project').subscribe(result =>{
+      this.projects = result
+    });
     this.refresh();
   }
 
@@ -53,7 +55,7 @@ export class TaskPageComponent implements OnInit {
 
   editTask(t : GetTask) : void{
     const dialogRef = this.dialog.open(EditTaskDialogComponent,{
-      data:t,
+      data: {task: t, projects: this.projects},
       panelClass: 'custom-dialog-container'
     })
     .afterClosed().subscribe( result => {

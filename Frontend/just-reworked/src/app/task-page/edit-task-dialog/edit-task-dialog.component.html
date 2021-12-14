@@ -15,10 +15,14 @@
         <mat-date-range-picker #picker></mat-date-range-picker>
       </mat-form-field>
       <br>
-      <mat-form-field appearance="outline" class="edit-description-field" [style.width.em]="35">
-        <mat-label>Description</mat-label>
-        <textarea matInput name="projectDescriptionInput" type="text" [(ngModel)]="description" rows="2"></textarea>
-      </mat-form-field>
+      <mat-form-field appearance="outline" class="select-field">
+        <mat-label>Select Project</mat-label>
+        <mat-select [(value)]="selectedProjectId" required>
+            <mat-option *ngFor="let p of projects" [value]="p.id">
+                {{p.title}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
     </mat-dialog-content>
 
     <mat-dialog-actions>

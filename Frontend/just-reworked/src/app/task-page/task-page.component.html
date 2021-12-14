@@ -26,7 +26,7 @@
         <mat-form-field appearance="outline" class="select-field">
             <mat-label>Select Project</mat-label>
             <mat-select [(value)]="selectedProjectId" required>
-                <mat-option *ngFor="let p of projects | async" [value]="p.id">
+                <mat-option *ngFor="let p of projects" [value]="p.id">
                     {{p.title}}
                 </mat-option>
             </mat-select>

@@ -27,3 +27,8 @@ export interface Task {
   endDate: Date
   projectId: number
 }
+
+export interface GetEditTaskDialogData {
+  task: GetTask
+  projects: GetProject[]
+}
