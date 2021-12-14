@@ -3,25 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
-
-
-interface GetProject {
-  id: number
-  title: string
-  startDate: Date
-  endDate: Date
-  description: string
-}
-
-interface Project {
-  title: string
-  startDate: Date
-  endDate: Date
-  description: string
-}
+import { GetProject, Project } from '../model'
 
 @Component({
   selector: 'app-project-page',
@@ -78,14 +61,6 @@ export class ProjectPageComponent implements OnInit {
     this.endDate = new Date()
     this.description = ''
   }
-
-  // editProject(p : GetProject){
-  //   this.title = p.title
-  //   this.startDate = p.startDate
-  //   this.endDate = p.endDate
-  //   this.editing = true
-  //   this.projectToEdit = p
-  // }
 
   deleteProject(id: number){
     this.httpClient.delete(`https://localhost:5001/api/project?id=${id}`).subscribe(() => this.refresh())
