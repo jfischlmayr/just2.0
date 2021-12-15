@@ -6,6 +6,8 @@ Team members:
 - Huemer Patrick
 - Kowatschek Samuel
 
+## Vorstelllungsvideo
+https://www.youtube.com/watch?v=pquqXWvphrE
 
 ## Administratives
 Stundenprotokoll: https://docs.google.com/spreadsheets/d/1E3dBvSDaSyTDjiCv5dcBZZzV-WNUptpTW1b8gpxmzuo/edit#gid=0
