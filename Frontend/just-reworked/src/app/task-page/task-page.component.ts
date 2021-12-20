@@ -48,6 +48,7 @@ export class TaskPageComponent implements OnInit {
   }
 
   refresh() {
+    
     this.httpClient.get<GetTask[]>('https://localhost:5001/api/task').subscribe(result => {
       this.tasks = result
     })
