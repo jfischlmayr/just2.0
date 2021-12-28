@@ -39,7 +39,7 @@
         <mat-card class="task-card" *ngFor="let t of tasksToShow()">
           <mat-card-content class="flexbox-panel-card">
             <div>{{ t.title }}</div>
-            <div>{{ t.startDate.toString().substring(0, 10) }} bis {{ t.endDate.toString().substring(0, 10) }}</div>
+            <div>{{ t.startDate | date:'dd.MM.yyyy':'GMT' }} bis {{ t.endDate | date:'dd.MM.yyyy':'CET' }}</div>
             <button mat-icon-button class="edit-icon" (click)="editTask(t)">
               <mat-icon>edit</mat-icon>
             </button>

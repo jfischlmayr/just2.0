@@ -3,9 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
 import { Task, GetTask, GetProject } from '../model'
 import { EditTaskDialogComponent } from './edit-task-dialog/edit-task-dialog.component';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-task-page',
@@ -33,12 +33,16 @@ export class TaskPageComponent implements OnInit {
   }
 
   onSubmit() {
+
     const task: Task = {
       title: this.title,
       startDate: this.startDate,
       endDate: this.endDate,
       projectId: this.selectedProjectId
     }
+
+    console.log(task.startDate)
+    console.log(task.endDate)
 
     this.title = ''
     this.startDate = new Date()
