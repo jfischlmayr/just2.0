@@ -43,9 +43,10 @@ export class TaskPageComponent implements OnInit {
     this.title = ''
     this.startDate = new Date()
     this.endDate = new Date()
-
     this.httpClient.post('https://localhost:5001/api/task', task).subscribe(() => this.refresh())
   }
+
+  
 
   refresh() {
     
@@ -68,5 +69,11 @@ export class TaskPageComponent implements OnInit {
 
   deleteTask(id: number){
     this.httpClient.delete(`https://localhost:5001/api/task?id=${id}`).subscribe(() => this.refresh())
+  }
+  
+  tasksToShow(): GetTask[] {
+    let tasks = this.tasks!;
+    tasks = tasks.filter(t => t.projectId == this.selectedProjectId);
+    return tasks;
   }
 }
