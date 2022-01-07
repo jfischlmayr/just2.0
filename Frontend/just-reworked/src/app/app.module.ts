@@ -28,6 +28,7 @@ import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import {MatDialogModule} from '@angular/material/dialog';
 import { EditDialogComponent } from './project-page/edit-dialog/edit-dialog.component';
 import { EditTaskDialogComponent } from './task-page/edit-task-dialog/edit-task-dialog.component';
+import { TestingComponent } from './testing/testing.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { EditTaskDialogComponent } from './task-page/edit-task-dialog/edit-task-
     OldGanttComponent,
     TutorialComponent,
     EditDialogComponent,
-    EditTaskDialogComponent
+    EditTaskDialogComponent,
+    TestingComponent
   ],
   entryComponents:[
     EditDialogComponent,
