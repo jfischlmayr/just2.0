@@ -29,8 +29,6 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { EditDialogComponent } from './project-page/edit-dialog/edit-dialog.component';
 import { EditTaskDialogComponent } from './task-page/edit-task-dialog/edit-task-dialog.component';
 import { TestingComponent } from './testing/testing.component';
-import { GoogleChartsModule } from 'angular-google-charts';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,8 +65,7 @@ import { GoogleChartsModule } from 'angular-google-charts';
     HttpClientModule,
     RouterModule,
     MatNativeDateModule,
-    MatDialogModule,
-    GoogleChartsModule
+    MatDialogModule
   ],
   providers: [ {
     provide: MAT_DATE_LOCALE, useValue: 'de-DE'
