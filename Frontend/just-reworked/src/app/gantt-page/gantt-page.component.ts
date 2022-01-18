@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { GetProject } from '../model';
+import { HttpClient } from '@angular/common/http';
+import { ProjectPageComponent } from '../project-page/project-page.component';
 
 interface Project{
   value: string;
@@ -12,14 +15,31 @@ interface Project{
 })
 export class GanttPageComponent implements OnInit {
   showDelay = new FormControl(500);
-  constructor() { }
-  projects: Project[] = [
-    {value: 'project-1', viewValue: 'ABC'},
-    {value: 'project-2', viewValue: 'QWI'},
-    {value: 'project-3', viewValue: 'ASD'},
-    {value: 'project-4', viewValue: 'XZY'}
-  ];
+  constructor(private httpClient : HttpClient) { }
+  projects: GetProject[] = [];
+  selectedProject? : GetProject;
+  timespan = require('timespan')
+
   ngOnInit(): void {
+    this.httpClient.get<GetProject[]>('https://localhost:5001/api/project').subscribe(result =>{
+      this.projects = result
+    });
   }
 
+  createGantt(): void{
+
+  }
+
+  calcDays(p : GetProject|undefined) : string{
+    var timeSpan = new this.timespan.TimeSpan()
+    if(p){
+      const start = new Date(p.startDate)
+      const end  = new Date(p.endDate)
+      timeSpan = this.timespan.fromDates(start, end, true)
+    }
+
+
+
+    return `${timeSpan}`
+  }
 }

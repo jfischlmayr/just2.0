@@ -18,13 +18,13 @@ export class EditDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.title = this.data.title
-    this.startDate = this.data.startDate
-    this.endDate = this.data.endDate
+    this.startDate = new Date(this.data.startDate)
+    this.endDate = new Date(this.data.endDate)
     this.description = this.data.description
   }
 
   submitDialog() : void{
-    const editedProject: GetProject = {id: this.data.id , title : this.title, startDate : this.startDate, endDate : this.endDate, description: this.description}
+    const editedProject: GetProject = {id: this.data.id , title : this.title, startDate : this.startDate.toISOString() , endDate : this.endDate.toISOString() , description: this.description}
     this.dialogRef.close(editedProject)
   }
 

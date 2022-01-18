@@ -43,18 +43,8 @@ export class ProjectPageComponent implements OnInit {
       endDate: this.endDate,
       description: this.description
     }
-
-    if(this.editing) {
-      this.editing = false
-
-      this.projectToEdit!.title = this.title
-      this.projectToEdit!.startDate = this.startDate
-      this.projectToEdit!.endDate = this.endDate
-
-      this.httpClient.put('https://localhost:5001/api/project', this.projectToEdit).subscribe(() => this.refresh())
-    } else {
-      this.httpClient.post('https://localhost:5001/api/project', project).subscribe(() => this.refresh())
-    }
+    console.log(project)
+    this.httpClient.post('https://localhost:5001/api/project', project).subscribe(() => this.refresh())
 
     this.title = ''
     this.startDate = new Date()
@@ -76,5 +66,11 @@ export class ProjectPageComponent implements OnInit {
 
       this.httpClient.put('https://localhost:5001/api/project', this.projectToEdit).subscribe(() => this.refresh())
     })
+  }
+
+  displayDate(p : GetProject) : string{
+    const sDate = p.startDate
+    const eDate = p.endDate
+    return `${p.startDate.toString().substring(0, 10)} bis ${p.endDate.toString().substring(0, 10)}`
   }
 }

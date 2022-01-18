@@ -1,8 +1,8 @@
 export interface GetProject {
   id: number
   title: string
-  startDate: Date
-  endDate: Date
+  startDate: string
+  endDate: string
   description: string
 }
 
