@@ -41,17 +41,18 @@
                       </div>
                       -->
 
-                      <table>
-                        <th>Task</th>
-                        <th *ngFor="let d in days"> Tag {{ d }} </th>
-                      </table>
-
-
-
-
-
-                </mat-card-content>
-            </mat-card>
+          <table>
+            <tr >
+              <th>Task</th>
+              <th *ngFor="let d of days; index as i">Tag {{ days[i] }}</th>
+            </tr>
+            <tr *ngFor="let t of tasks; index as i">
+              <td> {{ tasks[i].title }} </td>
+              <td> {{ calcDuration(tasks[i]) }} </td>
+            </tr>
+          </table>
+        </mat-card-content>
+      </mat-card>
     </div>
     <div class="flexbox-panel">
 
