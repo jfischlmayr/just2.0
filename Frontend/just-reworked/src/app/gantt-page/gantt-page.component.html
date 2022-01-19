@@ -9,12 +9,13 @@
                 <mat-card-content>
                     <mat-form-field appearance="outline" class="select-field">
                         <mat-label>Select Project</mat-label>
-                        <mat-select>
-                          <mat-option *ngFor="let project of projects" [value]="project.value">
-                            {{project.viewValue}}
+                        <mat-select [(value)]="selectedProject">
+                          <mat-option *ngFor="let project of projects" [value]="project">
+                            {{project.title}}
                           </mat-option>
                         </mat-select>
                       </mat-form-field>
+                      {{calcDays(selectedProject)}}
                       <button mat-raised-button color="primary" class="submit-button" >Gantt zeigen</button>
                       <button mat-raised-button color="accent" class="download-button" ><mat-icon>file_download</mat-icon>CSV downloaden</button>
 

@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDatepickerContent } from '@angular/material/datepicker';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { GetTask, GetProject, GetEditTaskDialogData } from '../../model'
+import { GetTask, GetProject, GetEditTaskDialogData, Project } from '../../model'
 
 @Component({
   selector: 'app-edit-task-dialog',

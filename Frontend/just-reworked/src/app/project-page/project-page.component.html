@@ -42,7 +42,7 @@
         </mat-card-title>
         <mat-card-content>
           {{ p.description }} <br>
-          {{ p.startDate.toString().substring(0, 10) }} bis {{ p.endDate.toString().substring(0, 10) }}
+          {{ displayDate(p) }}
         </mat-card-content>
       </mat-card>
     </mat-card-content>
