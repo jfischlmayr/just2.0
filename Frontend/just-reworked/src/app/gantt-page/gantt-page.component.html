@@ -43,7 +43,7 @@
               </tr>
               <tr *ngFor="let t of tasks; index as i">
                 <td> {{ tasks[i].title }} </td>
-                <td> {{ calcDuration(tasks[i]) }} </td>
+                <td *ngFor="let d of days; index as i"></td>
               </tr>
             </table>
           </div>
