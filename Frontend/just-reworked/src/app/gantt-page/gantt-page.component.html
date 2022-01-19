@@ -1,26 +1,21 @@
-    <h1 class="main-title">
-        GANTT
-    </h1>
+<h1 class="main-title">GANTT</h1>
 
-
-
-    <div class="content flexbox-panel-content">
-            <mat-card class="card-wrapper">
-                <mat-card-content>
-                    <mat-form-field appearance="outline" class="select-field">
-                        <mat-label>Select Project</mat-label>
-                        <mat-select [(value)]="selectedProject">
-                          <mat-option *ngFor="let project of projects" [value]="project">
-                            {{project.title}}
-                          </mat-option>
-                        </mat-select>
-                      </mat-form-field>
-                      {{calcDays(selectedProject)}}
-                      <button mat-raised-button color="primary" class="submit-button" >Gantt zeigen</button>
-                      <button mat-raised-button color="accent" class="download-button" ><mat-icon>file_download</mat-icon>CSV downloaden</button>
-                      <!--
+<div class="content flexbox-panel-content">
+  <mat-card class="card-wrapper">
+    <mat-card-content>
+      <mat-form-field appearance="outline" class="select-field">
+        <mat-label>Select Project</mat-label>
+        <mat-select [(value)]="selectedProject">
+          <mat-option *ngFor="let project of projects" [value]="project">
+            {{project.title}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+        {{days.length}}
+        <button mat-raised-button color="primary" class="submit-button" (click)="calcDays(selectedProject)">Gantt zeigen</button>
+        <button mat-raised-button color="accent" class="download-button" ><mat-icon>file_download</mat-icon>CSV downloaden</button>
+                  <!--
                       <mat-divider></mat-divider>
-                      <div class="gantt-task-wrapper">
                         <mat-list style="width: 15.5em; margin-left: 0em; ">
                           <mat-list-item>Task 1
                               <mat-card style="left: 10em; bottom: 0.2em; width: 4em; height: 0.3em; background-color: orange;">
@@ -40,17 +35,18 @@
                         </mat-list>
                       </div>
                       -->
-
-          <table>
-            <tr >
-              <th>Task</th>
-              <th *ngFor="let d of days; index as i">Tag {{ days[i] }}</th>
-            </tr>
-            <tr *ngFor="let t of tasks; index as i">
-              <td> {{ tasks[i].title }} </td>
-              <td> {{ calcDuration(tasks[i]) }} </td>
-            </tr>
-          </table>
+          <div class="gantt-task-wrapper">
+            <table>
+              <tr >
+                <th>Task</th>
+                <th *ngFor="let d of days; index as i">Tag {{ days[i] }}</th>
+              </tr>
+              <tr *ngFor="let t of tasks; index as i">
+                <td> {{ tasks[i].title }} </td>
+                <td> {{ calcDuration(tasks[i]) }} </td>
+              </tr>
+            </table>
+          </div>
         </mat-card-content>
       </mat-card>
     </div>
