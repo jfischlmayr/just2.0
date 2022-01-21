@@ -1,8 +1,9 @@
 <h1 class="main-title">GANTT</h1>
 
-<div class="content flexbox-panel-content">
+<div class="content">
   <mat-card class="card-wrapper">
     <mat-card-content>
+      
       <mat-form-field appearance="outline" class="select-field">
         <mat-label>Select Project</mat-label>
         <mat-select [(value)]="selectedProject">
@@ -14,42 +15,29 @@
         {{days.length}}
         <button mat-raised-button color="primary" class="submit-button" (click)="calcDays(selectedProject)">Gantt zeigen</button>
         <button mat-raised-button color="accent" class="download-button" ><mat-icon>file_download</mat-icon>CSV downloaden</button>
-                  <!--
-                      <mat-divider></mat-divider>
-                        <mat-list style="width: 15.5em; margin-left: 0em; ">
-                          <mat-list-item>Task 1
-                              <mat-card style="left: 10em; bottom: 0.2em; width: 4em; height: 0.3em; background-color: orange;">
-                              </mat-card>
-                          </mat-list-item>
-                          <mat-divider></mat-divider>
-                          <mat-list-item>Task 2
-                              <mat-card style="left: 16em; bottom: 0em; width: 6em; height: 0.3em; background-color: orange;">
-                              </mat-card>
-                          </mat-list-item>
-                          <mat-divider></mat-divider>
-                          <mat-list-item>Task 3
-                              <mat-card style="left: 19em; width: 2em; height: 0.3em; background-color: orange;;">
-                              </mat-card>
-                          </mat-list-item>
-                          <mat-divider></mat-divider>
-                        </mat-list>
-                      </div>
-                      -->
-          <div class="gantt-task-wrapper">
-            <table>
-              <tr >
-                <th>Task</th>
-                <th *ngFor="let d of days; index as i">Tag {{ i }}</th>
+
+          <div>
+            <div class="gantt-task-wrapper">
+            <table class="task-zone" cellspacing="0">
+              <tr class="head-row" *ngIf="tasksToShow().length > 0">
+                <th style="width: auto; text-align: left; min-width: 10vw;">Task</th>
+                <th *ngFor="let d of days; index as i" style="min-width: 2.5vw">Tag {{ i }}</th>
               </tr>
-              <tr *ngFor="let t of tasks; index as j">
-                <td> {{ tasks[j].title }} </td>
-                <td *ngFor="let d of days; index as h" [style.background]="fillTable(j, h)"></td>
+              <tr *ngFor="let t of tasksToShow(); index as j" class="task-row">
+                <td style="width: auto; text-align: left; min-width: 6vw;"> {{ tasks[j].title }} </td>
+                <td *ngFor="let d of days; index as h" [style.background]="fillTableBackground(j, h)" style="min-width: 2.5vw"></td>
               </tr>
             </table>
           </div>
+          </div>
+        
+
         </mat-card-content>
       </mat-card>
     </div>
+
+
+
     <div class="flexbox-panel">
 
         <button mat-fab color="warn" class="fab-prev" aria-label="Previous" [routerLink]="'/tasks'"

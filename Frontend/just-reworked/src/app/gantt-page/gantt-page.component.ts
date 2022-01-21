@@ -65,11 +65,10 @@ export class GanttPageComponent implements OnInit {
     }
   }
 
-  fillTable(taskIdx: number, dayIdx: number) : string{
+  fillTableBackground(taskIdx: number, dayIdx: number) : string{
 
     if(this.tableData[taskIdx].offset <= dayIdx && this.tableData[taskIdx].offset + this.tableData[taskIdx].timespan > dayIdx){
-
-      return "red"
+      return "#6b97ff"
     }
     return "white"
   }
@@ -80,5 +79,11 @@ export class GanttPageComponent implements OnInit {
     const end  = new Date(t.endDate)
     timeSpan = this.timespan.fromDates(start, end, true)
     return timeSpan.days
+  }
+
+  tasksToShow(): GetTask[] {
+    let tasks = this.tasks!;
+    tasks = tasks.filter(t => t.projectId == this.selectedProject?.id);
+    return tasks;
   }
 }

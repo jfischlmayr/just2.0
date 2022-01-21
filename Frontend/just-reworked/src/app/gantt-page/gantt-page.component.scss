@@ -62,14 +62,7 @@ button.fab-prev{
     align-content: center;
 }
 
-.flexbox-panel-content{
-    display: flex;
-       flex-direction: column;
-       flex-wrap: nowrap;
-       justify-content: center;
-       align-items: center;
-       align-content: center;
-  }
+
   .content{
     margin-top: 10em;
   }
@@ -111,7 +104,8 @@ mat-icon.next{
 }
 
 .gantt-task-wrapper{
-  height: 100%; overflow-y: scroll; overflow-x: scroll;
+  height: 100%; 
+  overflow: scroll;
 }
 
 @media (min-width: 37em){
@@ -194,9 +188,23 @@ mat-icon.next{
     }
 
     .gantt-task-wrapper{
-      height: 100%;
-      overflow-y: scroll;
-      overflow-x: scroll;
+
+    }
+
+    .task-zone{
+      margin: 0;
+      padding: 0;
+      border-spacing: 0 2px;
+      width: 100%;
+    }
+
+    .head-row{
+
+    }
+
+    .task-row{
+
+      
     }
 }
 
