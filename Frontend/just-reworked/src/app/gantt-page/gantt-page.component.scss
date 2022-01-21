@@ -108,6 +108,8 @@ mat-icon.next{
   overflow: scroll;
 }
 
+
+
 @media (min-width: 37em){
   h1.main-title{
       font-size:3.5rem;
@@ -203,8 +205,18 @@ mat-icon.next{
     }
 
     .task-row{
+        height: 2.1em;
+    }
 
-      
+    .bar-column{
+      margin: 10em;
+      min-width: 3.2vw;
+    }
+    
+    .task-column{
+      width: auto; 
+      text-align: left; 
+      min-width: 10vw;
     }
 }
 

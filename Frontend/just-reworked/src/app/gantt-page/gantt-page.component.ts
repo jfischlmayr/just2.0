@@ -67,10 +67,29 @@ export class GanttPageComponent implements OnInit {
 
   fillTableBackground(taskIdx: number, dayIdx: number) : string{
 
-    if(this.tableData[taskIdx].offset <= dayIdx && this.tableData[taskIdx].offset + this.tableData[taskIdx].timespan > dayIdx){
+    if(this.tableData[taskIdx].offset <= dayIdx 
+        && this.tableData[taskIdx].offset + this.tableData[taskIdx].timespan > dayIdx){
       return "#6b97ff"
     }
     return "white"
+  }
+
+  fillTableBorder(taskIdx: number, dayIdx: number) : string{
+    
+    
+
+    if(this.tableData[taskIdx].offset <= dayIdx 
+      && this.tableData[taskIdx].offset + this.tableData[taskIdx].timespan > dayIdx){
+        if(this.tableData[taskIdx].offset == dayIdx){
+          return "20px 0 0 20px"
+        }else if(this.tableData[taskIdx].timespan+this.tableData[taskIdx].offset-1 == dayIdx){
+          return "0 20px 20px 0"
+        }
+        
+        
+      }
+    return "0px";
+
   }
 
   calcDuration(t: GetTask) : number {

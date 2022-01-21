@@ -7,25 +7,24 @@
       <mat-form-field appearance="outline" class="select-field">
         <mat-label>Select Project</mat-label>
         <mat-select [(value)]="selectedProject">
-          <mat-option *ngFor="let project of projects" [value]="project">
+          <mat-option *ngFor="let project of projects" [value]="project" (click)="calcDays(selectedProject)">
             {{project.title}}
           </mat-option>
         </mat-select>
       </mat-form-field>
         {{days.length}}
-        <button mat-raised-button color="primary" class="submit-button" (click)="calcDays(selectedProject)">Gantt zeigen</button>
         <button mat-raised-button color="accent" class="download-button" ><mat-icon>file_download</mat-icon>CSV downloaden</button>
 
           <div>
             <div class="gantt-task-wrapper">
             <table class="task-zone" cellspacing="0">
               <tr class="head-row" *ngIf="tasksToShow().length > 0">
-                <th style="width: auto; text-align: left; min-width: 10vw;">Task</th>
-                <th *ngFor="let d of days; index as i" style="min-width: 2.5vw">Tag {{ i }}</th>
+                <th class="task-column">Task</th>
+                <th *ngFor="let d of days; index as i" class="bar-column">Tag {{ i }}</th>
               </tr>
               <tr *ngFor="let t of tasksToShow(); index as j" class="task-row">
-                <td style="width: auto; text-align: left; min-width: 6vw;"> {{ tasks[j].title }} </td>
-                <td *ngFor="let d of days; index as h" [style.background]="fillTableBackground(j, h)" style="min-width: 2.5vw"></td>
+                <td class="task-column"> {{ tasks[j].title }} </td>
+                <td *ngFor="let d of days; index as h" [style.background]="fillTableBackground(j, h)" [style.border-radius]="fillTableBorder(j, h)" class="bar-column"></td>
               </tr>
             </table>
           </div>
