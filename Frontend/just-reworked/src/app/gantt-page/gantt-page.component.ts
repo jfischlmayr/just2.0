@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { GetProject, GetTask } from '../model';
+import { GetProject, GetTask, TableData } from '../model';
 import { HttpClient } from '@angular/common/http';
 import { ProjectPageComponent } from '../project-page/project-page.component';
-import { start } from 'repl';
 
 interface Project{
   value: string;
@@ -19,8 +18,9 @@ export class GanttPageComponent implements OnInit {
   projects: GetProject[] = []
   selectedProject? : GetProject
   timespan = require('timespan')
-  days: number[] = []
+  tableData: TableData[] = []
   tasks: GetTask[] = []
+  days: number[] = [];
 
   constructor(private httpClient : HttpClient) { }
 
@@ -37,21 +37,41 @@ export class GanttPageComponent implements OnInit {
 
   }
 
-  calcDays(p : GetProject|undefined) : string{
+  calcDays(p : GetProject|undefined) : void{
     var timeSpan = new this.timespan.TimeSpan()
+    this.days = []
+    this.tableData = []
+
     if(p){
-      const start = new Date(p.startDate)
-      const end  = new Date(p.endDate)
-      timeSpan = this.timespan.fromDates(start, end, true)
+      var projTasks = this.tasks.filter(t => t.projectId == p?.id);
+      if(projTasks){
+        let dates = projTasks.map( p => new Date(p.startDate)).concat(projTasks.map( p => new Date(p.endDate)))
+        let start = dates.reduce(function (a, b) { return a < b ? a : b; });
+        let end = dates.reduce(function (a, b) { return a > b ? a : b; });
 
-      this.days = []
+        timeSpan = this.timespan.fromDates(start, end, true)
 
-      for (let i = 0; i < timeSpan.days; i++) {
-        this.days.push(i + 1)
+        for (let i = 0; i < timeSpan.totalDays(); i++) {
+          this.days.push(i + 1)
+        }
+
+        projTasks.forEach(t => {
+          let ts = this.timespan.fromDates(new Date(t.startDate), new Date(t.endDate), true)
+          let off = this.timespan.fromDates(new Date(t.startDate), start, true)
+          this.tableData.push({timespan: ts.totalDays(), offset: off.totalDays()})
+        })
       }
-    }
 
-    return `${timeSpan}`
+    }
+  }
+
+  fillTable(taskIdx: number, dayIdx: number) : string{
+
+    if(this.tableData[taskIdx].offset <= dayIdx && this.tableData[taskIdx].offset + this.tableData[taskIdx].timespan > dayIdx){
+
+      return "red"
+    }
+    return "white"
   }
 
   calcDuration(t: GetTask) : number {

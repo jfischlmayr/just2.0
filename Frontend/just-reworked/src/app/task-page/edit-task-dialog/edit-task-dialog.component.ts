@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDatepickerContent } from '@angular/material/datepicker';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { GetTask, GetProject, GetEditTaskDialogData, Project } from '../../model'
+import { GetTask, GetProject, GetEditTaskDialogData, Project, EditTask } from '../../model'
 
 @Component({
   selector: 'app-edit-task-dialog',
@@ -20,14 +20,14 @@ export class EditTaskDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.title = this.data.task.title
-    this.startDate = this.data.task.startDate
-    this.endDate = this.data.task.endDate
+    this.startDate = new Date(this.data.task.startDate)
+    this.endDate = new Date(this.data.task.endDate)
     this.selectedProjectId = this.data.task.projectId
     this.projects = this.data.projects
   }
 
   submitDialog() : void{
-    const editedTask: GetTask = {id: this.data.task.id, title: this.title, endDate: this.endDate, startDate: this.startDate, projectId: this.selectedProjectId}
+    const editedTask: EditTask = {id: this.data.task.id, title: this.title, endDate: this.endDate, startDate: this.startDate, projectId: this.selectedProjectId}
     this.dialogRef.close(editedTask)
   }
 

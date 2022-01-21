@@ -16,9 +16,22 @@ export interface Project {
 export interface GetTask {
   id: number
   title: string
+  startDate: string
+  endDate: string
+  projectId: number
+}
+
+export interface EditTask{
+  id: number
+  title: string
   startDate: Date
   endDate: Date
   projectId: number
+}
+
+export interface TableData{
+  timespan: number
+  offset: number
 }
 
 export interface Task {

@@ -39,11 +39,11 @@
             <table>
               <tr >
                 <th>Task</th>
-                <th *ngFor="let d of days; index as i">Tag {{ days[i] }}</th>
+                <th *ngFor="let d of days; index as i">Tag {{ i }}</th>
               </tr>
-              <tr *ngFor="let t of tasks; index as i">
-                <td> {{ tasks[i].title }} </td>
-                <td *ngFor="let d of days; index as i"></td>
+              <tr *ngFor="let t of tasks; index as j">
+                <td> {{ tasks[j].title }} </td>
+                <td *ngFor="let d of days; index as h" [style.background]="fillTable(j, h)"></td>
               </tr>
             </table>
           </div>

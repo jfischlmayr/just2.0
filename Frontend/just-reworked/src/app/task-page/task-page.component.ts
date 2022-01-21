@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { Task, GetTask, GetProject } from '../model'
+import { Task, GetTask, GetProject, EditTask } from '../model'
 import { EditTaskDialogComponent } from './edit-task-dialog/edit-task-dialog.component';
 import { DatePipe } from '@angular/common';
 
@@ -21,7 +21,7 @@ export class TaskPageComponent implements OnInit {
   endDate!: Date
 
   selectedProjectId!: number
-  taskToEdit?: GetTask
+  taskToEdit?: EditTask
 
   constructor(private httpClient: HttpClient, private router: Router, public dialog: MatDialog) { }
 
@@ -50,10 +50,10 @@ export class TaskPageComponent implements OnInit {
     this.httpClient.post('https://localhost:5001/api/task', task).subscribe(() => this.refresh())
   }
 
-  
+
 
   refresh() {
-    
+
     this.httpClient.get<GetTask[]>('https://localhost:5001/api/task').subscribe(result => {
       this.tasks = result
     })
@@ -74,7 +74,7 @@ export class TaskPageComponent implements OnInit {
   deleteTask(id: number){
     this.httpClient.delete(`https://localhost:5001/api/task?id=${id}`).subscribe(() => this.refresh())
   }
-  
+
   tasksToShow(): GetTask[] {
     let tasks = this.tasks!;
     tasks = tasks.filter(t => t.projectId == this.selectedProjectId);
