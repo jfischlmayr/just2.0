@@ -23,7 +23,9 @@
               </tr>
               <tr *ngFor="let t of tasksToShow(); index as j" class="task-row">
                 <td class="task-column"> {{ t.title }} </td>
-                <td *ngFor="let d of days; index as h" [style.background]="fillTableBackground(j, h)" [style.border-radius]="fillTableBorder(j, h)" class="bar-column"></td>
+                <td *ngFor="let d of days; index as h" [style.background]="fillTableBackground(j, h)" [style.border-radius]="fillTableBorder(j, h)" class="bar-column" 
+                matTooltip={{showTooltipMessage(t)}} [matTooltipShowDelay]="500">
+              </td>
               </tr>
             </table>
           </div>

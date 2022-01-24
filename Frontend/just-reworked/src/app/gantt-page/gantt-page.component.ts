@@ -3,6 +3,8 @@ import { FormControl } from '@angular/forms';
 import { GetProject, GetTask, TableData } from '../model';
 import { HttpClient } from '@angular/common/http';
 import { ProjectPageComponent } from '../project-page/project-page.component';
+import { DatePipe } from '@angular/common';
+
 
 interface Project{
   value: string;
@@ -31,6 +33,7 @@ export class GanttPageComponent implements OnInit {
     this.httpClient.get<GetTask[]>('https://localhost:5001/api/task').subscribe(result =>{
       this.tasks = result
     });
+
   }
 
   createGantt(): void{
@@ -104,5 +107,11 @@ export class GanttPageComponent implements OnInit {
     let tasks = [];
     tasks = this.tasks.filter(t => t.projectId == this.selectedProject?.id);
     return tasks;
+  }
+
+  showTooltipMessage(t: GetTask): String{
+    const start = new Date(t.startDate)
+    const end  = new Date(t.endDate)
+    return `${t.title}: ${start.toLocaleDateString()} - ${end.toLocaleDateString()}`
   }
 }
