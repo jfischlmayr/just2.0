@@ -193,8 +193,6 @@ mat-icon.next{
       position: sticky;
       left: 0;
       background-color: white;
-      overflow-x: scroll;
-      overflow-y: scroll;
     }
 
     .task-zone{
@@ -216,12 +214,12 @@ mat-icon.next{
       margin: 10em;
       min-width: 3.2vw;
     }
-    
+
     .task-column{
-      width: auto; 
-      text-align: left; 
+      width: auto;
+      text-align: left;
       min-width: 10vw;
-      
+
     }
 }
 
