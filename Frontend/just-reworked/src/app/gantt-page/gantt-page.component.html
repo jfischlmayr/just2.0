@@ -14,7 +14,7 @@
       </mat-form-field>
         <button mat-raised-button color="accent" class="download-button" ><mat-icon>file_download</mat-icon>CSV downloaden</button>
 
-          <div>
+          <div *ngIf="tasksToShow().length > 0">
             <div class="gantt-task-wrapper">
             <table class="task-zone" cellspacing="0">
               <tr class="head-row" *ngIf="tasksToShow().length > 0">
