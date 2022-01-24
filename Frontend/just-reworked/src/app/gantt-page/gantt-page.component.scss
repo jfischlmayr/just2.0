@@ -108,6 +108,10 @@ mat-icon.next{
   overflow-y: scroll;
 }
 
+.content-scroll{
+  overflow-y: scroll;
+}
+
 
 
 @media (min-width: 37em){
@@ -193,8 +197,6 @@ mat-icon.next{
       position: sticky;
       left: 0;
       background-color: white;
-      overflow-x: scroll;
-      overflow-y: scroll;
     }
 
     .task-zone{

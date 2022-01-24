@@ -2,7 +2,7 @@
 
 <div class="content">
   <mat-card class="card-wrapper">
-    <mat-card-content>
+    <mat-card-content class="content-scroll">
       
       <mat-form-field appearance="outline" class="select-field">
         <mat-label>Select Project</mat-label>
@@ -22,7 +22,7 @@
                 <th *ngFor="let d of days; index as i" class="bar-column">Tag {{ i }}</th>
               </tr>
               <tr *ngFor="let t of tasksToShow(); index as j" class="task-row">
-                <td class="task-column"> {{ tasks[j].title }} </td>
+                <td class="task-column"> {{ t.title }} </td>
                 <td *ngFor="let d of days; index as h" [style.background]="fillTableBackground(j, h)" [style.border-radius]="fillTableBorder(j, h)" class="bar-column"></td>
               </tr>
             </table>

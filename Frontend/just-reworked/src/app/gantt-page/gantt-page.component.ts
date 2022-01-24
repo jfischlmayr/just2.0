@@ -101,8 +101,8 @@ export class GanttPageComponent implements OnInit {
   }
 
   tasksToShow(): GetTask[] {
-    let tasks = this.tasks!;
-    tasks = tasks.filter(t => t.projectId == this.selectedProject?.id);
+    let tasks = [];
+    tasks = this.tasks.filter(t => t.projectId == this.selectedProject?.id);
     return tasks;
   }
 }
