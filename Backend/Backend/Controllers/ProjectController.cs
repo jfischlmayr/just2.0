@@ -51,10 +51,14 @@ namespace Backend.Controllers
         {
             if (project == null) return BadRequest("Project was empty");
 
-            context.Projects.Add(project);
+            var result = project;
+            result.StartDate = ConvertDateTime(project.StartDate);
+            result.EndDate = ConvertDateTime(project.EndDate);
+
+            context.Projects.Add(result);
             await context.SaveChangesAsync();
 
-            return Created(string.Empty, project);
+            return Created(string.Empty, result);
         }
 
         [HttpGet("init")]
@@ -103,13 +107,19 @@ namespace Backend.Controllers
                 return BadRequest();
             }
             result.Title = project.Title;
-            result.StartDate = project.StartDate;
-            result.EndDate = project.EndDate;
+            result.StartDate = ConvertDateTime(project.StartDate);
+            result.EndDate = ConvertDateTime(project.EndDate);
             result.Description = project.Description;
 
             await context.SaveChangesAsync();
 
             return Ok(await context.Projects.FirstOrDefaultAsync(p => p.Id == project.Id));
+        }
+
+        public DateTime ConvertDateTime(DateTime date)
+        {
+            TimeZoneInfo gmtZone = TimeZoneInfo.FindSystemTimeZoneById("W. Europe Standard Time");
+            return TimeZoneInfo.ConvertTimeFromUtc(date, gmtZone);
         }
     }
 }
