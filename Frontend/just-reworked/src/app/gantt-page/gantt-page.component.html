@@ -3,7 +3,7 @@
 <div class="content">
   <mat-card class="card-wrapper">
     <mat-card-content>
-      
+
       <mat-form-field appearance="outline" class="select-field">
         <mat-label>Select Project</mat-label>
         <mat-select [(value)]="selectedProject">
@@ -12,7 +12,7 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-        <button mat-raised-button color="accent" class="download-button" ><mat-icon>file_download</mat-icon>CSV downloaden</button>
+        <button mat-raised-button color="accent" class="download-button" (click)="downloadGantt(selectedProject)" ><mat-icon>file_download</mat-icon>CSV downloaden</button>
 
           <div>
             <div class="gantt-task-wrapper">
@@ -28,13 +28,11 @@
             </table>
           </div>
           </div>
-        
+
 
         </mat-card-content>
       </mat-card>
     </div>
-
-
 
     <div class="flexbox-panel">
 

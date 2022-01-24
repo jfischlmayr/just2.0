@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { GetProject, GetTask, TableData } from '../model';
 import { HttpClient } from '@angular/common/http';
-import { ProjectPageComponent } from '../project-page/project-page.component';
 
 interface Project{
   value: string;
@@ -33,8 +32,9 @@ export class GanttPageComponent implements OnInit {
     });
   }
 
-  createGantt(): void{
-
+  downloadGantt(project: GetProject | undefined): void{
+    if(project)
+      this.httpClient.get(`https://localhost:5001/api/gantt/export?id=${project?.id}`).subscribe()
   }
 
   calcDays(p : GetProject|undefined) : void{
@@ -61,13 +61,12 @@ export class GanttPageComponent implements OnInit {
           this.tableData.push({timespan: ts.totalDays(), offset: off.totalDays()})
         })
       }
-
     }
   }
 
   fillTableBackground(taskIdx: number, dayIdx: number) : string{
 
-    if(this.tableData[taskIdx].offset <= dayIdx 
+    if(this.tableData[taskIdx].offset <= dayIdx
         && this.tableData[taskIdx].offset + this.tableData[taskIdx].timespan > dayIdx){
       return "#6b97ff"
     }
@@ -75,18 +74,13 @@ export class GanttPageComponent implements OnInit {
   }
 
   fillTableBorder(taskIdx: number, dayIdx: number) : string{
-    
-    
-
-    if(this.tableData[taskIdx].offset <= dayIdx 
+    if(this.tableData[taskIdx].offset <= dayIdx
       && this.tableData[taskIdx].offset + this.tableData[taskIdx].timespan > dayIdx){
         if(this.tableData[taskIdx].offset == dayIdx){
           return "20px 0 0 20px"
         }else if(this.tableData[taskIdx].timespan+this.tableData[taskIdx].offset-1 == dayIdx){
           return "0 20px 20px 0"
         }
-        
-        
       }
     return "0px";
 
