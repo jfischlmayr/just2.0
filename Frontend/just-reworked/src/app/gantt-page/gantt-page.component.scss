@@ -103,10 +103,6 @@ mat-icon.next{
   width: 100%;
 }
 
-.gantt-task-wrapper{
-  
-}
-
 .card-wrapper{
   overflow-y: scroll;
   overflow-x: scroll;
@@ -195,7 +191,8 @@ mat-icon.next{
 
     .gantt-task-wrapper table td:first-child, th.task-column{
       position: sticky;
-      left: 0;
+      left: -2.5%;
+      padding-left: 1.2em;
       background-color: white;
     }
 
@@ -204,10 +201,6 @@ mat-icon.next{
       padding: 0;
       border-spacing: 0 2px;
       width: 100%;
-    }
-
-    .head-row{
-
     }
 
     .task-row{
@@ -223,7 +216,7 @@ mat-icon.next{
       width: auto; 
       text-align: left; 
       min-width: 10vw;
-      
+      margin-left: 1em;
     }
 }
 

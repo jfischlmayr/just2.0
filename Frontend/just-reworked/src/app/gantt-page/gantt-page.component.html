@@ -17,7 +17,7 @@
           <div *ngIf="tasksToShow().length > 0">
             <div class="gantt-task-wrapper">
             <table class="task-zone" cellspacing="0">
-              <tr class="head-row" *ngIf="tasksToShow().length > 0">
+              <tr class="head-row">
                 <th class="task-column">Task</th>
                 <th *ngFor="let d of days; index as i" class="bar-column">Tag {{ i }}</th>
               </tr>
