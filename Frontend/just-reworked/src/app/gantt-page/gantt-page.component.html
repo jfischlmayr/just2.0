@@ -1,6 +1,3 @@
-<span class="material-icons home-button">
-  home
-  </span>
 <h1 class="main-title">GANTT</h1>
 
 <div class="content">
@@ -33,6 +30,29 @@
             </table>
           </div>
           </div>
+          <div *ngIf="selectedProject == undefined" > 
+            <p style="text-align: center;
+            font-size: 1.8em;
+            color: rgb(72, 103, 124);
+            font-weight: 500;
+            margin-top: 2em;
+            ">
+              Kein Projekt ausgewählt.
+            </p>  
+          </div>
+          
+          <div *ngIf="selectedProject != undefined"> 
+            <div *ngIf="tasksToShow().length == 0" style="text-align: center;
+            font-size: 1.8em;
+            color: rgb(72, 103, 124);
+            font-weight: 500;
+            margin-top: 2em;
+            ">
+              In diesem Projekt sind keine Tasks enthalten. <a [routerLink]="'/tasks'">Hier Tasks hinzufügen.</a>
+            </div>
+          </div>
+
+         
 
 
         </mat-card-content>
