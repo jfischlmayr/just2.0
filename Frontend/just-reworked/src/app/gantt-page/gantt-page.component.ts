@@ -75,8 +75,15 @@ export class GanttPageComponent implements OnInit {
       && this.tableData[taskIdx].offset + this.tableData[taskIdx].timespan > dayIdx){
         if(this.tableData[taskIdx].offset == dayIdx){
           return "20px 0 0 20px"
-        }else if(this.tableData[taskIdx].timespan+this.tableData[taskIdx].offset-1 == dayIdx){
+        }else if(this.tableData[taskIdx].timespan+this.tableData[taskIdx].offset - 1 == dayIdx){
           return "0 20px 20px 0"
+        }else if(this.tableData[taskIdx].timespan+ Math.round(this.tableData[taskIdx].offset) - 1   == dayIdx){
+          return "20px 20px 20px 20px"
+        }else if(this.tasksToShow()[taskIdx].title == "MOIN"){
+          console.log("timespan: "+this.tableData[taskIdx].timespan)
+          console.log("offset: "+Math.round(this.tableData[taskIdx].offset))
+          console.log("Day idx: " + dayIdx)
+          return "0px 0 20px 20px"
         }
       }
     return "0px";
