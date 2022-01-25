@@ -89,7 +89,7 @@ mat-icon.next{
   color: white;
   background-color: green;
   width: 100%;
-  margin-top: 0.7em;
+  margin-bottom: 0.5em;
 }
 
 .submit-button{
@@ -106,6 +106,38 @@ mat-icon.next{
 .card-wrapper{
   overflow-y: scroll;
   overflow-x: scroll;
+}
+
+.task-zone{
+  margin: 0;
+  padding: 0;
+  border-spacing: 0 2px;
+  width: 100%;
+}
+
+.task-column{
+  text-align: left;
+  min-width: 10vw;
+  margin-left: 1em;
+  width: max-content;
+}
+
+.task-row{
+  height: 2.1em;
+}
+
+.bar-column{
+margin: 10em;
+min-width: 10vw;
+}
+
+.empty-tasks{
+  text-align: center;
+  font-size: 1.6em;
+  color: rgb(72, 103, 124);
+  font-weight: 500;
+  margin-top: 2em;
+  line-height: 1.3em;
 }
 
 
@@ -137,9 +169,58 @@ mat-icon.next{
   margin-bottom: 0.45em;
   margin-left: 0em;
   }
+
+  .task-zone{
+    margin: 0;
+    padding: 0;
+    border-spacing: 0 2px;
+    width: 100%;
+  }
+
+  .task-column{
+    display: block;
+    text-align: left;
+    min-width: 10vw;
+    margin-left: 1em;
+    width: max-content;
+  }
+
+  .task-row{
+    height: 2.1em;
 }
 
-@media (min-width: 50em){
+.bar-column{
+  margin: 10em;
+  min-width: 5vw;
+}
+.select-field{
+  width: auto;
+}
+.download-button{
+  position: absolute;
+  right: 2%;
+
+  width: auto;
+}
+
+.gantt-task-wrapper table td:first-child, th.task-column{
+  position: sticky;
+  left: -2.5%;
+  padding-left: 1.2em;
+  background-color: white;
+}
+
+.empty-tasks{
+  text-align: center;
+  font-size: 1.7em;
+  color: rgb(72, 103, 124);
+  font-weight: 500;
+  margin-top: 2em;
+}
+  
+}
+
+@media (min-width: 75em){
     h1.main-title{
         font-size:4rem;
     }
@@ -213,10 +294,15 @@ mat-icon.next{
     }
 
     .task-column{
-      width: auto;
+      width: max-content;
+      display: block;
       text-align: left;
       min-width: 10vw;
       margin-left: 1em;
+    }
+
+    .empty-tasks{
+      font-size: 1.8em;
     }
 }
 
