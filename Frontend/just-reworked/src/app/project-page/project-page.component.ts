@@ -18,6 +18,7 @@ export class ProjectPageComponent implements OnInit {
   startDate!: Date
   endDate!: Date
   description: string =''
+  selectedIndex: number = 0;
 
   editing: boolean = false
   projectToEdit?: GetProject
@@ -72,5 +73,9 @@ export class ProjectPageComponent implements OnInit {
     const sDate = p.startDate
     const eDate = p.endDate
     return `${p.startDate.toString().substring(0, 10)} bis ${p.endDate.toString().substring(0, 10)}`
+  }
+
+  setRow(_idx : number){
+    this.selectedIndex = _idx
   }
 }
