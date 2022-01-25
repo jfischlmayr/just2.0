@@ -1,3 +1,6 @@
+<span class="material-icons home-button">
+  home
+  </span>
 <h1 class="main-title">GANTT</h1>
 
 <div class="content">
@@ -12,7 +15,7 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-        <button mat-raised-button color="accent" class="download-button" (click)="downloadGantt(selectedProject)" ><mat-icon>file_download</mat-icon>CSV downloaden</button>
+        <button *ngIf="tasksToShow().length > 0" mat-raised-button color="accent" class="download-button" (click)="downloadGantt(selectedProject)" ><mat-icon>file_download</mat-icon>XLSX downloaden</button>
 
           <div *ngIf="tasksToShow().length > 0">
             <div class="gantt-task-wrapper">
