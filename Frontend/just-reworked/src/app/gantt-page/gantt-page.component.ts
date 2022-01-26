@@ -2,12 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { GetProject, GetTask, TableData } from '../model';
 import { HttpClient } from '@angular/common/http';
-import { ProjectPageComponent } from '../project-page/project-page.component';
 
-interface Project{
-  value: string;
-  viewValue: string;
-}
 @Component({
   selector: 'app-gantt-page',
   templateUrl: './gantt-page.component.html',
@@ -31,10 +26,12 @@ export class GanttPageComponent implements OnInit {
     this.httpClient.get<GetTask[]>('https://localhost:5001/api/task').subscribe(result =>{
       this.tasks = result
     });
+
   }
 
-  createGantt(): void{
-
+  downloadGantt(project: GetProject | undefined): void{
+    if(project)
+      this.httpClient.get(`https://localhost:5001/api/gantt/export?id=${project?.id}`).subscribe()
   }
 
   calcDays(p : GetProject|undefined) : void{
@@ -61,7 +58,6 @@ export class GanttPageComponent implements OnInit {
           this.tableData.push({timespan: ts.totalDays(), offset: off.totalDays()})
         })
       }
-
     }
   }
 
@@ -75,8 +71,6 @@ export class GanttPageComponent implements OnInit {
   }
 
   fillTableBorder(taskIdx: number, dayIdx: number) : string{
-
-
     if(this.tableData[taskIdx].offset <= dayIdx
       && this.tableData[taskIdx].offset + this.tableData[taskIdx].timespan > dayIdx){
         if(this.tableData[taskIdx].offset == dayIdx){
@@ -84,8 +78,6 @@ export class GanttPageComponent implements OnInit {
         }else if(this.tableData[taskIdx].timespan+this.tableData[taskIdx].offset-1 == dayIdx){
           return "0 20px 20px 0"
         }
-
-
       }
     return "0px";
 
@@ -100,8 +92,14 @@ export class GanttPageComponent implements OnInit {
   }
 
   tasksToShow(): GetTask[] {
-    let tasks = this.tasks!;
-    tasks = tasks.filter(t => t.projectId == this.selectedProject?.id);
+    let tasks = [];
+    tasks = this.tasks.filter(t => t.projectId == this.selectedProject?.id);
     return tasks;
+  }
+
+  showTooltipMessage(t: GetTask): String{
+    const start = new Date(t.startDate)
+    const end  = new Date(t.endDate)
+    return `${t.title}: ${start.toLocaleDateString()} - ${end.toLocaleDateString()}`
   }
 }
