@@ -3,81 +3,92 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { Task, GetTask, GetProject, EditTask } from '../model'
+import { Task, GetTask, GetProject, EditTask } from '../model';
 import { EditTaskDialogComponent } from './edit-task-dialog/edit-task-dialog.component';
-import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-task-page',
   templateUrl: './task-page.component.html',
-  styleUrls: ['./task-page.component.scss']
+  styleUrls: ['./task-page.component.scss'],
 })
 export class TaskPageComponent implements OnInit {
   showDelay = new FormControl(500);
   projects?: GetProject[];
-  tasks?: GetTask[]
-  title: string = ''
-  startDate!: Date
-  endDate!: Date
+  tasks?: GetTask[];
+  title: string = '';
+  startDate!: Date;
+  endDate!: Date;
 
-  selectedProjectId!: number
-  taskToEdit?: EditTask
+  selectedProjectId!: number;
+  taskToEdit?: EditTask;
 
-  constructor(private httpClient: HttpClient, private router: Router, public dialog: MatDialog) { }
+  constructor(
+    private httpClient: HttpClient,
+    private router: Router,
+    public dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
-    this.httpClient.get<GetProject[]>('https://localhost:5001/api/project').subscribe(result =>{
-      this.projects = result
-    });
+    this.httpClient
+      .get<GetProject[]>('https://localhost:5001/api/project')
+      .subscribe((result) => {
+        this.projects = result;
+      });
     this.refresh();
   }
 
   onSubmit() {
-
     const task: Task = {
       title: this.title,
       startDate: this.startDate,
       endDate: this.endDate,
-      projectId: this.selectedProjectId
-    }
+      projectId: this.selectedProjectId,
+    };
 
-    console.log(task.startDate)
-    console.log(task.endDate)
+    console.log(task.startDate);
+    console.log(task.endDate);
 
-    this.title = ''
-    this.startDate = new Date()
-    this.endDate = new Date()
-    this.httpClient.post('https://localhost:5001/api/task', task).subscribe(() => this.refresh())
+    this.title = '';
+    this.startDate = new Date();
+    this.endDate = new Date();
+    this.httpClient
+      .post('https://localhost:5001/api/task', task)
+      .subscribe(() => this.refresh());
   }
-
-
 
   refresh() {
-
-    this.httpClient.get<GetTask[]>('https://localhost:5001/api/task').subscribe(result => {
-      this.tasks = result
-    })
+    this.httpClient
+      .get<GetTask[]>('https://localhost:5001/api/task')
+      .subscribe((result) => {
+        this.tasks = result;
+      });
   }
 
-  editTask(t : GetTask) : void{
-    const dialogRef = this.dialog.open(EditTaskDialogComponent,{
-      data: {task: t, projects: this.projects},
-      panelClass: 'custom-dialog-container'
-    })
-    .afterClosed().subscribe( result => {
-      this.taskToEdit = result
+  editTask(t: GetTask): void {
+    const dialogRef = this.dialog
+      .open(EditTaskDialogComponent, {
+        data: { task: t, projects: this.projects },
+        panelClass: 'custom-dialog-container',
+      })
+      .afterClosed()
+      .subscribe((result) => {
+        this.taskToEdit = result;
 
-      this.httpClient.put('https://localhost:5001/api/task', this.taskToEdit).subscribe(() => this.refresh())
-    })
+        this.httpClient
+          .put('https://localhost:5001/api/task', this.taskToEdit)
+          .subscribe(() => this.refresh());
+      });
   }
 
-  deleteTask(id: number){
-    this.httpClient.delete(`https://localhost:5001/api/task?id=${id}`).subscribe(() => this.refresh())
+  deleteTask(id: number) {
+    this.httpClient
+      .delete(`https://localhost:5001/api/task?id=${id}`)
+      .subscribe(() => this.refresh());
   }
 
   tasksToShow(): GetTask[] {
     let tasks = this.tasks!;
-    tasks = tasks.filter(t => t.projectId == this.selectedProjectId);
+    tasks = tasks.filter((t) => t.projectId == this.selectedProjectId);
     return tasks;
   }
 }
