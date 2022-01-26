@@ -111,7 +111,6 @@ namespace Backend.Controllers
                         if (draw)
                         {
                             var color = IndexedColors.RoyalBlue.Index;
-                            //cell.SetCellValue(1);
                             style.FillForegroundColor = color;
                             style.FillPattern = FillPattern.SolidForeground;
 
@@ -126,8 +125,6 @@ namespace Backend.Controllers
                             IFont font = workbook.CreateFont();
                             font.Color = IndexedColors.White.Index;
                             style.SetFont(font);
-
-                            //cell.SetCellValue(0);
                             cell.CellStyle = style;
                         }
                     }
