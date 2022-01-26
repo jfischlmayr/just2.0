@@ -1,5 +1,5 @@
 <div>
-<mat-dialog-content>
+  <mat-dialog-content>
     <mat-form-field appearance="outline" class="input-field">
       <mat-label>Projektname</mat-label>
       <input matInput name="projectNameInput" type="text" [(ngModel)]="title">
@@ -22,7 +22,7 @@
   </mat-dialog-content>
 
   <mat-dialog-actions>
-    <button mat-raised-button color="primary" class="submit-button" (click)="submitDialog()" >Speichern</button>
-    <button mat-raised-button [style.color]="'red'" class="submit-button" (click)="cancelDialog()" >Abbrechen</button>
+    <button mat-raised-button color="primary" class="submit-button" (click)="submitDialog()">Speichern</button>
+    <button mat-raised-button [style.color]="'red'" class="submit-button" (click)="cancelDialog()">Abbrechen</button>
   </mat-dialog-actions>
 </div>
