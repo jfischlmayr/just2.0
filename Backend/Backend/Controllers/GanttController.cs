@@ -63,7 +63,7 @@ namespace Backend.Controllers
             //DataTable table = (DataTable)JsonConvert.DeserializeObject(JsonConvert.SerializeObject(), (typeof(DataTable)));
             var memoryStream = new MemoryStream();
 
-            using (var fs = new FileStream("Gantt.xlsx", FileMode.Create, FileAccess.Write))
+            using (var fs = new FileStream($"../../GanttExports/{(await context.Projects.FirstOrDefaultAsync(p => p.Id == id)).Title}_Gantt.xlsx", FileMode.Create, FileAccess.Write))
             {
                 NPOI.SS.UserModel.IWorkbook workbook = new XSSFWorkbook();
                 ISheet excelSheet = workbook.CreateSheet("Sheet1");

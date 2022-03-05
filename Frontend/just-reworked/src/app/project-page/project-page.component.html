@@ -31,7 +31,7 @@
       </button>
 
 
-      <mat-card class="project-card" *ngFor="let p of projects">
+      <mat-card class="project-card" *ngFor="let p of projects; let i = index" (click)="setRow(i)" [ngClass]="{'highlight': selectedIndex === i}">
         <mat-card-title>{{ p.title }}
           <button mat-icon-button class="edit-icon" (click)="editProject(p)">
             <mat-icon>edit</mat-icon>
