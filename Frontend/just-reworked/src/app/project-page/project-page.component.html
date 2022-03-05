@@ -42,7 +42,7 @@
         </mat-card-title>
         <mat-card-content>
           {{ p.description }} <br>
-          {{ displayDate(p) }}
+          {{ p.startDate | date:'dd.MM.yyyy':'CET' }} bis {{ p.endDate | date:'dd.MM.yyyy':'CET' }}
         </mat-card-content>
       </mat-card>
     </mat-card-content>
