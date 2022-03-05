@@ -13,7 +13,7 @@
         </mat-select>
       </mat-form-field>
       <button *ngIf="tasksToShow().length > 0" mat-raised-button color="accent" class="download-button"
-        (click)="downloadGantt(selectedProject)">
+        (click)="downloadGantt(selectedProject!.id)">
         <mat-icon>file_download</mat-icon>Gantt downloaden
       </button>
 

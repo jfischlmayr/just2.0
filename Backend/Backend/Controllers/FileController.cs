@@ -1,71 +1,54 @@
-﻿using JUST.Data;
+﻿
+using JUST.Data;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
+using System.IO;
 using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
-using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Drawing;
-using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
+using System;
+using Microsoft.EntityFrameworkCore;
 
 namespace Backend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class GanttController : ControllerBase
+    public class FileController : ControllerBase
     {
         private readonly JustDataContext context;
 
-        public GanttController(JustDataContext ctx)
+        public FileController(JustDataContext ctx)
         {
             context = ctx;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetTableData([FromQuery] int id)
+        [HttpGet, DisableRequestSizeLimit]
+        [Route("download")]
+        public IActionResult Download([FromQuery] int id)
         {
-            var result = BuildTableData(id);
+            ExportGanttAsync(id);
 
-            return Ok(result);
-        }
 
-        public List<TableData> BuildTableData(int id)
-        {
-            var tasks = context.Tasks.Where(t => t.ProjectId == id);
-
-            var startDate = DateTime.MaxValue;
-            var endDate = new DateTime();
-
-            var result = new List<TableData>();
-
-            foreach (var item in tasks)
+            byte[] fileBytes = null;
+            string filePath = $"Exports\\Gantt{id}.xlsx";
+            using (FileStream fs = System.IO.File.Open(filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
             {
-                if (item.StartDate.Ticks < startDate.Ticks)
-                    startDate = item.StartDate;
-                if (item.EndDate.Ticks > endDate.Ticks)
-                    endDate = item.EndDate;
+                int numBytesToRead = Convert.ToInt32(fs.Length);
+                fileBytes = new byte[(numBytesToRead)];
+                fs.Read(fileBytes, 0, numBytesToRead);
             }
 
-            foreach (var item in tasks)
-            {
-                result.Add(new TableData { Duration = item.Duration.Days, Offset = (item.StartDate - startDate).Days });
-            }
-
-            return result;
+            return File(fileBytes, "text/xlsx", $"Gantt{id}.xlsx");
         }
 
-        [HttpGet("export")]
-        public async Task<IActionResult> ExportGanttAsync([FromQuery] int id)
+        public async void ExportGanttAsync( int id)
         {
-            //DataTable table = (DataTable)JsonConvert.DeserializeObject(JsonConvert.SerializeObject(), (typeof(DataTable)));
             var memoryStream = new MemoryStream();
 
-            using (var fs = new FileStream($"../../GanttExports/{(await context.Projects.FirstOrDefaultAsync(p => p.Id == id)).Title}_Gantt.xlsx", FileMode.Create, FileAccess.Write))
+            using (var fs = new FileStream($"Exports/Gantt{id}.xlsx", FileMode.Create, FileAccess.ReadWrite))
             {
-                NPOI.SS.UserModel.IWorkbook workbook = new XSSFWorkbook();
+                IWorkbook workbook = new XSSFWorkbook();
                 ISheet excelSheet = workbook.CreateSheet("Sheet1");
 
                 List<string> columns = new List<string>();
@@ -91,7 +74,7 @@ namespace Backend.Controllers
 
                 var tasks = await context.Tasks.Where(task => task.ProjectId == id).ToArrayAsync();
 
-                int rowIndex = 1; 
+                int rowIndex = 1;
                 foreach (var task in tableData)
                 {
                     row = excelSheet.CreateRow(rowIndex);
@@ -103,7 +86,7 @@ namespace Backend.Controllers
                     {
                         if (i == task.Offset + 1)
                             draw = true;
-                        else if (i== task.Offset + 1 + task.Duration)
+                        else if (i == task.Offset + 1 + task.Duration)
                             draw = false;
 
                         var cell = row.CreateCell(i);
@@ -134,13 +117,37 @@ namespace Backend.Controllers
                 workbook.Write(fs);
                 fs.Close();
             }
-            return Ok();
         }
-    }
 
-    public class TableData
-    {
-        public int Duration { get; set; }
-        public int Offset { get; set; }
+        public List<TableData> BuildTableData(int id)
+        {
+            var tasks = context.Tasks.Where(t => t.ProjectId == id);
+
+            var startDate = DateTime.MaxValue;
+            var endDate = new DateTime();
+
+            var result = new List<TableData>();
+
+            foreach (var item in tasks)
+            {
+                if (item.StartDate.Ticks < startDate.Ticks)
+                    startDate = item.StartDate;
+                if (item.EndDate.Ticks > endDate.Ticks)
+                    endDate = item.EndDate;
+            }
+
+            foreach (var item in tasks)
+            {
+                result.Add(new TableData { Duration = item.Duration.Days, Offset = (item.StartDate - startDate).Days });
+            }
+
+            return result;
+        }
+
+        public class TableData
+        {
+            public int Duration { get; set; }
+            public int Offset { get; set; }
+        }
     }
 }

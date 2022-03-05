@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { GetProject, GetTask, TableData } from '../model';
 import { HttpClient } from '@angular/common/http';
+import { FileService } from '../_service/file.service';
 
 @Component({
   selector: 'app-gantt-page',
@@ -17,7 +18,7 @@ export class GanttPageComponent implements OnInit {
   tasks: GetTask[] = [];
   days: number[] = [];
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient, private fileService: FileService) {}
 
   ngOnInit(): void {
     this.httpClient
@@ -32,11 +33,15 @@ export class GanttPageComponent implements OnInit {
       });
   }
 
-  downloadGantt(project: GetProject | undefined): void {
-    if (project)
-      this.httpClient
-        .get(`https://localhost:5001/api/gantt/export?id=${project?.id}`)
-        .subscribe();
+  downloadGantt(id: number) {
+    this.fileService.download(id).subscribe(response => {
+      let fileName = response.headers.get('content-disposition')?.split(';')[1].split('=')[1]
+      let blob: Blob = response.body as Blob
+      let a = document.createElement('a')
+      a.download = fileName!
+      a.href = window.URL.createObjectURL(blob)
+      a.click()
+    })
   }
 
   calcDays(p: GetProject | undefined): void {

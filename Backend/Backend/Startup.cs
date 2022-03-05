@@ -33,7 +33,7 @@ namespace Backend
             services.AddControllers();
 
             services.AddCors(options => options.AddDefaultPolicy(builder =>
-                builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()));
+                builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader().WithExposedHeaders("content-disposition")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
