@@ -103,7 +103,7 @@ export class GanttPageComponent implements OnInit {
         return '0 20px 20px 0';
       } else if (
         this.tableData[taskIdx].timespan +
-          Math.round(this.tableData[taskIdx].offset) -
+          this.roundOffset(this.tableData[taskIdx].offset) -
           1 ==
         dayIdx
       ) {
@@ -111,6 +111,13 @@ export class GanttPageComponent implements OnInit {
       }
     }
     return '0px';
+  }
+
+  roundOffset(offset: number): number{
+    if(Math.round(offset) - offset > 0){
+      return Math.round(offset);
+    }
+    return Math.round(offset)+1;
   }
 
   calcDuration(t: GetTask): number {

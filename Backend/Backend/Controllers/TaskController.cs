@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
+using System;
 
 namespace Backend.Controllers
 {
@@ -29,14 +30,18 @@ namespace Backend.Controllers
         {
             if (task == null) return BadRequest("Task was empty");
 
-            context.Tasks.Add(task);
+            var result = task;
+            result.StartDate = ConvertDateTime(task.StartDate);
+            result.EndDate = ConvertDateTime(task.EndDate);
 
-            var project = await context.Projects.FirstOrDefaultAsync(p => p.Id == task.ProjectId);
-            project.Tasks.Add(task);
+            context.Tasks.Add(result);
+
+            var project = await context.Projects.FirstOrDefaultAsync(p => p.Id == result.ProjectId);
+            project.Tasks.Add(result);
 
             await context.SaveChangesAsync();
 
-            return Created(string.Empty, task);
+            return Created(string.Empty, result);
         }
 
         [HttpDelete]
@@ -64,13 +69,19 @@ namespace Backend.Controllers
                 return BadRequest();
 
             result.Title = task.Title;
-            result.StartDate = task.StartDate;
-            result.EndDate = task.EndDate;
+            result.StartDate = ConvertDateTime(task.StartDate);
+            result.EndDate = ConvertDateTime(task.EndDate);
             result.ProjectId = task.ProjectId;
 
             await context.SaveChangesAsync();
 
-            return Ok(await context.Tasks.FirstOrDefaultAsync(p => p.Id == task.Id));
+            return Ok(await context.Tasks.FirstOrDefaultAsync(p => p.Id == result.Id));
+        }
+
+        public DateTime ConvertDateTime(DateTime date)
+        {
+            TimeZoneInfo gmtZone = TimeZoneInfo.FindSystemTimeZoneById("W. Europe Standard Time");
+            return TimeZoneInfo.ConvertTimeFromUtc(date, gmtZone);
         }
     }
 }

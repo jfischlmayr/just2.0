@@ -5,7 +5,7 @@
     <mat-card-content class="content-scroll">
 
       <mat-form-field appearance="outline" class="select-field">
-        <mat-label>Select Project</mat-label>
+        <mat-label>Projekt auswählen</mat-label>
         <mat-select [(value)]="selectedProject">
           <mat-option *ngFor="let project of projects" [value]="project" (click)="calcDays(selectedProject)">
             {{project.title}}
@@ -22,7 +22,7 @@
           <table class="task-zone" cellspacing="0">
             <tr class="head-row">
               <th class="task-column">Task</th>
-              <th *ngFor="let d of days; index as i" class="bar-column">Tag {{ i }}</th>
+              <th *ngFor="let d of days; index as i" class="bar-column">Tag {{ i + 1 }}</th>
             </tr>
             <tr *ngFor="let t of tasksToShow(); index as j" class="task-row">
               <td class="task-column"> {{ t.title }} </td>
