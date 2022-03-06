@@ -29,8 +29,10 @@ namespace Backend.Controllers
         {
             await ExportGanttAsync(id);
 
+            var fileName = $"{(await context.Projects.FirstOrDefaultAsync(p => p.Id == id)).Title}_Gantt.xlsx";
+
             byte[] fileBytes = null;
-            string filePath = $"Exports\\Gantt{id}.xlsx";
+            string filePath = $"Exports\\{fileName}";
             using (FileStream fs = System.IO.File.Open(filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
             {
                 int numBytesToRead = Convert.ToInt32(fs.Length);
@@ -39,12 +41,12 @@ namespace Backend.Controllers
                 fs.Close();
             }
 
-            return File(fileBytes, "text/xlsx", $"Gantt{id}.xlsx");
+            return File(fileBytes, "text/xlsx", $"{fileName}");
         }
 
         public async Task ExportGanttAsync( int id)
         {
-            using (var fs = new FileStream($"Exports/Gantt{id}.xlsx", FileMode.Create, FileAccess.ReadWrite))
+            using (var fs = new FileStream($"Exports\\{(await context.Projects.FirstOrDefaultAsync(p => p.Id == id)).Title}_Gantt.xlsx", FileMode.Create, FileAccess.ReadWrite))
             {
                 IWorkbook workbook = new XSSFWorkbook();
                 ISheet excelSheet = workbook.CreateSheet("Sheet1");
