@@ -25,10 +25,9 @@ namespace Backend.Controllers
 
         [HttpGet, DisableRequestSizeLimit]
         [Route("download")]
-        public IActionResult Download([FromQuery] int id)
+        public async Task<IActionResult> DownloadAsync([FromQuery] int id)
         {
-            ExportGanttAsync(id);
-
+            await ExportGanttAsync(id);
 
             byte[] fileBytes = null;
             string filePath = $"Exports\\Gantt{id}.xlsx";
@@ -36,16 +35,15 @@ namespace Backend.Controllers
             {
                 int numBytesToRead = Convert.ToInt32(fs.Length);
                 fileBytes = new byte[(numBytesToRead)];
-                fs.Read(fileBytes, 0, numBytesToRead);
+                await fs.ReadAsync(fileBytes, 0, numBytesToRead);
+                fs.Close();
             }
 
             return File(fileBytes, "text/xlsx", $"Gantt{id}.xlsx");
         }
 
-        public async void ExportGanttAsync( int id)
+        public async Task ExportGanttAsync( int id)
         {
-            var memoryStream = new MemoryStream();
-
             using (var fs = new FileStream($"Exports/Gantt{id}.xlsx", FileMode.Create, FileAccess.ReadWrite))
             {
                 IWorkbook workbook = new XSSFWorkbook();
@@ -113,7 +111,6 @@ namespace Backend.Controllers
                     }
                     rowIndex++;
                 }
-
                 workbook.Write(fs);
                 fs.Close();
             }
