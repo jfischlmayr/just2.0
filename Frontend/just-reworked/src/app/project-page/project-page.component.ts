@@ -93,5 +93,6 @@ export class ProjectPageComponent implements OnInit {
 
   setRow(_idx : number){
     this.selectedIndex = _idx
+    console.log(this.selectedIndex)
   }
 }
