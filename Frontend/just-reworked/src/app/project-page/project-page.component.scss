@@ -29,7 +29,7 @@ h1.main-title{
     color: black !important;
     width: 90%;
     background-color: rgb(199, 199, 245);
-    
+    @include mat.elevation(7);
   }
 
 button.fab-next{
@@ -38,20 +38,17 @@ button.fab-next{
     height: 4.5em;
     width: 4.5em;
     right: 4em;
-    bottom: 7em;
+    bottom: 5.5em;
     @include mat.elevation(4);
     color: black;
+}
 
+button.fab-next:hover{
+  background-color: rgba(26, 26, 26, 0.4);
 }
 
 .project-list{
     width: 45%;
-}
-
-button.fab-next:hover{
-    background-color: rgb(26, 26, 26);
-    color: white !important;
-    @include mat.elevation(8);
 }
 
 button.fab-next:active{
