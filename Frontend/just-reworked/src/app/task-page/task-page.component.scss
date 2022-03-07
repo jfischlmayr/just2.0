@@ -158,6 +158,7 @@ mat-icon.next{
   margin-bottom: 0.45em;
   margin-left: 0em;
   }
+
 }
 
 @media (min-width: 50em){
@@ -179,13 +180,13 @@ mat-icon.next{
     }
     mat-icon.next{
         font-size: 3.3em !important;
-    margin-bottom: 0.45em;
-    margin-right: 0.32em;
+        margin-bottom: 0.45em;
+        margin-right: 0.32em;
     }
     mat-icon.prev{
         font-size: 3.3em !important;
-    margin-bottom: 0.45em;
-    margin-left: 0em;
+        margin-bottom: 0.45em;
+        margin-left: 0em;
     }
 
     .wrapping-card{
@@ -193,16 +194,17 @@ mat-icon.next{
     }
 
     .input-field{
-        width: 18em !important;
+        width: 55% !important;
         margin-right: 1em;
     }
+
     .date-field{
-        width: 18em !important;
+        width: 25% !important;
         margin-right: 1em;
     }
 
     .select-field{
-      width: 18em !important;
+        width: 18em !important;
         margin-right: 1em;
     }
 
@@ -217,6 +219,7 @@ mat-icon.next{
       color: white;
       width: auto;
       margin-top: -1em;
+      margin-left: 0;
   }
 
   
