@@ -91,24 +91,31 @@ export class OldGanttComponent implements OnInit {
   }
 
   fillTableBorder(taskIdx: number, dayIdx: number): string {
+
+
         if (
       this.tableData[taskIdx].offset <= dayIdx &&
       this.tableData[taskIdx].offset + this.tableData[taskIdx].timespan > dayIdx
     ) {
 
-      if (this.tableData[taskIdx].offset == dayIdx) {
-        //console.log("left edge -- task: " + this.tasksToShow()[taskIdx].title + " offset: " + this.tableData[taskIdx].offset + " day: " + dayIdx)
+      if (this.tableData[taskIdx].offset == dayIdx && !(this.tableData[taskIdx].timespan + this.tableData[taskIdx].offset - 1 == dayIdx)) {
+          console.log("left edge -- task: " + this.tasksToShow()[taskIdx].title + " offset: " + this.tableData[taskIdx].offset + " day: " + dayIdx + " timespan: " + this.tableData[taskIdx].timespan)
+
         return '20px 0 0 20px'; 
+      } else if (
+        this.tableData[taskIdx].timespan + this.tableData[taskIdx].offset - 1 == dayIdx && !(this.tableData[taskIdx].offset == dayIdx)
+      ) {
+     
+          console.log("right edge -- task: " + this.tasksToShow()[taskIdx].title + " offset: " + this.tableData[taskIdx].offset + " day: " + dayIdx)
+        
+        return '0 20px 20px 0'; //oben, rechts, unten, links
       } else if (
         this.tableData[taskIdx].timespan + this.tableData[taskIdx].offset - 1 == dayIdx
       ) {
-        //console.log("right edge -- task: " + this.tasksToShow()[taskIdx].title + " offset: " + this.tableData[taskIdx].offset + " day: " + dayIdx)
-        return '0 20px 20px 0'; //oben, rechts, unten, links
-      } else if (
-        this.tableData[taskIdx].timespan + this.roundOffset(this.tableData[taskIdx].offset) - 1 == dayIdx
-      ) {
-        console.log("round -- task: " + this.tasksToShow()[taskIdx].title + " offset: " + this.tableData[taskIdx].offset + " day: " + dayIdx)
+        console.log("round -- " + this.tasksToShow()[taskIdx].title + " offset: " + this.tableData[taskIdx].offset + " day: " + dayIdx + " timespan: " + this.tableData[taskIdx].timespan)
         return '20px 20px 20px 20px';
+      } else{
+        console.log("??? -- task: " + this.tasksToShow()[taskIdx].title + " offset: " + this.tableData[taskIdx].offset + " day: " + dayIdx + " timespan: " + this.tableData[taskIdx].timespan)
       }
     }
     return '0px';
