@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using System;
+using System.Linq;
 
 namespace Backend.Controllers
 {
@@ -82,6 +83,12 @@ namespace Backend.Controllers
         {
             TimeZoneInfo gmtZone = TimeZoneInfo.FindSystemTimeZoneById("W. Europe Standard Time");
             return TimeZoneInfo.ConvertTimeFromUtc(date, gmtZone);
+        }
+
+        [HttpGet("fromProject")]
+        public async Task<IActionResult> GetTasksFromProject([FromQuery] int id)
+        {
+            return Ok(await context.Tasks.Where(t => t.ProjectId == id).ToListAsync());
         }
     }
 }

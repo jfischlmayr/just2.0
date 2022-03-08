@@ -5,14 +5,16 @@
 <div class="content flexbox-panel-content">
   <mat-card class="wrapping-card">
     <mat-card-content>
-      <mat-form-field appearance="outline" class="select-field">
-        <mat-label>Projekt wählen</mat-label>
-        <mat-select [(value)]="selectedProjectId" required>
-          <mat-option *ngFor="let p of projects" [value]="p.id">
-            {{p.title}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+      <!--
+        <mat-form-field appearance="outline" class="select-field">
+          <mat-label>Projekt wählen</mat-label>
+          <mat-select [(value)]="selectedProjectId" required>
+            <mat-option *ngFor="let p of projects" [value]="p.id">
+              {{p.title}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      -->
       <mat-form-field appearance="outline" class="input-field">
         <mat-label>Taskname</mat-label>
         <input matInput name="taskNameInput" type="text" [(ngModel)]="title">
@@ -30,7 +32,7 @@
 
       <button mat-raised-button color="basic" class="add-button" (click)="onSubmit()">Hinzufügen</button>
 
-      <mat-card class="task-card" *ngFor="let t of tasksToShow()">
+      <mat-card class="task-card" *ngFor="let t of tasks">
         <mat-card-content class="flexbox-panel-card">
           <div>{{ t.title }}</div>
           <div>{{ t.startDate | date:'dd.MM.yyyy':'GMT' }} bis {{ t.endDate | date:'dd.MM.yyyy':'CET' }}</div>

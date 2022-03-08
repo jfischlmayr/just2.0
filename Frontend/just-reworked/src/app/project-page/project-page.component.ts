@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
 import { GetProject, Project } from '../model';
+import { GlobalsService } from '../globals.service';
 
 @Component({
   selector: 'app-project-page',
@@ -28,7 +29,9 @@ export class ProjectPageComponent implements OnInit {
   constructor(
     private httpClient: HttpClient,
     private router: Router,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private globals : GlobalsService
+
   ) {}
 
   ngOnInit(): void {
@@ -93,6 +96,7 @@ export class ProjectPageComponent implements OnInit {
 
   setRow(_idx : number){
     this.selectedIndex = _idx
+    this.globals.setPjId(this.projects![_idx].id)
     console.log(this.selectedIndex)
   }
 }
