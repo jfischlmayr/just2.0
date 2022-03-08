@@ -14,7 +14,7 @@ const routes: Routes = [
   {path: 'gantt', component: GanttPageComponent},
   {path: 'tasks', component: TaskPageComponent},
   {path: 'projects', component: ProjectPageComponent},
-  {path: 'oldGantt', component: OldGanttComponent},
+  {path: 'gantt-from-project', component: OldGanttComponent},
   {path: 'tutorial', component: TutorialComponent}
 ];
 
