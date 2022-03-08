@@ -24,6 +24,7 @@ export class GanttPageComponent implements OnInit {
       .get<GetTask[]>(`https://localhost:5001/api/task/fromproject?id=${this.globals.getPjId()}`)
       .subscribe((result) => {
         this.tasks = result;
+        this.calcDays()
       });
   }
 
@@ -38,35 +39,37 @@ export class GanttPageComponent implements OnInit {
     this.days = [];
     this.tableData = [];
 
-    if (this.tasks) {
+    if (this.tasks.length > 0) {
       let dates = this.tasks
-          .map((p) => new Date(p.startDate))
-          .concat(this.tasks.map((p) => new Date(p.endDate)));
-        let start = dates.reduce(function (a, b) {
-          return a < b ? a : b;
-        });
-        let end = dates.reduce(function (a, b) {
-          return a > b ? a : b;
-        });
+        .map((p) => new Date(p.startDate))
+        .concat(this.tasks.map((p) => new Date(p.endDate)));
+      console.log(dates)
+      let start = dates.reduce(function (a, b) {
+        return a < b ? a : b;
+      });
+      let end = dates.reduce(function (a, b) {
+        return a > b ? a : b;
+      });
 
-        timeSpan = this.timespan.fromDates(start, end, true);
+      timeSpan = this.timespan.fromDates(start, end, true);
 
-        for (let i = 0; i < timeSpan.totalDays(); i++) {
-          this.days.push(i + 1);
-        }
+      for (let i = 0; i < timeSpan.totalDays(); i++) {
+        this.days.push(i + 1);
+      }
 
-        this.tasks.forEach((t) => {
-          let ts = this.timespan.fromDates(
-            new Date(t.startDate),
-            new Date(t.endDate),
-            true
-          );
-          let off = this.timespan.fromDates(new Date(t.startDate), start, true);
-          this.tableData.push({
-            timespan: ts.totalDays(),
-            offset: off.totalDays(),
-          });
+      this.tasks.forEach((t) => {
+        let ts = this.timespan.fromDates(
+          new Date(t.startDate),
+          new Date(t.endDate),
+          true
+        );
+        let off = this.timespan.fromDates(new Date(t.startDate), start, true);
+        this.tableData.push({
+          timespan: ts.totalDays(),
+          offset: off.totalDays(),
         });
+      });
+      console.log(this.tableData)
     }
   }
 

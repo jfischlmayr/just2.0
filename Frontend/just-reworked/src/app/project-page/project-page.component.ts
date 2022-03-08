@@ -20,6 +20,7 @@ export class ProjectPageComponent implements OnInit {
   endDate!: Date
   description: string =''
   selectedIndex: number = 0;
+  allowContinue: boolean;
 
   editing: boolean = false;
   projectToEdit?: GetProject;
@@ -32,10 +33,14 @@ export class ProjectPageComponent implements OnInit {
     public dialog: MatDialog,
     private globals : GlobalsService
 
-  ) {}
+  ) {
+    this.allowContinue = true
+  }
 
   ngOnInit(): void {
+    this.selectedIndex = -1
     this.refresh();
+
   }
 
   refresh() {
@@ -97,6 +102,7 @@ export class ProjectPageComponent implements OnInit {
   setRow(_idx : number){
     this.selectedIndex = _idx
     this.globals.setPjId(this.projects![_idx].id)
+    this.allowContinue = false
     console.log(this.selectedIndex)
   }
 }
