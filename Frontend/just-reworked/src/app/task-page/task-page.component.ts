@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Task, GetTask, GetProject, EditTask } from '../model';
 import { EditTaskDialogComponent } from './edit-task-dialog/edit-task-dialog.component';
+import { GlobalsService } from '../globals.service';
 
 @Component({
   selector: 'app-task-page',
@@ -25,15 +26,11 @@ export class TaskPageComponent implements OnInit {
   constructor(
     private httpClient: HttpClient,
     private router: Router,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private globals: GlobalsService
   ) {}
 
   ngOnInit(): void {
-    this.httpClient
-      .get<GetProject[]>('https://localhost:5001/api/project')
-      .subscribe((result) => {
-        this.projects = result;
-      });
     this.refresh();
   }
 
@@ -42,7 +39,7 @@ export class TaskPageComponent implements OnInit {
       title: this.title,
       startDate: this.startDate,
       endDate: this.endDate,
-      projectId: this.selectedProjectId,
+      projectId: this.globals.getPjId(),
     };
 
     console.log(task.startDate);
@@ -58,9 +55,10 @@ export class TaskPageComponent implements OnInit {
 
   refresh() {
     this.httpClient
-      .get<GetTask[]>('https://localhost:5001/api/task')
+      .get<GetTask[]>(`https://localhost:5001/api/task/fromproject?id=${this.globals.getPjId()}`)
       .subscribe((result) => {
         this.tasks = result;
+        console.log(result)
       });
   }
 
@@ -84,11 +82,5 @@ export class TaskPageComponent implements OnInit {
     this.httpClient
       .delete(`https://localhost:5001/api/task?id=${id}`)
       .subscribe(() => this.refresh());
-  }
-
-  tasksToShow(): GetTask[] {
-    let tasks = this.tasks!;
-    tasks = tasks.filter((t) => t.projectId == this.selectedProjectId);
-    return tasks;
   }
 }

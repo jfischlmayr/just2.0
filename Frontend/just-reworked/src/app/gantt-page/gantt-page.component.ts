@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { GetProject, GetTask, TableData } from '../model';
 import { HttpClient } from '@angular/common/http';
+import { GlobalsService } from '../globals.service';
 
 @Component({
   selector: 'app-gantt-page',
@@ -10,46 +11,37 @@ import { HttpClient } from '@angular/common/http';
 })
 export class GanttPageComponent implements OnInit {
   showDelay = new FormControl(500);
-  projects: GetProject[] = [];
-  selectedProject?: GetProject;
   timespan = require('timespan');
   tableData: TableData[] = [];
   tasks: GetTask[] = [];
   days: number[] = [];
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient, private globals : GlobalsService) {}
 
   ngOnInit(): void {
+    const selectedProjectId = this.globals.getPjId()
     this.httpClient
-      .get<GetProject[]>('https://localhost:5001/api/project')
-      .subscribe((result) => {
-        this.projects = result;
-      });
-    this.httpClient
-      .get<GetTask[]>('https://localhost:5001/api/task')
+      .get<GetTask[]>(`https://localhost:5001/api/task/fromproject?id=${this.globals.getPjId()}`)
       .subscribe((result) => {
         this.tasks = result;
       });
   }
 
-  downloadGantt(project: GetProject | undefined): void {
-    if (project)
-      this.httpClient
-        .get(`https://localhost:5001/api/gantt/export?id=${project?.id}`)
-        .subscribe();
+  downloadGantt(): void {
+    this.httpClient
+      .get(`https://localhost:5001/api/gantt/export?id=${this.globals.getPjId()}`)
+      .subscribe();
   }
 
-  calcDays(p: GetProject | undefined): void {
+  calcDays(): void {
     var timeSpan = new this.timespan.TimeSpan();
     this.days = [];
     this.tableData = [];
 
-    if (p) {
-      var projTasks = this.tasks.filter((t) => t.projectId == p?.id);
-      if (projTasks) {
-        let dates = projTasks
+    if (this.tasks) {
+      let dates = this.tasks
           .map((p) => new Date(p.startDate))
-          .concat(projTasks.map((p) => new Date(p.endDate)));
+          .concat(this.tasks.map((p) => new Date(p.endDate)));
         let start = dates.reduce(function (a, b) {
           return a < b ? a : b;
         });
@@ -63,7 +55,7 @@ export class GanttPageComponent implements OnInit {
           this.days.push(i + 1);
         }
 
-        projTasks.forEach((t) => {
+        this.tasks.forEach((t) => {
           let ts = this.timespan.fromDates(
             new Date(t.startDate),
             new Date(t.endDate),
@@ -75,7 +67,6 @@ export class GanttPageComponent implements OnInit {
             offset: off.totalDays(),
           });
         });
-      }
     }
   }
 
@@ -126,12 +117,6 @@ export class GanttPageComponent implements OnInit {
     const end = new Date(t.endDate);
     timeSpan = this.timespan.fromDates(start, end, true);
     return timeSpan.days;
-  }
-
-  tasksToShow(): GetTask[] {
-    let tasks = [];
-    tasks = this.tasks.filter((t) => t.projectId == this.selectedProject?.id);
-    return tasks;
   }
 
   showTooltipMessage(t: GetTask): String {
