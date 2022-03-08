@@ -84,28 +84,29 @@ export class GanttPageComponent implements OnInit {
   }
 
   fillTableBorder(taskIdx: number, dayIdx: number): string {
+
+
     if (
-      this.tableData[taskIdx].offset <= dayIdx &&
-      this.tableData[taskIdx].offset + this.tableData[taskIdx].timespan > dayIdx
-    ) {
-      if (this.tableData[taskIdx].offset == dayIdx) {
-        return '20px 0 0 20px';
-      } else if (
-        this.tableData[taskIdx].timespan + this.tableData[taskIdx].offset - 1 ==
-        dayIdx
-      ) {
-        return '0 20px 20px 0';
-      } else if (
-        this.tableData[taskIdx].timespan +
-          this.roundOffset(this.tableData[taskIdx].offset) -
-          1 ==
-        dayIdx
-      ) {
-        return '20px 20px 20px 20px';
-      }
-    }
-    return '0px';
+  this.tableData[taskIdx].offset <= dayIdx &&
+  this.tableData[taskIdx].offset + this.tableData[taskIdx].timespan > dayIdx
+) {
+
+  if (this.tableData[taskIdx].offset == dayIdx && !(this.tableData[taskIdx].timespan + this.tableData[taskIdx].offset - 1 == dayIdx)) {
+
+    return '20px 0 0 20px'; 
+  } else if (
+    this.tableData[taskIdx].timespan + this.tableData[taskIdx].offset - 1 == dayIdx && !(this.tableData[taskIdx].offset == dayIdx)
+  ) {
+     
+    return '0 20px 20px 0'; //oben, rechts, unten, links
+  } else if (
+    this.tableData[taskIdx].timespan + this.tableData[taskIdx].offset - 1 == dayIdx
+  ) {
+    return '20px 20px 20px 20px';
   }
+}
+return '0px';
+}
 
   roundOffset(offset: number): number{
     if(Math.round(offset) - offset > 0){
