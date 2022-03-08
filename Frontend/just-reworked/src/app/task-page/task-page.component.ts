@@ -17,8 +17,8 @@ export class TaskPageComponent implements OnInit {
   projects?: GetProject[];
   tasks?: GetTask[];
   title: string = '';
-  startDate!: Date;
-  endDate!: Date;
+  startDate?: Date;
+  endDate?: Date;
 
   selectedProjectId!: number;
   taskToEdit?: EditTask;
@@ -35,22 +35,20 @@ export class TaskPageComponent implements OnInit {
   }
 
   onSubmit() {
-    const task: Task = {
-      title: this.title,
-      startDate: this.startDate,
-      endDate: this.endDate,
-      projectId: this.globals.getPjId(),
-    };
-
-    console.log(task.startDate);
-    console.log(task.endDate);
-
-    this.title = '';
-    this.startDate = new Date();
-    this.endDate = new Date();
-    this.httpClient
-      .post('https://localhost:5001/api/task', task)
-      .subscribe(() => this.refresh());
+    if(this.startDate != undefined && this.endDate != undefined) {
+      const task: Task = {
+        title: this.title,
+        startDate: this.startDate,
+        endDate: this.endDate,
+        projectId: this.selectedProjectId,
+      };
+      this.title = '';
+      this.startDate = undefined;
+      this.endDate = undefined;
+      this.httpClient
+        .post('https://localhost:5001/api/task', task)
+        .subscribe(() => this.refresh());
+    }
   }
 
   refresh() {

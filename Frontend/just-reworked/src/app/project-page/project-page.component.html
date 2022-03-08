@@ -31,40 +31,20 @@
       </button>
 
 
-      <div *ngFor="let p of projects; let i = index">
-        <mat-card *ngIf="selectedIndex == i;else noHighlight" class="highlight" (click)="setRow(i)" #cardRef{i} >
-            <mat-card-title>{{ p.title }}
-              <button mat-icon-button class="edit-icon" (click)="editProject(p)">
-                <mat-icon>edit</mat-icon>
-              </button>
-              <button mat-icon-button class="delete-icon" (click)="deleteProject(p.id)">
-                <mat-icon>delete</mat-icon>
-              </button>
-            </mat-card-title>
-            <mat-card-content>
-              {{ p.description }} <br>
-              {{ displayDate(p) }}
-            </mat-card-content>
-          </mat-card>
-
-          <ng-template #noHighlight>
-            <mat-card class="project-card" (click)="setRow(i)" #cardRef{i} >
-              <mat-card-title>{{ p.title }}
-                <button mat-icon-button class="edit-icon" (click)="editProject(p)">
-                  <mat-icon>edit</mat-icon>
-                </button>
-                <button mat-icon-button class="delete-icon" (click)="deleteProject(p.id)">
-                  <mat-icon>delete</mat-icon>
-                </button>
-              </mat-card-title>
-              <mat-card-content>
-                {{ p.description }} <br>
-                {{ displayDate(p) }}
-              </mat-card-content>
-            </mat-card>
-          </ng-template>
-      </div>
-      
+      <mat-card class="project-card" *ngFor="let p of projects; let i = index" (click)="setRow(i)" [ngClass]="{'highlight': selectedIndex === i}">
+        <mat-card-title>{{ p.title }}
+          <button mat-icon-button class="edit-icon" (click)="editProject(p)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button class="delete-icon" (click)="deleteProject(p.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-card-title>
+        <mat-card-content>
+          {{ p.description }} <br>
+          {{ p.startDate | date:'dd.MM.yyyy':'CET' }} bis {{ p.endDate | date:'dd.MM.yyyy':'CET' }}
+        </mat-card-content>
+      </mat-card>
     </mat-card-content>
   </mat-card>
 </div>

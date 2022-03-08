@@ -1,35 +1,121 @@
-﻿using JUST.Data;
+﻿
+using JUST.Data;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
+using System.IO;
 using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
-using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Drawing;
-using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
+using System;
+using Microsoft.EntityFrameworkCore;
 
 namespace Backend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class GanttController : ControllerBase
+    public class FileController : ControllerBase
     {
         private readonly JustDataContext context;
 
-        public GanttController(JustDataContext ctx)
+        public FileController(JustDataContext ctx)
         {
             context = ctx;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetTableData([FromQuery] int id)
+        [HttpGet, DisableRequestSizeLimit]
+        [Route("download")]
+        public async Task<IActionResult> DownloadAsync([FromQuery] int id)
         {
-            var result = BuildTableData(id);
+            await ExportGanttAsync(id);
 
-            return Ok(result);
+            var fileName = $"{(await context.Projects.FirstOrDefaultAsync(p => p.Id == id)).Title}_Gantt.xlsx";
+
+            byte[] fileBytes = null;
+            string filePath = $"Exports\\{fileName}";
+            using (FileStream fs = System.IO.File.Open(filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+            {
+                int numBytesToRead = Convert.ToInt32(fs.Length);
+                fileBytes = new byte[(numBytesToRead)];
+                await fs.ReadAsync(fileBytes, 0, numBytesToRead);
+                fs.Close();
+            }
+
+            return File(fileBytes, "text/xlsx", $"{fileName}");
+        }
+
+        public async Task ExportGanttAsync( int id)
+        {
+            using (var fs = new FileStream($"Exports\\{(await context.Projects.FirstOrDefaultAsync(p => p.Id == id)).Title}_Gantt.xlsx", FileMode.Create, FileAccess.ReadWrite))
+            {
+                IWorkbook workbook = new XSSFWorkbook();
+                ISheet excelSheet = workbook.CreateSheet("Sheet1");
+
+                List<string> columns = new List<string>();
+                columns.Add("Task");
+                IRow row = excelSheet.CreateRow(0);
+                row.CreateCell(0).SetCellValue("Task");
+
+                var tableData = BuildTableData(id);
+                var length = 0;
+                foreach (var item in tableData)
+                {
+                    if (item.Offset > length)
+                    {
+                        length = item.Offset + item.Duration;
+                    }
+                }
+
+                for (int i = 1; i < length; i++)
+                {
+                    columns.Add("Tag " + i);
+                    row.CreateCell(i).SetCellValue("Tag " + (i));
+                }
+
+                var tasks = await context.Tasks.Where(task => task.ProjectId == id).ToArrayAsync();
+
+                int rowIndex = 1;
+                foreach (var task in tableData)
+                {
+                    row = excelSheet.CreateRow(rowIndex);
+                    var draw = false;
+
+                    row.CreateCell(0).SetCellValue(tasks[rowIndex - 1].Title);
+
+                    for (int i = 1; i < columns.Count; i++)
+                    {
+                        if (i == task.Offset + 1)
+                            draw = true;
+                        else if (i == task.Offset + 1 + task.Duration)
+                            draw = false;
+
+                        var cell = row.CreateCell(i);
+                        ICellStyle style = workbook.CreateCellStyle();
+                        if (draw)
+                        {
+                            var color = IndexedColors.RoyalBlue.Index;
+                            style.FillForegroundColor = color;
+                            style.FillPattern = FillPattern.SolidForeground;
+
+                            IFont font = workbook.CreateFont();
+                            font.Color = color;
+                            style.SetFont(font);
+
+                            cell.CellStyle = style;
+                        }
+                        else
+                        {
+                            IFont font = workbook.CreateFont();
+                            font.Color = IndexedColors.White.Index;
+                            style.SetFont(font);
+                            cell.CellStyle = style;
+                        }
+                    }
+                    rowIndex++;
+                }
+                workbook.Write(fs);
+                fs.Close();
+            }
         }
 
         public List<TableData> BuildTableData(int id)
@@ -57,93 +143,10 @@ namespace Backend.Controllers
             return result;
         }
 
-        [HttpGet("export")]
-        public async Task<IActionResult> ExportGanttAsync([FromQuery] int id)
+        public class TableData
         {
-            //DataTable table = (DataTable)JsonConvert.DeserializeObject(JsonConvert.SerializeObject(), (typeof(DataTable)));
-            var memoryStream = new MemoryStream();
-
-            using (var fs = new FileStream($"../../GanttExports/{(await context.Projects.FirstOrDefaultAsync(p => p.Id == id)).Title}_Gantt.xlsx", FileMode.Create, FileAccess.Write))
-            {
-                NPOI.SS.UserModel.IWorkbook workbook = new XSSFWorkbook();
-                ISheet excelSheet = workbook.CreateSheet("Sheet1");
-
-                List<string> columns = new List<string>();
-                columns.Add("Task");
-                IRow row = excelSheet.CreateRow(0);
-                row.CreateCell(0).SetCellValue("Task");
-
-                var tableData = BuildTableData(id);
-                var length = 0;
-                foreach (var item in tableData)
-                {
-                    if (item.Offset > length)
-                    {
-                        length = item.Offset + item.Duration;
-                    }
-                }
-
-                for (int i = 1; i < length; i++)
-                {
-                    columns.Add("Tag " + i);
-                    row.CreateCell(i).SetCellValue("Tag " + (i));
-                }
-
-                var tasks = await context.Tasks.Where(task => task.ProjectId == id).ToArrayAsync();
-
-                int rowIndex = 1; 
-                foreach (var task in tableData)
-                {
-                    row = excelSheet.CreateRow(rowIndex);
-                    var draw = false;
-
-                    row.CreateCell(0).SetCellValue(tasks[rowIndex - 1].Title);
-
-                    for (int i = 1; i < columns.Count; i++)
-                    {
-                        if (i == task.Offset + 1)
-                            draw = true;
-                        else if (i== task.Offset + 1 + task.Duration)
-                            draw = false;
-
-                        var cell = row.CreateCell(i);
-                        ICellStyle style = workbook.CreateCellStyle();
-                        if (draw)
-                        {
-                            var color = IndexedColors.RoyalBlue.Index;
-                            cell.SetCellValue(1);
-                            style.FillForegroundColor = color;
-                            style.FillPattern = FillPattern.SolidForeground;
-
-                            IFont font = workbook.CreateFont();
-                            font.Color = color;
-                            style.SetFont(font);
-
-                            cell.CellStyle = style;
-                        }
-                        else
-                        {
-                            IFont font = workbook.CreateFont();
-                            font.Color = IndexedColors.White.Index;
-                            style.SetFont(font);
-
-                            cell.SetCellValue(0);
-                            cell.CellStyle = style;
-                        }
-                    }
-                    rowIndex++;
-                }
-
-                workbook.Write(fs);
-                fs.Close();
-            }
-            return Ok();
+            public int Duration { get; set; }
+            public int Offset { get; set; }
         }
-    }
-
-    public class TableData
-    {
-        public int Duration { get; set; }
-        public int Offset { get; set; }
     }
 }

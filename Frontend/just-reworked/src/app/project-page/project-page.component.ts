@@ -16,8 +16,8 @@ export class ProjectPageComponent implements OnInit {
   showDelay = new FormControl(500);
 
   title : string = ''
-  startDate!: Date
-  endDate!: Date
+  startDate?: Date
+  endDate?: Date
   description: string =''
   selectedIndex: number = 0;
   allowContinue: boolean;
@@ -52,21 +52,22 @@ export class ProjectPageComponent implements OnInit {
   }
 
   onSubmit() {
-    const project: Project = {
-      title: this.title,
-      startDate: this.startDate,
-      endDate: this.endDate,
-      description: this.description,
-    };
-    console.log(project);
-    this.httpClient
-      .post('https://localhost:5001/api/project', project)
-      .subscribe(() => this.refresh());
+    if(this.startDate != undefined && this.endDate != undefined) {
+      const project: Project = {
+        title: this.title,
+        startDate: this.startDate,
+        endDate: this.endDate,
+        description: this.description,
+      };
+      this.httpClient
+        .post('https://localhost:5001/api/project', project)
+        .subscribe(() => this.refresh());
 
-    this.title = '';
-    this.startDate = new Date();
-    this.endDate = new Date();
-    this.description = '';
+      this.title = '';
+      this.startDate = undefined;
+      this.endDate = undefined;
+      this.description = '';
+    }
   }
 
   deleteProject(id: number) {
