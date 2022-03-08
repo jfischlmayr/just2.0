@@ -16,6 +16,7 @@ export class GanttPageComponent implements OnInit {
   tableData: TableData[] = [];
   tasks: GetTask[] = [];
   days: number[] = [];
+  selectedProjectId: number = this.globals.getPjId();
 
   constructor(private httpClient: HttpClient, private globals : GlobalsService, private fileService: FileService) {
 

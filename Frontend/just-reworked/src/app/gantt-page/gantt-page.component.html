@@ -16,7 +16,7 @@
       -->
 
       <button *ngIf="tasks.length > 0" mat-raised-button color="accent" class="download-button"
-        (click)="downloadGantt()">
+        (click)="downloadGantt(selectedProjectId)">
         <mat-icon>file_download</mat-icon>Gantt downloaden
       </button>
 
