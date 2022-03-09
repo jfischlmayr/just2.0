@@ -40,7 +40,7 @@ export class TaskPageComponent implements OnInit {
         title: this.title,
         startDate: this.startDate,
         endDate: this.endDate,
-        projectId: this.selectedProjectId,
+        projectId: this.globals.getPjId(),
       };
       this.title = '';
       this.startDate = undefined;
