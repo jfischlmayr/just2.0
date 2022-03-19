@@ -20,15 +20,23 @@ export class TaskPageComponent implements OnInit {
   startDate?: Date;
   endDate?: Date;
 
-  selectedProjectId!: number;
   taskToEdit?: EditTask;
+  minDate?: Date
+  maxDate?: Date
 
   constructor(
     private httpClient: HttpClient,
-    private router: Router,
     public dialog: MatDialog,
     private globals: GlobalsService
-  ) {}
+  ) {
+    this.httpClient
+    .get<GetProject[]>('https://localhost:5001/api/project')
+    .subscribe((result) => {
+      var project = result.find(p => p.id == globals.getPjId())
+      this.minDate = new Date(Date.parse(project?.startDate!))
+      this.maxDate = new Date(Date.parse(project?.endDate!))
+    });
+  }
 
   ngOnInit(): void {
     this.refresh();
