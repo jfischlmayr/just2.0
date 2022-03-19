@@ -94,6 +94,7 @@ mat-icon.next{
   height: 35em;
 }
 
+
 .download-button{
   color: white;
   background-color: green;
@@ -113,7 +114,10 @@ mat-icon.next{
 }
 
 .card-wrapper{
-  overflow-y: scroll;
+}
+
+.scrollable{
+    overflow-y: scroll;
   overflow-x: scroll;
 }
 

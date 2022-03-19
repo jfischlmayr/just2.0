@@ -4,56 +4,45 @@
 
 <div class="content">
   <mat-card class="card-wrapper">
-    <mat-card-content class="content-scroll">
 
-      <!--
-        <mat-form-field appearance="outline" class="select-field">
-          <mat-label>Projekt auswählen</mat-label>
-          <mat-select [(value)]="selectedProject">
-            <mat-option *ngFor="let project of projects" [value]="project" (click)="calcDays(selectedProject)">
-              {{project.title}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      -->
+    
+
+    <mat-card-content class="content-scroll">
 
       <button *ngIf="tasks.length > 0" mat-raised-button color="accent" class="download-button"
         (click)="downloadGantt(selectedProjectId)">
         <mat-icon>file_download</mat-icon>Gantt downloaden
       </button>
-
-      <div *ngIf="tasks.length > 0">
-        <div class="gantt-task-wrapper">
-          <table class="task-zone" cellspacing="0">
-            <tr class="head-row">
-              <th class="task-column">Task</th>
-              <th *ngFor="let d of days; index as i" class="bar-column">Tag {{ i + 1 }}</th>
-            </tr>
-            <tr *ngFor="let t of tasks; index as j" class="task-row">
-              <td class="task-column"> {{ t.title }} </td>
-              <td *ngFor="let d of days; index as h" [style.background]="fillTableBackground(j, h)"
-                [style.border-radius]="fillTableBorder(j, h)" class="bar-column" matTooltip={{showTooltipMessage(t)}}
-                [matTooltipShowDelay]="500">
-              </td>
-            </tr>
-          </table>
+      <div class="scrollable">
+        <div *ngIf="tasks.length > 0">
+          <div class="gantt-task-wrapper">
+            <table class="task-zone" cellspacing="0">
+              <tr class="head-row">
+                <th class="task-column">Task</th>
+                <th *ngFor="let d of days; index as i" class="bar-column">Tag {{ i + 1 }}</th>
+              </tr>
+              <tr *ngFor="let t of tasks; index as j" class="task-row">
+                <td class="task-column"> {{ t.title }} </td>
+                <td *ngFor="let d of days; index as h" [style.background]="fillTableBackground(j, h)"
+                  [style.border-radius]="fillTableBorder(j, h)" class="bar-column" matTooltip={{showTooltipMessage(t)}}
+                  [matTooltipShowDelay]="500">
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+  
+        <div *ngIf="tasks.length == 0" class="empty-tasks">
+          In diesem Projekt sind keine Tasks enthalten. <a [routerLink]="'/tasks'">Hier Tasks hinzufügen.</a>
         </div>
       </div>
-      <!--
-        <div *ngIf="selectedProject == undefined">
-          <p class="empty-tasks">
-            Kein Projekt ausgewählt.
-          </p>
-        </div>
-      -->
 
-      <div *ngIf="tasks.length == 0" class="empty-tasks">
-        In diesem Projekt sind keine Tasks enthalten. <a [routerLink]="'/tasks'">Hier Tasks hinzufügen.</a>
-      </div>
+      
+
+      
     </mat-card-content>
   </mat-card>
 </div>
-
 <div class="flexbox-panel">
 
   <button mat-fab color="warn" class="fab-prev" aria-label="Previous" [routerLink]="'/tasks'"
