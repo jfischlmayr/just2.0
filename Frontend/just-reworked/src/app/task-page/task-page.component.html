@@ -14,7 +14,7 @@
 
       <mat-form-field appearance="outline" class="date-field">
         <mat-label>Zeitspanne einfügen</mat-label>
-        <mat-date-range-input [rangePicker]="picker">
+        <mat-date-range-input [min]="minDate" [max]="maxDate" [rangePicker]="picker">
           <input matStartDate placeholder="Startdatum" [(ngModel)]="startDate">
           <input matEndDate placeholder="Enddatum" [(ngModel)]="endDate">
         </mat-date-range-input>
