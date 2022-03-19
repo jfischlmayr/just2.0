@@ -17,9 +17,9 @@ export class TaskPageComponent implements OnInit {
   projects?: GetProject[];
   tasks?: GetTask[];
   title: string = '';
+  projectTitle?: string = '';
   startDate?: Date;
   endDate?: Date;
-
   taskToEdit?: EditTask;
   minDate?: Date
   maxDate?: Date
@@ -35,6 +35,7 @@ export class TaskPageComponent implements OnInit {
       var project = result.find(p => p.id == globals.getPjId())
       this.minDate = new Date(Date.parse(project?.startDate!))
       this.maxDate = new Date(Date.parse(project?.endDate!))
+      this.projectTitle = project?.title;
     });
   }
 
