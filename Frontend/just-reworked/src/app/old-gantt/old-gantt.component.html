@@ -19,35 +19,38 @@
         (click)="downloadGantt(selectedProject!.id)">
         <mat-icon>file_download</mat-icon>Gantt downloaden
       </button>
-
-      <div *ngIf="tasksToShow().length > 0">
-        <div class="gantt-task-wrapper">
-          <table class="task-zone" cellspacing="0">
-            <tr class="head-row">
-              <th class="task-column">Task</th>
-              <th *ngFor="let d of days; index as i" class="bar-column">Tag {{ i + 1 }}</th>
-            </tr>
-            <tr *ngFor="let t of tasksToShow(); index as j" class="task-row">
-              <td class="task-column"> {{ t.title }} </td>
-              <td *ngFor="let d of days; index as h" [style.background]="fillTableBackground(j, h)"
-                [style.border-radius]="fillTableBorder(j, h)" class="bar-column" matTooltip={{showTooltipMessage(t)}}
-                [matTooltipShowDelay]="500">
-              </td>
-            </tr>
-          </table>
+      <div class="scrollable">
+        <div *ngIf="tasksToShow().length > 0">
+          <div class="gantt-task-wrapper">
+            <table class="task-zone" cellspacing="0">
+              <tr class="head-row">
+                <th class="task-column">Task</th>
+                <th *ngFor="let d of days; index as i" class="bar-column">Tag {{ i + 1 }}</th>
+              </tr>
+              <tr *ngFor="let t of tasksToShow(); index as j" class="task-row">
+                <td class="task-column"> {{ t.title }} </td>
+                <td *ngFor="let d of days; index as h" [style.background]="fillTableBackground(j, h)"
+                  [style.border-radius]="fillTableBorder(j, h)" class="bar-column" matTooltip={{showTooltipMessage(t)}}
+                  [matTooltipShowDelay]="500">
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div *ngIf="selectedProject == undefined">
+          <p class="empty-tasks">
+            Kein Projekt ausgewählt.
+          </p>
+        </div>
+  
+        <div *ngIf="selectedProject != undefined">
+          <div *ngIf="tasksToShow().length == 0" class="empty-tasks">
+            In diesem Projekt sind keine Tasks enthalten. <a [routerLink]="'/tasks'">Hier Tasks hinzufügen.</a>
+          </div>
         </div>
       </div>
-      <div *ngIf="selectedProject == undefined">
-        <p class="empty-tasks">
-          Kein Projekt ausgewählt.
-        </p>
-      </div>
 
-      <div *ngIf="selectedProject != undefined">
-        <div *ngIf="tasksToShow().length == 0" class="empty-tasks">
-          In diesem Projekt sind keine Tasks enthalten. <a [routerLink]="'/tasks'">Hier Tasks hinzufügen.</a>
-        </div>
-      </div>
+      
     </mat-card-content>
   </mat-card>
 </div>
