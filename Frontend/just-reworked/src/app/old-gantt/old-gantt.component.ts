@@ -107,13 +107,14 @@ export class OldGanttComponent implements OnInit {
       if (this.tableData[taskIdx].offset == dayIdx && !(this.tableData[taskIdx].timespan + this.tableData[taskIdx].offset - 1 == dayIdx)) {
           console.log("left edge -- task: " + this.tasksToShow()[taskIdx].title + " offset: " + this.tableData[taskIdx].offset + " day: " + dayIdx + " timespan: " + this.tableData[taskIdx].timespan)
 
-        return '20px 0 0 20px'; 
+        return '20px 0 0 20px';
       } else if (
-        this.tableData[taskIdx].timespan + this.tableData[taskIdx].offset - 1 == dayIdx && !(this.tableData[taskIdx].offset == dayIdx)
+        this.roundOffset(this.tableData[taskIdx].timespan + this.tableData[taskIdx].offset - 1)
+         == dayIdx && !(this.tableData[taskIdx].offset == dayIdx)
       ) {
-     
+
           console.log("right edge -- task: " + this.tasksToShow()[taskIdx].title + " offset: " + this.tableData[taskIdx].offset + " day: " + dayIdx)
-        
+
         return '0 20px 20px 0'; //oben, rechts, unten, links
       } else if (
         this.tableData[taskIdx].timespan + this.tableData[taskIdx].offset - 1 == dayIdx
@@ -130,8 +131,10 @@ export class OldGanttComponent implements OnInit {
   roundOffset(offset: number): number{
     if(Math.round(offset) - offset > 0){
       return Math.round(offset);
+    }else if(Math.round(offset) - offset<0){
+      return Math.round(offset)+1;
     }
-    return Math.round(offset)+1;
+    return offset;
   }
 
   calcDuration(t: GetTask): number {

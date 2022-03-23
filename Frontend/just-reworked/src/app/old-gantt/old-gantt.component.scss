@@ -284,7 +284,7 @@ min-width: 10vw;
 
     .gantt-task-wrapper table td:first-child, th.task-column{
       position: sticky;
-      left: -2.5%;
+      left: 0%;
       padding-left: 1.2em;
       background-color: white;
     }
@@ -311,6 +311,7 @@ min-width: 10vw;
       text-align: left;
       min-width: 10vw;
       margin-left: 1em;
+
     }
 
     .empty-tasks{
@@ -318,4 +319,3 @@ min-width: 10vw;
     }
 }
 
-tr:hover {background-color: #D6EEEE;}
