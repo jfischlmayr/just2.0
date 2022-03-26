@@ -1,11 +1,11 @@
 version: "3.8"
 
 networks:
-    just-net:
+    leogantt-net:
         driver: bridge
 
 volumes:
-    just-volume:
+    leogantt-volume:
     
 services:
     database:
@@ -19,9 +19,25 @@ services:
             MYSQL_USER: root
             MYSQL_PASSWORD: wearejustpros
         volumes:
-            - just-volume:/home/volumes
+            - leogantt-volume:/home/volumes
         networks:
-            - just-net
+            - leogantt-net
         container_name: leogantt-database
-
     
+    backend:
+        build: ../Backend
+        ports:
+            - 8080:80
+        environment:
+            ConnectionStrings__DefaultConnection: "Server=localhost;Port=33061;Database=just;User=root;Password=wearejustpros"
+        networks:
+            - leogantt-net
+        container_name: leogantt-backend
+        
+    frontend:
+        build: ../Frontend/just-reworked
+        ports:
+            - 4201:80
+        networks:
+            - leogantt-net
+        container_name: leogantt-frontend

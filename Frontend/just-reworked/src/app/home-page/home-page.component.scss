@@ -1,15 +1,15 @@
 @use '~@angular/material' as mat;
 
-@font-face { font-family: HelveticaNeueBold; src: url('../../../../fonts/FreeSansBold.otf'); }
-@font-face { font-family: HelveticaNeue; src: url('../../../../fonts/FreeSans.otf'); }
-@font-face { font-family: HelveticaNeueBoldItalic; src: url('../../../../fonts/FreeSansBoldOblique.otf'); }
-@font-face { font-family: HelveticaNeueHollow; src: url('../../../../fonts/nimbus-sans-becker-outdbol.ttf'); }
+@font-face { font-family: HelveticaNeueBold; src: url('../../../fonts/FreeSansBold.otf'); }
+@font-face { font-family: HelveticaNeue; src: url('../../../fonts/FreeSans.otf'); }
+@font-face { font-family: HelveticaNeueBoldItalic; src: url('../../../fonts/FreeSansBoldOblique.otf'); }
+@font-face { font-family: HelveticaNeueHollow; src: url('../../../fonts/nimbus-sans-becker-outdbol.ttf'); }
 
 *{margin:0px auto;}
 .wrapper{
     scroll-behavior: smooth;
     background: rgb(24,37,62);
-    background: linear-gradient(0deg, rgb(42, 66, 109) 0%, rgba(52,77,135,1) 20%, rgba(110,144,228,1) 80%, rgb(145, 172, 240) 100% ); 
+    background: linear-gradient(0deg, rgb(42, 66, 109) 0%, rgba(52,77,135,1) 20%, rgba(110,144,228,1) 80%, rgb(145, 172, 240) 100% );
 }
 h1.main-title{
     font-size: 2.8rem;
@@ -25,7 +25,7 @@ h1.main-title{
 }
 
 a{
-    color: #ffb6a2; 
+    color: #ffb6a2;
     text-decoration: none;
 }
 
@@ -124,7 +124,7 @@ button.intro-button, button.tutorial-button{
     background-color: #e1ddf3;
     color: black;
     transition: background-color 400ms, color 400ms;
-    
+
 }
 
 button.intro-button:hover, button.tutorial-button:hover{
@@ -172,7 +172,7 @@ button.intro-button:hover, button.tutorial-button:hover{
     .buttons-big-screen{
         display: inline-block;
     }
-    
+
     .buttons-small-screen{
         display: none;
     }
@@ -233,7 +233,7 @@ button.intro-button:hover, button.tutorial-button:hover{
         line-height: 1.8rem;
         width: 40em;
         text-align: center !important;
-        
+
     }
 
     .button-area{
@@ -248,7 +248,7 @@ button.intro-button:hover, button.tutorial-button:hover{
         margin-right: 0.25em;
         margin-top: 2.5em;
         transition: background-color 400ms, color 400ms;
-        
+
     }
 
     button.tutorial-button{
@@ -259,13 +259,13 @@ button.intro-button:hover, button.tutorial-button:hover{
     .buttons-big-screen{
         display: inline-block;
     }
-    
+
     .buttons-small-screen{
         display: none;
     }
 
     .big-field{
-        width: 60%; 
+        width: 60%;
         height: 45rem;
         overflow: hidden;
         border-radius: 20px;
@@ -275,13 +275,13 @@ button.intro-button:hover, button.tutorial-button:hover{
     }
 
     .small-field{
-        width: 40%; 
+        width: 40%;
         height: 45rem;
         overflow: hidden;
         border-radius: 20px;
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
-        
+
     }
 
 
@@ -293,11 +293,11 @@ button.intro-button:hover, button.tutorial-button:hover{
         margin-bottom: 0;
         height: 30rem;
         top: 12.5%;
-        
+
         @include mat.elevation(5);
     }
 
-    
+
 
     mat-card-title{
         font-size: 2.5rem;
@@ -335,7 +335,7 @@ button.intro-button:hover, button.tutorial-button:hover{
         position: relative;
         margin-top: 12.5vh;
         transition: transform 500ms;
-        
+
     }
 
     .arrow-icon:hover{
@@ -347,6 +347,6 @@ button.intro-button:hover, button.tutorial-button:hover{
         display:inline-block;
     }
 
-    
+
 }
 
